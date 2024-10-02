@@ -1,0 +1,141 @@
+---
+title: ""
+
+code-fold: false
+echo: false
+number-sections: false
+
+format: 
+  docx:
+    fig-cap-location: top
+    tbl-cap-location: top
+    reference-doc: custom-reference-doc.docx
+  pdf:
+    include-in-header: 
+      text: |
+        \usepackage{lscape}
+        \newcommand{\blandscape}{\begin{landscape}}
+        \newcommand{\elandscape}{\end{landscape}}
+    fig-cap-location: top
+    tbl-cap-location: top
+    
+editor: visual
+bibliography: references.bib
+#csl: american-journal-of-epidemiology.csl
+
+filters:
+  - docx-landscape.lua
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+library(here)
+library(captioner)
+
+table_cap <- captioner(prefix = "Table")
+```
+
+**Authors**: Janick Weberpals^1^, ..., Sebastian Schneeweiss^1^, Shirley V. Wang^1^
+
+[Author affiliations:]{.underline}
+
+^1^ Division of Pharmacoepidemiology and Pharmacoeconomics, Department of Medicine, Brigham and Women's Hospital, Harvard Medical School, Boston, MA, USA
+
+^2^ Oncology Center of Excellence, US Food and Drug Administration, Silver Spring, MD, USA
+
+[**Correspondence:**]{.underline}
+
+Shirley V. Wang, PhD
+
+Division of Pharmacoepidemiology and Pharmacoeconomics,
+
+Department of Medicine, Brigham and Women's Hospital, Harvard Medical School,
+
+1620 Tremont Street, Suite 3030-R, Boston, MA 02120, USA
+
+Phone: +1 617-278-0932
+
+Fax: + 1 617-232-8602
+
+Email: [jweberpals\@bwh.harvard.edu](mailto:jweberpals@bwh.harvard.edu)
+
+[**Article type:**]{.underline} Original Research Article
+
+[**Word count:**]{.underline} 3,806 words / 4000 words
+
+[**Tables:**]{.underline} 1
+
+[**Figures:**]{.underline} 6
+
+[**Supplementary material:**]{.underline} Supplementary tables and figures
+
+[**Short running title**]{.underline}: High-dimensional multiple imputation (HDMI)
+
+[**Keywords:**]{.underline} Missing data, Confounding, EHR, NLP, Real-World Evidence
+
+[**Funding Statement:**]{.underline} This project was supported by Task Order 75F40119F19002 under Master Agreement 75F40119D10037 from the US Food and Drug Administration (FDA). Additional funding was provided by NIH RO1LM013204.
+
+[**Competing Interests Statement:**]{.underline} Dr. Schneeweiss is participating in investigator-initiated grants to the Brigham and Women's Hospital from Boehringer Ingelheim, Takeda, and UCB unrelated to the topic of this study. He owns equity in Aetion Inc., a software manufacturer. He is an advisor to Temedica GmbH, a patient-oriented data generation company. His interests were declared, reviewed, and approved by the Brigham and Women's Hospital in accordance with their institutional compliance policies.
+
+
+[**Data sharing statement:**]{.underline} ...
+
+[**Analytic code sharing statement:**]{.underline} ...
+
+*Manuscript last updated: `r Sys.time()`*
+
+{{< pagebreak >}}
+
+# Abstract {.unnumbered}
+
+xxx words/xxx words
+
+...
+
+{{< pagebreak >}}
+
+# Background
+
+...
+
+{{< pagebreak >}}
+
+# Methods
+
+...
+
+{{< pagebreak >}}
+
+# Results {#sec-results}
+
+...
+
+# Discussion
+
+...
+
+## Conclusions
+
+...
+
+{{< pagebreak >}}
+
+# References {.unnumbered}
+
+::: {#refs}
+:::
+
+{{< pagebreak >}}
+
+\blandscape
+
+# Tables {.unnumbered}
+
+
+{{< pagebreak >}}
+
+# Figures {.unnumbered}
+
+\elandscape

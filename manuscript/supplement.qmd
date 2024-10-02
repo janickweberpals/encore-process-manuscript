@@ -1,0 +1,57 @@
+---
+title: "Supplementary Material"
+subtitle: "..."
+
+echo: false
+number-sections: true
+
+format: 
+  pdf:
+    include-in-header: 
+      text: |
+        \usepackage{lscape}
+        \newcommand{\blandscape}{\begin{landscape}}
+        \newcommand{\elandscape}{\end{landscape}}
+    fig-cap-location: top
+    crossref:
+      fig-title: '**Supplementary Figure**'
+      tbl-title: '**Supplementary Table**'
+
+editor: visual
+bibliography: references.bib
+#csl: american-journal-of-epidemiology.csl
+---
+
+```{r}
+#| label: setup_supplement
+#| include: false
+
+# table_cap <- captioner(prefix = "Supplementary Table")
+```
+
+**Authors**: ...
+
+$\vspace{0.25cm}$
+
+*Supplementary Material last updated: `r Sys.Date()`*
+
+{{< pagebreak >}}
+
+-->
+
+# Supplementary Tables
+
+...
+
+{{< pagebreak >}}
+
+# Supplementary Figures
+
+...
+
+{{< pagebreak >}}
+
+# References {.unnumbered}
+
+::: refs
+:::
