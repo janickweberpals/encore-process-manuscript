@@ -1,3 +1,12 @@
+
+function Div (div)
+  if div.classes:includes 'landscape' then
+    div.content:insert(1, end_portrait_section)
+    div.content:insert(end_landscape_section)
+    return div
+  end
+end
+
 local ooxml = function (s)
   return pandoc.RawBlock('openxml', s)
 end

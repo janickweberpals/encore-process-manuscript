@@ -1,5 +1,5 @@
 ---
-title: ""
+title: "A Process for the Emulation of Comparative Oncology Trials with Real-world Evidence (ENCORE)"
 
 code-fold: false
 echo: false
@@ -21,7 +21,7 @@ format:
     
 editor: visual
 bibliography: references.bib
-#csl: american-journal-of-epidemiology.csl
+csl: journal-of-clinical-oncology.csl
 
 filters:
   - docx-landscape.lua
@@ -32,12 +32,13 @@ filters:
 #| include: false
 
 library(here)
+library(knitr)
 library(captioner)
 
 table_cap <- captioner(prefix = "Table")
 ```
 
-**Authors**: Janick Weberpals^1^, ..., Sebastian Schneeweiss^1^, Shirley V. Wang^1^
+**Authors**: Janick Weberpals^1^, Donna R. Rivera^2^, ..., Sebastian Schneeweiss^1^, Shirley V. Wang^1^
 
 [Author affiliations:]{.underline}
 
@@ -61,7 +62,7 @@ Fax: + 1 617-232-8602
 
 Email: [SWANG1\@BWH.HARVARD.EDU](SWANG1@BWH.HARVARD.EDU)
 
-[**Article type:**]{.underline} Original Research Article
+[**Article type:**]{.underline} Review
 
 [**Word count:**]{.underline} xxx words / xxx words
 
@@ -73,15 +74,17 @@ Email: [SWANG1\@BWH.HARVARD.EDU](SWANG1@BWH.HARVARD.EDU)
 
 [**Short running title**]{.underline}: ...
 
-[**Keywords:**]{.underline} Real-World Evidence
+[**Keywords:**]{.underline} Oncology, Real-World Evidence, Trial emulation, EHR
 
 [**Funding Statement:**]{.underline} This project was supported by ...
 
-[**Competing Interests Statement:**]{.underline} Dr. Schneeweiss is participating in investigator-initiated grants to the Brigham and Women's Hospital from Boehringer Ingelheim, Takeda, and UCB unrelated to the topic of this study. He owns equity in Aetion Inc., a software manufacturer. He is an advisor to Temedica GmbH, a patient-oriented data generation company. His interests were declared, reviewed, and approved by the Brigham and Women's Hospital in accordance with their institutional compliance policies.
+[**Competing Interests Statement:**]{.underline} Dr. Wang has consulted ad hoc for Exponent Inc. and MITRE a federally funded research center for the Centers for Medicare and Medicaid Services on unrelated work. Dr. Schneeweiss is participating in investigator-initiated grants to the Brigham and Women's Hospital from Boehringer Ingelheim, Takeda, and UCB unrelated to the topic of this study. He owns equity in Aetion Inc., a software manufacturer. He is an advisor to Temedica GmbH, a patient-oriented data generation company. His interests were declared, reviewed, and approved by the Brigham and Women's Hospital in accordance with their institutional compliance policies.
 
 [**Data sharing statement:**]{.underline} ...
 
 [**Analytic code sharing statement:**]{.underline} ...
+
+[***Proposed target journals:***]{.underline} *JCO CCI =\> JAMA Network Open =\> CPT*
 
 *Manuscript last updated: `r Sys.time()`*
 
@@ -103,13 +106,9 @@ xxx words/xxx words
 
 # Methods
 
-...
+**Systematic process for understanding the validity of RWE for oncology submissions**
 
 {{< pagebreak >}}
-
-# Results {#sec-results}
-
-...
 
 # Discussion
 
@@ -128,7 +127,7 @@ xxx words/xxx words
 
 {{< pagebreak >}}
 
-\blandscape
+::: landscape
 
 # Tables {.unnumbered}
 
@@ -136,4 +135,14 @@ xxx words/xxx words
 
 # Figures {.unnumbered}
 
-\elandscape
+```{r}
+#| label: fig-process
+#| fig-cap: "Systematic process to understand effectiveness claims of oncology trials using real-world evidence."
+#| fig-cap-location: top
+#| fig-width: 12
+
+knitr::include_graphics(here("figures", "process.png"))
+```
+
+[View figure in higher resolution]()
+:::
