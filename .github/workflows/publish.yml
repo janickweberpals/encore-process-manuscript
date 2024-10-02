@@ -16,6 +16,8 @@ jobs:
 
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          tinytex: true
 
       - name: Install R
         uses: r-lib/actions/setup-r@v2
@@ -30,7 +32,6 @@ jobs:
       - name: Run quarto
         run: |
           quarto render manuscript/manuscript.qmd
-          quarto install tinytex
           quarto render manuscript/supplement.qmd
           
       - name: Commit results
