@@ -30,6 +30,7 @@ jobs:
       - name: Run quarto
         run: |
           quarto render manuscript/manuscript.qmd
+          quarto install tinytex
           quarto render manuscript/supplement.qmd
           
       - name: Commit results
