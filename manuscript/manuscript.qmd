@@ -148,7 +148,11 @@ eligibility_criteria <- read_excel(
 eligibility_criteria |> 
   select(-Link) |> 
   filter(Criteria != "Study phase") |> 
-  gt()
+  gt() #|> 
+  # tab_style(
+  #   style = cell_text(weight = "bold"),
+  #   locations = 
+  #   )
 ```
 
 ```{r}
