@@ -32,8 +32,11 @@ filters:
 #| include: false
 
 library(here)
+library(dplyr)
 library(knitr)
 library(captioner)
+library(gt)
+library(readxl)
 
 table_cap <- captioner(prefix = "Table")
 ```
@@ -78,7 +81,7 @@ Email: [SWANG1\@BWH.HARVARD.EDU](SWANG1@BWH.HARVARD.EDU)
 
 [**Funding Statement:**]{.underline} This project was supported by ...
 
-[**Competing Interests Statement:**]{.underline} Dr. Wang has consulted ad hoc for Exponent Inc. and MITRE a federally funded research center for the Centers for Medicare and Medicaid Services on unrelated work. Dr. Schneeweiss is participating in investigator-initiated grants to the Brigham and Women's Hospital from Boehringer Ingelheim, Takeda, and UCB unrelated to the topic of this study. He owns equity in Aetion Inc., a software manufacturer. He is an advisor to Temedica GmbH, a patient-oriented data generation company. His interests were declared, reviewed, and approved by the Brigham and Women's Hospital in accordance with their institutional compliance policies.
+[**Competing Interests Statement:**]{.underline} Dr. Weberpals is now an employee of AstraZeneca and owns stocks in AstraZeneca. Dr. Wang has consulted ad hoc for Exponent Inc. and MITRE a federally funded research center for the Centers for Medicare and Medicaid Services on unrelated work. Dr. Schneeweiss is participating in investigator-initiated grants to the Brigham and Women's Hospital from Boehringer Ingelheim, Takeda, and UCB unrelated to the topic of this study. He owns equity in Aetion Inc., a software manufacturer. He is an advisor to Temedica GmbH, a patient-oriented data generation company. His interests were declared, reviewed, and approved by the Brigham and Women's Hospital in accordance with their institutional compliance policies.
 
 [**Data sharing statement:**]{.underline} ...
 
@@ -99,6 +102,8 @@ xxx words/xxx words
 {{< pagebreak >}}
 
 # Background
+
+With 21% of all drug approvals, oncology was the disease area with the most FDA drug approvals in 2023.[@senior2024fresh] Although randomized controlled trials (RCTs) are considered the gold standard, decision-makers increasingly rely on real-world evidence (RWE) generated from routine-care health data such as electronic health records (EHR) to evaluate the comparative safety and effectiveness of novel cancer therapies.[@purpura2022role] Especially in the field of precision oncology, RWE has many essential use cases and plays a critical role in complementing evidence like in patient populations that are underrepresented in RCTs, to construct external control arms in single-arm trials where active recruitment may not be feasible or in drug/biomarker discovery and label extensions among pan-tumor populations that harbor specific genomic signatures. However, [to draw causal inferences from such comparisons in non-randomized data, it is pivotal that endpoints and prognostic information can be measured reliably and at scale]{.underline}, which remains a significant challenge in oncological comparative effectiveness research (CER).
 
 ... [@weberpals2024]
 
@@ -128,8 +133,49 @@ xxx words/xxx words
 {{< pagebreak >}}
 
 ::: landscape
-
 # Tables {.unnumbered}
+
+```{r}
+#| label: tbl-criteria
+#| tbl-cap: "Criteria ."
+#| tbl-cap-location: top
+
+eligibility_criteria <- read_excel(
+  path = here("tables", "helper_tables.xlsx"),
+  sheet = "ctgov_criteria_defintions"
+  )
+
+eligibility_criteria |> 
+  select(-Link) |> 
+  filter(Criteria != "Study phase") |> 
+  gt()
+```
+
+```{r}
+#| label: tbl-rcts
+#| tbl-cap: "Tentative list of randomized controlled trials (RCTs) considered for emulation."
+#| tbl-cap-location: top
+
+rct_selection <- read_excel(
+  path = here("tables", "helper_tables.xlsx"),
+  sheet = "rct_selection"
+  )
+
+rct_selection |> 
+  group_by(cancer) |> 
+  gt() |> 
+  cols_label(
+    nctid = md("**NCTID**"),
+    acronym = md("**Acronym**"),
+    setting = md("**Clinical setting**"),
+    line = md("**Line of therapy**"),
+    exposures = md("**Treatment comparison**")
+    ) |> 
+  tab_style(
+    style = cell_text(weight = "bold"),
+    locations = cells_row_groups()
+    )
+```
 
 {{< pagebreak >}}
 
@@ -142,6 +188,13 @@ xxx words/xxx words
 #| fig-width: 12
 
 knitr::include_graphics(here("figures", "process.png"))
+
+# copy figure to manuscript
+# file_copy(
+#   path = path, 
+#   new_path = here("manuscript", "Figure_2_attrition.png"), 
+#   overwrite = TRUE
+#   )
 ```
 
 [View figure in higher resolution]()
