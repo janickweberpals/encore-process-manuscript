@@ -38,6 +38,7 @@ library(captioner)
 library(gt)
 library(readxl)
 library(fs)
+library(webshot2)
 
 table_cap <- captioner(prefix = "Table")
 ```
