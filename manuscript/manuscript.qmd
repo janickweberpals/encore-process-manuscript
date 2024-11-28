@@ -41,13 +41,15 @@ library(readxl)
 table_cap <- captioner(prefix = "Table")
 ```
 
-**Authors**: Janick Weberpals^1^, Donna R. Rivera^2^, ..., Sebastian Schneeweiss^1^, Shirley V. Wang^1^
+**Authors**: Janick Weberpals^1^, Kenneth L. Kehl^2^, Donna R. Rivera^3^, ..., Sebastian Schneeweiss^1^, Shirley V. Wang^1^
 
 [Author affiliations:]{.underline}
 
 ^1^ Division of Pharmacoepidemiology and Pharmacoeconomics, Department of Medicine, Brigham and Women's Hospital, Harvard Medical School, Boston, MA, USA
 
-^2^ Oncology Center of Excellence, US Food and Drug Administration, Silver Spring, MD, USA
+^2^ Dana-Farber, ..., USA
+
+^3^ Oncology Center of Excellence, US Food and Drug Administration, Silver Spring, MD, USA
 
 [**Correspondence:**]{.underline}
 
@@ -103,7 +105,13 @@ xxx words/xxx words
 
 # Background
 
-With 21% of all drug approvals, oncology was the disease area with the most FDA drug approvals in 2023.[@senior2024fresh] Although randomized controlled trials (RCTs) are considered the gold standard, decision-makers increasingly rely on real-world evidence (RWE) generated from routine-care health data such as electronic health records (EHR) to evaluate the comparative safety and effectiveness of novel cancer therapies.[@purpura2022role] Especially in the field of precision oncology, RWE has many essential use cases and plays a critical role in complementing evidence like in patient populations that are underrepresented in RCTs, to construct external control arms in single-arm trials where active recruitment may not be feasible or in drug/biomarker discovery and label extensions among pan-tumor populations that harbor specific genomic signatures. However, [to draw causal inferences from such comparisons in non-randomized data, it is pivotal that endpoints and prognostic information can be measured reliably and at scale]{.underline}, which remains a significant challenge in oncological comparative effectiveness research (CER).
+Randomized controlled trials (RCTs) have been the gold standard for establishing the efficacy and safety of medical products. With the advent of the the 21^st^ Century Cures Act directive, the Food and Drug Administration (FDA) established a framework to increasingly include and consider real-world evidence (RWE) generated from routine-care health data such as electronic health records (EHR) to evaluate and contextualize the comparative safety and effectiveness of novel cancer therapies.[@purpura2022role] With 21% of all drug approvals, oncology was the disease area with the most FDA drug approvals in 2023[@senior2024fresh], and especially in the field of precision oncology, RWE has a large potential to complement evidence coming from RCTs. Examples comprise the assessment of effectiveness in patient populations that are underrepresented in RCTs, the construction of external control arms in single-arm trials where active recruitment may not be feasible or the use of real-world data (RWD) for biomarker discovery and label extensions among pan-tumor populations that harbor specific genomic and immunological signatures.
+
+However, the validity and transportability of results derived betwen RWE studies and RCTs can depend on many factors and limitations include missing data, small sample sizes, data discontinuity [@lin2018identifying; @joshua2022longitudinal], rapid changes in temporal prescribing patterns and the inability to measure and emulate common eligibility criteria and prognostic factors.[@rider2024emulations] While there are examples of emulations of oncology trials[@rider2024emulations; @merola2023aetion; @merola2024calibrating], a systematic and scaled approach to emulate a diverse set of different oncology trials is necessary to gain confidence the accuracy of RWE studies and to provide an answer as to which questions can be validly answered with which non-interventional study designs and analysis methods, given the data that is available. 
+
+The RCT DUPLICATE initiative[@wang2023emulation] increased our understanding of when RWE studies can come to causal conclusions on treatment effects by comparing results against RCTs under the assumption that each RCT finding reflects a causal treatment effect. In settings where the RCT designs could be emulated well, RWE studies came to the same conclusions.[@heyard2024design] However, prior work from RCT-DUPLICATE has focused primarily on emulating trials in the cardio-metabolic, renal, and pulmonary clinical areas using claims databases.
+
+The *Emulation of Comparative Oncology Trials with Real-world Evidence* (**ENCORE**) project aims to extend this work to the field of oncology which comes with its own unique challenges that are not necessarily comparable with learnings from other disease areas and which must be systematically explored and understood.
 
 ... [@weberpals2024]
 
@@ -201,5 +209,5 @@ knitr::include_graphics(here("figures", "process.png"))
 #   )
 ```
 
-[View figure in higher resolution]()
+[View figure in higher resolution](https://github.com/janickweberpals/encore-process-manuscript/blob/main/figures/process.png)
 :::
