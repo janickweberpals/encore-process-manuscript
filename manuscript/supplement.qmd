@@ -1,9 +1,10 @@
 ---
 title: "Supplementary Material"
-subtitle: "..."
+subtitle: "A Process for the Emulation of Comparative Oncology Trials with Real-world Evidence (ENCORE)"
 
 echo: false
 number-sections: true
+toc: true
 
 format: 
   pdf:
@@ -26,10 +27,56 @@ bibliography: references.bib
 #| label: setup_supplement
 #| include: false
 
+library(here)
+library(knitr)
+
 # table_cap <- captioner(prefix = "Supplementary Table")
 ```
+{{< pagebreak >}}
 
-**Authors**: ...
+# Supplementary Figures
+
+```{r}
+#| label: fig-consort-nsclc
+#| fig-cap: "CONSORT diagram for non-small cell lung cancer (NSCLC) top candidate trials. Figure suggests four shortlisted candidates because both CheckMate017/057 have been both shortlisted and only differ in the squamous versus nonsquamous histological eligibility of the trial population."
+#| out-width: "115%"
+
+include_graphics(here("figures", "consort_nsclc.png"))
+```
+
+{{< pagebreak >}}
+
+```{r}
+#| label: fig-consort-breast
+#| fig-cap: "CONSORT diagram for breast cancer (BC) top candidate trials."
+#| out-width: "115%"
+
+include_graphics(here("figures", "consort_bc.png"))
+```
+
+{{< pagebreak >}}
+
+```{r}
+#| label: fig-consort-crc
+#| fig-cap: "CONSORT diagram for colorectal cancer (CRC) top candidate trials."
+#| out-width: "115%"
+
+include_graphics(here("figures", "consort_crc.png"))
+```
+
+{{< pagebreak >}}
+
+```{r}
+#| label: fig-consort-mm
+#| fig-cap: "CONSORT diagram for multiple myeloma (MM) top candidate trials."
+#| out-width: "115%"
+
+include_graphics(here("figures", "consort_mm.png"))
+```
+
+{{< pagebreak >}}
+
+# Supplementary Tables
 
 $\vspace{0.25cm}$
 
@@ -37,19 +84,6 @@ $\vspace{0.25cm}$
 
 {{< pagebreak >}}
 
--->
-
-# Supplementary Tables
-
-...
-
-{{< pagebreak >}}
-
-# Supplementary Figures
-
-...
-
-{{< pagebreak >}}
 
 # References {.unnumbered}
 
