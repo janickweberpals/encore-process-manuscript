@@ -34,13 +34,10 @@ filters:
 library(here)
 library(dplyr)
 library(knitr)
-library(captioner)
 library(gt)
 library(readxl)
 library(fs)
 library(webshot2)
-
-table_cap <- captioner(prefix = "Table")
 ```
 
 **Authors**: Janick Weberpals^1^, Kenneth L. Kehl^2^, Donna R. Rivera^3^, ..., Sebastian Schneeweiss^1^, Shirley V. Wang^1^
@@ -119,8 +116,6 @@ The objectives of this project are to develop state-of-the-art methodological ap
 
 In this process paper, we describe the design and process for the selection of the 12 oncology RCTs, the assessment of the database quality and selection, protocol development, study design and statistical analysis and final agreement metrics to evaluate the concordance between RCTs and emulations.
 
-{{< pagebreak >}}
-
 # Methods
 
 A visual summary of the entire systematic process from trial selection to final results is provided in @fig-process.
@@ -151,21 +146,25 @@ Eligible trials need to fulfill the following basic criteria:
 
 -   Feasibility and clinical relevance
 
-The rationale and operationalization of each criterion is listed in detail in @tbl-criteria. We will mainly consider pivotal interventional, randomized trials after 2011 since many cancer indications have witnessed significant changes in treatment guidelines in recent years and due to the usually rapid adoption of new breakthrough therapies in routine care, it is unlikely to find patients who may be still treated with outdated treatment regimens in the real-world. In parallel, trials readout should have also not occurred too recently in order to allow for enough data and follow-up time accrual in databases used for this project. We further focus only on trials that have reported overall survival (OS) as one pre-specified endpoint in the protocol. Although there have been substantial methodological advancements to increase our understanding on the emulation and comparison of real-world progression-free survival (PFS) and objective response rates (ORR) to a RECISTv1.1[@eisenhauer2009new]-based PFS and ORR assessment in RCTs [@ThanCCR;@mckelvey2024evaluation], imaging-based evaluations still hold a level of granularity which may not be necessarily reflected in chart-abstracted assessments of a patient's progression in routine care.[@rwdRECIST;@rivera2022friends] Given the large number of other methodological challenges like missing data, small sample sizes, data discontinuity and rapidly changing guideline treatments, the scope of this project was to focus on the emulation of OS as the endpoint of interest.
+The rationale and operationalization of each criterion is listed in detail in @tbl-criteria. We will mainly consider pivotal interventional, randomized trials after 2011 since treatment guidelines among studied cancer indications have undergone significant changes in recent years. Due to the rapid adoption of new breakthrough therapies in routine care, it is unlikely to find patients who may be still treated with outdated treatment regimens in the real-world. In parallel, trial results should have also not been published too recently in order to allow for enough data and follow-up time accrual in databases used for this project. An further focus is on trials that have reported overall survival (OS) as one of the pre-specified endpoints in the protocol. Although there have been substantial methodological advancements to increase our understanding on the emulation and comparison of real-world progression-free survival (PFS) and objective response rates (ORR) to a RECISTv1.1[@eisenhauer2009new]-based PFS and ORR assessment in RCTs [@ThanCCR;@mckelvey2024evaluation], imaging-based evaluations still hold a level of granularity which may not be necessarily reflected in chart-abstracted assessments of a patient's progression in routine care.[@rwdRECIST;@rivera2022friends] Given the large number of other methodological challenges like missing data, small sample sizes, data discontinuity and rapidly changing guideline treatments, the scope of this project was to focus on the emulation of OS as the endpoint of interest.
 
-While most trial-eligibility criteria can be operationalized in an automated fashion, the last criterion on emulation feasibility and clinical relevance involves extensive human review. The critical points considered in this step include a thorough feasibility assessment of the data fitness, sample size considerations and the assessment if critical eligibility criteria (e.g., biomarker status) and prognostic factors (e.g., ECOG performance score) are measurable and can be balanced using propensity score matching or weighting methods.[@brookhart2006variable]
+While most trial-eligibility criteria can be operationalized in an automated fashion, the last criterion on emulation feasibility and clinical relevance involves extensive human review. The critical points considered in this step include a thorough feasibility assessment of the data fitness [@rivera2022friends], sample size considerations and the assessment if critical eligibility criteria (e.g., biomarker status) and prognostic factors (e.g., ECOG performance score) are measurable and can be balanced using propensity score matching or weighting methods.[@brookhart2006variable]
 
-A list of tentative, shortlisted candidates is presented in @tbl-rcts and the corresponding selection process is illustrated in the CONSORT diagrams (Supplementary Figures 1-4). Naturally, the majority trials will cover advanced or metastatic cancer populations since a large proportion of drug development efforts have focused on these settings in recent years. A key learning that we aim to foster with the shortlisted trials is to achieve a better understanding how different disease settings (early, late), line settings (\[neo\]adjuvant, first line, advanced lines of therapy), therapy protocols (monotherapy, combination therapy) and population characteristics (simple versus complex gene/biomarker signatures) can be emulated using RWD. If ongoing feasibility assessments indicate that these trials cannot be emulated with high enough confidence, runner-up will be considered instead.
+A list of tentative, shortlisted candidates is presented in @tbl-rcts and the corresponding selection process is illustrated in the CONSORT diagrams (Supplementary Figures 1-4). Naturally, the majority trials will cover advanced or metastatic cancer populations since a large proportion of drug development efforts have focused on these settings in recent years. A key learning that we aim to foster with the shortlisted trials is to achieve a better understanding how different disease settings (early, late), line settings (\[neo\]adjuvant, first line, advanced lines of therapy), therapy protocols (monotherapy, combination therapy) and population characteristics (simple versus complex genetic or immunological signatures) can be emulated using RWD. If ongoing feasibility assessments indicate that these trials cannot be emulated with high enough confidence, runner-up candidates will be considered instead.
 
 ## Databases
 
+The ENCORE project will utilize data from a total four different oncology-specific electronic health records (EHR)-derived data sources: ConcertAI, COTA, Flatiron Health, McKesson/Ontada. All available databases draw from a comprehensive national sample of patients with cancer in the US with detailed EHR-derived information on the information necessary to study medication effectiveness in oncology. For ENCORE, not all databases will be available for each cancer indication and the names of the databases will be blinded and referred to as ENCORE DataBase (EDB) 1, 2, 3 and 4 for the final reporting of results. If more than one database is considered fit-for-purpose for a respective trial emulation, the best possible analytic model will be employed for each database separately and final treatment effect estimates will be pooled using a meta-analytic approach.
+
 ## Protocol development
+
+For each shortlisted and selected RCT, a detailed protocol will be developed following the HARPER protocol template[@wang2022harmonized] and registered on ClinicalTrials.gov. The protocol will pre-specify key elements of the trial emulation and following the target trial emulation framework, we will provide an explicit statement and rationale on how each element will be emulated including database selection, covariate measurement, operationalization of key eligibility criteria, study design, data analysis and causal contrasts of interest.[@hernan2022target; @hernan2016specifying] Since it is common that oncology RCTs update OS estimates periodically based on accrued follow-up time, the protocol will summarize each emulated RCT and specify which target OS estimates will be used to compare agreement metrics to. All eligibility criteria will be extracted based on publicly available protocols and statistical analysis plans of the selcted RCT. Following the *Structured Process to Identify Fit-For-Purpose Data* (SPIFD) framework[@gatto2022structured], tables will outline how eligibility criteria will be measured and operationalized and a color-coded heatmap will indicate the level of confidence on how well each criterion can be emulated in each selected database. As there are general eligibility criteria in oncology trials which either won't be possible to emulate (e.g., physician-assessed survival prognosis of xy months) or that are clinically not relevant for the emulation of the trial (e.g., male patients should be willing to use barrier contraception), the study team will decide on key eligibility criteria for the emulation of the trial. We will additionally provide a definition on how exposure and outcomes are defined and ascertained in each respective database. For most considered databases, the OS endpoint is a composite that is derived from different sources including EHR flags, social security death index, obituary and other linkages. Given that not all relevant sources that provide mortality data are synchronized and updated uniformly, sensitivity analyses with more conservative censoring dates will be considered for each trial emulation to mitigate the impact of potential ghost-time bias.[@meyer2020open] Each final protocol draft will be reviewed by a clinical and FDA regulatory expert panel upon registration on ClinicalTrials.gov.
 
 ## Application of the target trial emulation framework to study design and statistical analysis
 
-... [@weberpals2024]
+[@weberpals2024]
 
-Agreement metrics
+## Agreement metrics
 
 {{< pagebreak >}}
 

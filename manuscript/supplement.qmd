@@ -32,6 +32,7 @@ library(knitr)
 
 # table_cap <- captioner(prefix = "Supplementary Table")
 ```
+
 {{< pagebreak >}}
 
 # Supplementary Figures
@@ -82,12 +83,21 @@ include_graphics(here("figures", "consort_mm.png"))
 
 {{< pagebreak >}}
 
+<!--#
+
+# R package documentation
+
+\includepdf[pagecommand={}]{encore.io_0.2.0.pdf}
+
+{{< pagebreak >}}
+
+-->
+
 $\vspace{0.25cm}$
 
 *Supplementary Material last updated: `r Sys.Date()`*
 
 {{< pagebreak >}}
-
 
 # References {.unnumbered}
 
