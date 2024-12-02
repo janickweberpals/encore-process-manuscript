@@ -38,11 +38,13 @@ library(knitr)
 
 ```{r}
 #| label: fig-consort-nsclc
-#| fig-cap: "CONSORT diagram for non-small cell lung cancer (NSCLC) top candidate trials. Figure suggests four shortlisted candidates because both CheckMate017/057 have been both shortlisted and only differ in the squamous versus nonsquamous histological eligibility of the trial population."
+#| fig-cap: "CONSORT diagram for non-small cell lung cancer (NSCLC) top candidate trials."
 #| out-width: "115%"
 
 include_graphics(here("figures", "consort_nsclc.png"))
 ```
+
+*Note that @fig-consort-nsclc results in four shortlisted candidates because both CheckMate017/057 have been both shortlisted and only differ in the squamous versus nonsquamous histological eligibility of the trial population.*
 
 {{< pagebreak >}}
 
@@ -77,6 +79,8 @@ include_graphics(here("figures", "consort_mm.png"))
 {{< pagebreak >}}
 
 # Supplementary Tables
+
+{{< pagebreak >}}
 
 $\vspace{0.25cm}$
 
