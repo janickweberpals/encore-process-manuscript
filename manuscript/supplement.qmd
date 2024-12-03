@@ -3,7 +3,7 @@ title: "Supplementary Material"
 subtitle: "A Process for the Emulation of Comparative Oncology Trials with Real-world Evidence (ENCORE)"
 
 echo: false
-number-sections: true
+number-sections: false
 toc: true
 
 format: 
@@ -11,6 +11,7 @@ format:
     include-in-header: 
       text: |
         \usepackage{lscape}
+        \usepackage{pdfpages}
         \newcommand{\blandscape}{\begin{landscape}}
         \newcommand{\elandscape}{\end{landscape}}
     fig-cap-location: top
@@ -83,21 +84,14 @@ include_graphics(here("figures", "consort_mm.png"))
 
 {{< pagebreak >}}
 
-<!--#
-
-# R package documentation
-
-\includepdf[pagecommand={}]{encore.io_0.2.0.pdf}
+\addcontentsline{toc}{section}{\protect\numberline{}R package documentation}
+\includepdf[pages=-]{encore.io_0.2.0.pdf}
 
 {{< pagebreak >}}
-
--->
 
 $\vspace{0.25cm}$
 
 *Supplementary Material last updated: `r Sys.Date()`*
-
-{{< pagebreak >}}
 
 # References {.unnumbered}
 
