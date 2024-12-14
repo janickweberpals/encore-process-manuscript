@@ -206,11 +206,31 @@ To asses the balance of pre-exposure covariates after matching or weighting on e
 
 Similarly, survival probabilities for individual time points will be estimated in each imputed and propensity score matched or weighted dataset according the Kaplan-Meier method.[@kaplan1958nonparametric] Since survival probabilities typically don't follow normal distributions which are required to apply Rubin's rule, these will be transformed through a complementary log-log transformation $log(-log(1-pr(surv)))$ with $pr(surv)$ denoting the survival probability at a given time during follow-up.[@warwick28685; @morisot2015prostate] The transformed survival probabilities are then pooled across imputed datasets and individual time points following Rubin's rule and back-transformed via $1-exp(-exp(qbar))$ with $qbar$ denoting the pooled survival probability. The median survival time can be finally determined by extracting the time point during follow-up at which the survival probability drops below 0.5 for the first time.
 
+### Sensitivity analyses
+
+Given that a large number of factors could influence a difference between RCT results and emulated trial results, a broad range of sensitivity analyses will be conducted. This can comprise decisions on the considered databases, calendar time period, covariate measurement (e.g., measurement windows or trade-offs on sensitivity versus specificity in measurements), approaches to missing data, selection of covariates for imputation and propensity score models and decisions on when to censor patients. All sensitivity will be pre-specified in the study protocol and reported using appropriate visualizations such as forest plots.
+
 ### Reproducibility and consistency across emulation
 
-To ensure a transparent, reproducible and consistent way of deriving analytic cohorts and performing statistical analyses across trial emulations, we developed and internal R package `encore.io`with parameterized functions
+To ensure a transparent, reproducible and consistent way of deriving analytic cohorts and performing statistical analyses across trial emulations, we developed and internal R package `encore.io`with parameterized functions. A detailed documentation can be found in the Supplementary Material.
 
 ## Agreement metrics {#sec-agreement-metrics}
+
+To formally compare treatment effects between RCTs and their respective emulations, we will adapt the approach of the RCT-DUPLICATE project.[@franklin2020nonrandomized; @wang2023emulation] That is, for the primary endpoint of interest (HR and corresponding 95% confidence intervals), we will derive two qualitative agreement metrics (regulatory agreement, estimate agreement) and one quantitative agreement based on the SMD.
+
+-   **Regulatory agreement**: agreement between RCT and emulated trial treatment effect with regards to directionality and statistical significance. This agreement metric mimics the question if RWE would have lead to the same regulatory conclusion as the trial, based on standard regulatory decision rules.
+
+-   **Estimate agreement**: agreement that the estimated RWE treatment treatment effect is within the 95% CI of the RCT treatment effect estimate. Provided that for some emulations the power of the RWE study may be larger than that of the original RCT, this could lead to situations where there us no regulatory agreement although the treatment effect estimates are highly overlapping but the RCT estimate crosses the null (or vice versa).
+
+-   **SMD agreement**: quantification of the agreement between the emulated RWE and RCT treatment effect estimate. The SMD is calculated as
+
+$$
+SMD = \frac{\hat{\theta}_{RCT} - \hat{\theta}_{RWE}}{\sqrt{\text{Var}(\hat{\theta}_{RCT}) + \text{Var}(\hat{\theta}_{RWE})}}
+$$
+
+where $\hat{\theta}$ are the treatment effect estimates (hazard ratios or median survival times) and $\text{Var}(\hat{\theta})$ are the corresponding variances. The resulting SMDs will be interpreted such that with an SMD of 1.00, the effect estimate from the RCT and the RWE emulation are 1 standard deviation apart. For an $\alpha$-level of 0.05, the null hypothesis of no difference would be rejected whenever $|Z| > 1.96$.
+
+We would like to note that only the SMD agreement metric will be applicable to absolute risk measures like median survival times or survival probabilities.
 
 {{< pagebreak >}}
 
@@ -317,8 +337,6 @@ include_graphics(path = here("tables", "Table_2_trial_selection.png"))
 
 {{< pagebreak >}}
 
-{{< pagebreak >}}
-
 # Figures {.unnumbered}
 
 ```{r}
@@ -383,16 +401,16 @@ switchers <- data |>
   theme_minimal(base_size = 10)
 
 # combine plots with shared legend
-shared_legend <- get_legend(initiators)
+suppressWarnings(shared_legend <- get_legend(initiators))
 
-plot_utilization <- suppressMessages(plot_grid(
+plot_utilization <- plot_grid(
   plot_grid(initiators + theme(legend.position = "top")),
   plot_grid(switchers + theme(legend.position = "none")),
   ncol = 1,
   nrow = 2,
   labels = c("a)", "b)"),
   shared_legend
-  ))
+  )
 
 # save
 suppressMessages(ggsave(
@@ -426,7 +444,7 @@ data <- simulate_data(
   mutate(treat = ifelse(treat == 1, "Drug A", "Drug B"))
  
 # impute
-suppressMessages(mids_data <- mice(data, m = 10, printFlag = F))
+mids_data <- suppressWarnings(mice(data, m = 10, printFlag = F))
 
 # weight
 covariates <- data |> 
@@ -507,7 +525,8 @@ suppressMessages(ggsave(
   filename = "Figure_3_balance.png",
   path = here("manuscript"),
   dpi = 800,
-  width = 15
+  width = 15,
+  height = 10
   ))
 
 # print to manuscript
