@@ -412,7 +412,7 @@ include_graphics(path = here("manuscript", "Figure_2_utlization.png"))
 #| fig-widh: 4
 #| fig-height: 7
 
-source(here("functions", "simulate_flaura.R"))
+source(here("functions", "simulate_data.R"))
 
 data <- simulate_flaura(
   n_total = 2000, 

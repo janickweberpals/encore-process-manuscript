@@ -1,7 +1,7 @@
-#' Simulates and artifical FLAURA EHR-derived dataset
+#' Simulates and artifical EHR-derived dataset
 #'
 #' @description
-#' Parameterized function to quickly create an artificial FLAURA
+#' Parameterized function to quickly create an artificial
 #' EHR-derived analytic cohort for analytic code development.
 #'
 #' @details
@@ -26,7 +26,7 @@
 #' \dontrun{
 #' library(encore.io)
 #'
-#' data_miss <- simulate_flaura(
+#' data_miss <- simulate_data(
 #'   n_total = 3500, 
 #'   seed = 41, 
 #'   include_id = FALSE, 
