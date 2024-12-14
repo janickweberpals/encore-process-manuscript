@@ -208,6 +208,8 @@ Similarly, survival probabilities for individual time points will be estimated i
 
 ### Reproducibility and consistency across emulation
 
+To ensure a transparent, reproducible and consistent way of deriving analytic cohorts and performing statistical analyses across trial emulations, we developed and internal R package `encore.io`with parameterized functions
+
 ## Agreement metrics {#sec-agreement-metrics}
 
 {{< pagebreak >}}
@@ -414,7 +416,7 @@ include_graphics(path = here("manuscript", "Figure_2_utlization.png"))
 
 source(here("functions", "simulate_data.R"))
 
-data <- simulate_flaura(
+data <- simulate_data(
   n_total = 2000, 
   seed = 41, 
   include_id = FALSE, 
@@ -424,7 +426,7 @@ data <- simulate_flaura(
   mutate(treat = ifelse(treat == 1, "Drug A", "Drug B"))
  
 # impute
-mids_data <- mice(data, m = 10, printFlag = F)
+suppressMessages(mids_data <- mice(data, m = 10, printFlag = F))
 
 # weight
 covariates <- data |> 
@@ -434,12 +436,12 @@ covariates <- data |>
 ps_formula <- as.formula(paste0("treat ~ ", paste0(colnames(covariates), collapse = " + ")))
 
 # weighting  
-wimids_data <- weightthem(
+suppressMessages(wimids_data <- weightthem(
   datasets = mids_data, 
   formula = ps_formula, 
   method = "glm",
   estimand = "ATO"
-  )
+  ))
 
 # Create the named character vector
 # named_covariates <- setNames(paste("Covariate", seq_len(ncol(covariates))), colnames(covariates))
@@ -448,7 +450,6 @@ wimids_data <- weightthem(
 covariate_balance <- love.plot(
   x = wimids_data,
   abs = TRUE,
-  var.names = named_covariates,
   thresholds = 0.1, 
   drop.distance = TRUE,
   var.order = "unadjusted",
@@ -461,18 +462,35 @@ covariate_balance <- love.plot(
   )
 
 # distributional balance
-score_balance <- bal.plot(
-  x = wimids_data,
-  var.name = "prop.score",
-  which = "both",
-  which.imp = .none,
-  colors = c("orange", "blue")
-  ) +
+# Simulate data
+set.seed(42)  # For reproducibility
+n <- 2000  # Number of samples per group
+drugA_pre <- rnorm(n, mean = 0, sd = 2.5 / 2)  # Spread = 2.5
+drugB_pre <- rnorm(n, mean = -1, sd = 2.5 / 2)  # Spread = 2.5
+drugA_post <- rnorm(n, mean = 0, sd = 2.5 / 2)  # Spread = 2.5
+drugB_post <- rnorm(n, mean = 0, sd = 2.5 / 2)  # Spread = 2.5
+
+# Combine into a data frame
+data <- data.frame(
+  Value = c(drugA_pre, drugA_post, drugB_pre, drugB_post),
+  Group = rep(c("Drug A", "Drug A", "Drug B", "Drug B"), each = n),
+  PrePost = rep(c("Unadjusted sample", "Adjusted sample", "Unadjusted sample", "Adjusted sample"), each = n)
+  ) |> 
+  mutate(PrePost = factor(PrePost, levels = c("Unadjusted sample", "Adjusted sample")))
+
+# Create the plot
+score_balance <- ggplot(data, aes(x = Value, fill = Group)) +
+  geom_density(alpha = 0.5) +
+  scale_fill_manual(values = c("orange", "blue")) +
   labs(
-    x = "Prognostic score",
-    title = "Distributional balance for prognostic score"
-    ) +
-  theme(legend.position = "top")
+    title = "Distributional balance for prognostic score",
+    x = "Value",
+    y = "Density",
+    fill = "Group"
+  ) +
+  theme_minimal() +
+  theme(legend.position = "top") +
+  facet_wrap(~PrePost)
 
 plot_balance <- suppressMessages(plot_grid(
   plot_grid(covariate_balance),
