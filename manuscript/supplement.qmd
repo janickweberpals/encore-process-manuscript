@@ -85,13 +85,14 @@ include_graphics(here("figures", "consort_mm.png"))
 {{< pagebreak >}}
 
 \addcontentsline{toc}{section}{\protect\numberline{}R package documentation}
-\includepdf[pages=-]{encore.io_0.2.0.pdf}
 
 The following documentation for the internal `encore.io` packages describes and details reproducible functions to query analytic cohorts consistently across trial emulations.
 
 ::: callout-important
 The `encore.io` package will be continually developed throughout the ENCORE project and the following documentation is a version-controlled snapshot at the time of this publication. Updated versions will be published with the corresponding protocols for each trial emulation separately.
 :::
+
+\includepdf[pages=-]{encore.io_0.2.0.pdf}
 
 {{< pagebreak >}}
 
