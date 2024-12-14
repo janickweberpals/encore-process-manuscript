@@ -43,15 +43,18 @@ library(webshot2)
 library(tibble)
 library(ggplot2)
 library(cowplot)
+library(mice)
+library(MatchThem)
+library(cobalt)
 ```
 
-**Authors**: Janick Weberpals^1^, Kenneth L. Kehl^2^, Donna R. Rivera^3^, ..., Sebastian Schneeweiss^1^, Shirley V. Wang^1^
+**Authors**: Janick Weberpals^1^, Kenneth L. Kehl^2^, Donna R. Rivera^3^, Pallavi Mishra-Kalyani^3^, ..., Sebastian Schneeweiss^1^, Shirley V. Wang^1^
 
 [Author affiliations:]{.underline}
 
 ^1^ Division of Pharmacoepidemiology and Pharmacoeconomics, Department of Medicine, Brigham and Women's Hospital, Harvard Medical School, Boston, MA, USA
 
-^2^ Dana-Farber, ..., USA
+^2^ Dana-Farber Cancer Institute, Boston, MA, USA
 
 ^3^ Oncology Center of Excellence, US Food and Drug Administration, Silver Spring, MD, USA
 
@@ -93,7 +96,7 @@ Email: [SWANG1\@BWH.HARVARD.EDU](SWANG1@BWH.HARVARD.EDU)
 
 [**Analytic code sharing statement:**]{.underline} ...
 
-[***Proposed target journals:***]{.underline} *JCO CCI =\> CPT =\> ...*
+[***Proposed target journals:***]{.underline} *CPT =\> JCO CCI =\> ...*
 
 *Manuscript last updated: `r Sys.time()`*
 
@@ -111,7 +114,7 @@ xxx words/xxx words
 
 Randomized controlled trials (RCTs) have been the gold standard for establishing the efficacy and safety of medical products. With the advent of the the 21^st^ Century Cures Act directive[@RWEFDA], the Food and Drug Administration (FDA) established a framework to increasingly consider real-world evidence (RWE) generated from routine-care health data such as electronic health records (EHR) to evaluate and contextualize the comparative safety and effectiveness of novel cancer therapies.[@purpura2022role] With 21% of all approvals, oncology was the disease area with the most FDA drug approvals in 2023,[@senior2024fresh] and especially in the field of precision oncology, RWE has a large potential to complement evidence coming from RCTs. Potential use cases comprise the assessment of effectiveness in patient populations that are underrepresented in RCTs, the construction of external control arms in single-arm trials where active recruitment may not be feasible or the discovery of biomarkers among pan-tumor populations that harbor specific genomic and immuno-pathological signatures.
 
-However, the validity and transportability of results derived betwen RWE studies and RCTs can depend on many factors and frequently referenced limitations include missing data, small sample sizes, data discontinuity [@Merola2022; @joshua2022longitudinal], rapid changes in guideline treatment patterns and the inability to measure and emulate common eligibility criteria and prognostic factors in real-world data (RWD).[@rider2024emulations] While there are already published examples of oncology trial emulations[@rider2024emulations; @merola2023aetion; @merola2024calibrating], a systematic and scaled approach to emulate a diverse set of different oncology trials in various heterogeneous databases is necessary to gain confidence in the accuracy of RWE studies and to provide an answer as to which questions can be validly answered.
+However, the validity and transportability of results derived betwen RWE studies and RCTs can depend on many factors and frequently referenced limitations include missing data, small sample sizes, data discontinuity [@Merola2022; @joshua2022longitudinal], rapid changes in guideline treatment patterns and the inability to measure and emulate common eligibility criteria and prognostic factors in real-world data (RWD).[@rider2024emulations] While there are already published examples of oncology trial emulations[@rider2024emulations; @merola2023aetion; @merola2024calibrating], a systematic and scaled approach to emulate a diverse set of different oncology trials in multiple heterogeneous databases is necessary to gain confidence in the accuracy of RWE studies and to provide an answer as to which questions can be validly answered.
 
 The RCT DUPLICATE initiative[@wang2023emulation] increased our understanding of when RWE studies can come to causal conclusions on treatment effects by comparing results against RCTs under the assumption that each RCT finding reflects a causal treatment effect. In settings where the RCT designs could be emulated well, RWE studies came to the same conclusions.[@heyard2024design] However, prior work from RCT-DUPLICATE has focused primarily on emulating trials in the cardio-metabolic, renal, and pulmonary clinical areas using claims databases.
 
@@ -151,15 +154,15 @@ Eligible trials need to fulfill the following basic criteria:
 
 -   Feasibility and clinical relevance
 
-The rationale and operationalization of each criterion is listed in detail in @tbl-criteria. We will mainly consider pivotal interventional, randomized trials after 2011 since treatment guidelines among studied cancer indications have undergone significant changes in recent years. Due to the rapid adoption of new breakthrough therapies in routine care, it is unlikely to find patients who may be still treated with outdated treatment regimens in the real-world. In parallel, trial results should have also not been published too recently in order to allow for enough data and follow-up time accrual in databases used for this project. A further focus is on trials that have reported overall survival (OS) as one of the pre-specified endpoints in the protocol. Although there have been substantial methodological advancements to increase our understanding on the emulation and comparison of real-world progression-free survival (PFS) and objective response rates (ORR) to a RECISTv1.1[@eisenhauer2009new]-based PFS and ORR assessment in RCTs [@ThanCCR; @mckelvey2024evaluation], imaging-based evaluations still hold a level of granularity which may not be necessarily reflected in chart-abstracted assessments of a patient's progression in routine care.[@rwdRECIST; @rivera2022friends] Given the large number of other methodological challenges like missing data, small sample sizes, data discontinuity and rapidly changing guideline treatments, the scope of this project was to focus on the emulation of OS as the endpoint of interest.
+The rationale and operationalization of each criterion is listed in detail in @tbl-criteria. We will mainly consider pivotal interventional, randomized trials after 2011 since treatment guidelines among included cancer indications have undergone significant changes in recent years. Due to the rapid adoption of new breakthrough therapies in routine care, it is unlikely to find patients who may be still treated with outdated treatment regimens in the real-world. In parallel, trial results should have also not been published too recently in order to allow for enough data and follow-up time accrual in databases used for this project. A further focus is on trials that have reported overall survival (OS) as one of the pre-specified endpoints in the protocol. Although there have been substantial methodological advancements to increase our understanding on the emulation and comparison of real-world progression-free survival (PFS) and objective response rates (ORR) to a RECISTv1.1[@eisenhauer2009new]-based PFS and ORR assessment in RCTs [@ThanCCR; @mckelvey2024evaluation], imaging-based evaluations still hold a level of granularity which may not be necessarily reflected in chart-abstracted assessments of a patient's progression in routine care.[@rwdRECIST; @rivera2022friends] Given the large number of other methodological challenges like missing data, small sample sizes, data discontinuity and rapidly changing guideline treatments, the scope of this project was to focus on the emulation of OS as the endpoint of interest.
 
 While most trial-eligibility criteria can be operationalized in an automated fashion, the last criterion on emulation feasibility and clinical relevance involves extensive human review. The critical points considered in this step include a thorough feasibility assessment of the data fitness [@rivera2022friends], sample size considerations and the assessment if critical eligibility criteria (e.g., biomarker status) and prognostic factors (e.g., ECOG performance score) are measurable and can be balanced using propensity score matching or weighting methods.[@brookhart2006variable] Lastly, trial candidates are ranked and shortlisted into primary and runner-up candidates based on their clinical and regulatory relevance.
 
-A list of tentative, shortlisted primary candidates is presented in @tbl-rcts and the corresponding selection process is illustrated in the CONSORT diagrams (Supplementary Figures 1-4). Naturally, the majority trials will cover advanced or metastatic cancer populations since a large proportion of drug development efforts have focused on these settings in recent years. A key learning that we aim to foster with the shortlisted trials is to achieve a better understanding how different disease settings (early, late), line settings (\[neo\]adjuvant, first line, advanced lines of therapy), therapy protocols (monotherapy, combination therapy) and population characteristics (simple versus complex genetic or immunological signatures) can be emulated using RWD. If ongoing feasibility assessments indicate that these trials cannot be emulated with high enough confidence, runner-up candidates will be considered instead.
+A list of tentative, shortlisted primary candidates is presented in @tbl-rcts and the corresponding selection process is illustrated in the CONSORT diagrams (Supplementary Figures 1-4). Naturally, the majority of trials will cover advanced or metastatic cancer populations since a large proportion of drug development efforts have focused on these settings in recent years. A key learning that we aim to foster with the shortlisted trials is to achieve a better understanding how different disease settings (early, late), line settings (\[neo\]adjuvant, first line, advanced lines of therapy), therapy protocols (monotherapy, combination therapy) and population characteristics (simple versus complex genetic or immunological signatures) can be emulated using RWD. If ongoing feasibility assessments indicate that these trials cannot be emulated with high enough confidence, runner-up candidates will be considered instead.
 
 ## Databases
 
-The ENCORE project will utilize data from a total four different oncology-specific electronic health records (EHR)-derived specialty oncology data sources: ConcertAI, COTA, Flatiron Health, McKesson/Ontada. All available databases draw from a comprehensive national sample of patients with cancer in the US with detailed EHR-derived information on the information necessary to study medication effectiveness in oncology. For ENCORE, not all databases will be available for each cancer indication and the names of the databases will be blinded and referred to as ENCORE DataBase (EDB) 1, 2, 3 and 4 for the final reporting of results. If more than one database is considered fit-for-purpose for a respective trial emulation, the best possible analytic model will be employed for each database separately and final treatment effect estimates will be pooled using a meta-analytic approach.
+The ENCORE project will utilize data from a total of four different oncology-specific electronic health records (EHR)-derived specialty oncology data sources: ConcertAI, COTA, Flatiron Health, McKesson/Ontada. All available databases draw from a comprehensive national sample of patients with cancer in the US with detailed EHR-derived information on the information necessary to study medication effectiveness in oncology. A detailed description and methodology on how patients are sampled will be provided for each emulation protocol individually. For ENCORE, not all databases will be available for each cancer indication and the names of the databases will be blinded and referred to as ENCORE DataBase (EDB) 1, 2, 3 and 4 for the final reporting of results. If more than one database is considered fit-for-purpose for a respective trial emulation, the best possible analytic model will be employed for each database separately and final treatment effect estimates will be pooled using a meta-analytic approach.
 
 <!--# maybe data partners have  1-2 sentences and/or publications to reference? -->
 
@@ -185,11 +188,25 @@ The distribution of patient characteristics, stratified by exposure status, will
 
 ## Study design and statistical analysis
 
-The main parameters of interest in ENCORE are the marginal hazard ratio (HR) coefficient for the treatment comparison for time to all-cause mortality (OS)[@cox1972regression] and the corresponding Kaplan-Meier median survival time estimates.[@kaplan1958nonparametric] The median survival time is defined as the first time at which the the survival probability drops below 50%.[@therneau2015package]
+The study design for each trial emulation will be visualized as part of the protocol using a graphical depiction of the exact measurement windows of eligibility criteria, washout periods and covariates relative to the cohort entry time.[@schneeweiss2019graphical]
 
-## 
+### Missing data
 
-[@weberpals2024]
+To establish an analytic cohort, key eligibility criteria will be applied in which patients with missing values in eligibility criteria are considered eligible in the respective attrition steps to allow for thorough missing data investigations. These missing data investigations will empirically assess assumptions on potentially underlying missingness mechanisms according to Rubin’s classification of missing data (i.e., missing completely at random \[MCAR\], missing at random \[MAR\] and missing not at random \[MNAR\]).[@rubin1976inference] To that end, we will adopt a principled process on missing data that was developed as part of a FDA Sentinel Innovation Center causal inference workstream that empirically evaluates different aspects across partially observed covariates based on three group diagnostics.[@weberpals2024smdi; @weberpals2024] In brief, these diagnostic cover (1) comparisons of patients characteristics with and without an observed level of the partially observed covariate, (2) ability to predict missingness given observed data, and (3) assessments if outcomes between patients with a missing value are systematically different. Together with expert domain knowledge and assumptions about the underlying missing data structure through canonical causal diagrams[@moreno2018canonical], this will inform decisions regarding the in- or exclusion of patients with missing values in key eligibility criteria and potential sensitivity analyses to assess the robustness of these decisions.[@tompsett2018use]
+
+While the MAR assumption is a strong assumption to hold across all considered covariates, it was shown that especially in the context of partially observed covariate data (as opposed to missing exposure and outcome data), only mechanisms in which a covariate causes its own missingness leads to critical bias (MNAR).[@moreno2018canonical] Hence, methodologies which retain patients and give the potential to adjust for a broader set of prognostic factors (e.g., multiple imputation[@weberpals2024hdmi] or doubly robust methods[@Shaw2024]) may be preferred over complete case analyses.
+
+### Endpoints and propensity score analyses
+
+Due to its ubiquity in oncology trials, the primary parameter of interest in ENCORE will be defined as the marginal hazard ratio (HR) coefficient for the treatment comparison for time to all-cause mortality (OS).[@cox1972regression] However, the HR has many limitations that can make the comparison of results across varying follow-up times between RCT and emulations challenging, including its non-collapsibility, in-built selection bias and the requirement of proportional hazards.[@hernan2010hazards; @stensrud2020test] For this reason, we will also consider alternative endpoints on an absolute risk scale such as median survival times, survival probabilities at pre-defined time points during follow-up[@kaplan1958nonparametric] and restricted mean survival times as secondary endpoints of interest.
+
+For the estimation of marginal treatment effects, we will employ propensity score analytics to adjust for measured confounding between treatment arms. The selection of important prognostic covariates will be based on expert clinical knowledge and published literature on prognostic scores in oncology.[@becker2020enhanced] The implementation of propensity scores in combination with multiple imputation will follow the '*within*' methodology as described by Leyrat et al.[@leyrat2019propensity; @pishgar2020matchthem] That is, propensity score matching or weighting will be applied to each imputed dataset. The marginal treatment effect will then be estimated in each imputed and matched or weighted dataset separately and pooled into a final estimate following Rubin's rule.[@rubin2018multiple; @van2011mice] This approach has been shown to lead to unbiased estimates across different simulated scenarios with a sufficient estimation of the variance.[@leyrat2019propensity]
+
+To asses the balance of pre-exposure covariates after matching or weighting on each imputed dataset, the average standardized mean difference (SMD) and corresponding minimum and maximum SMD range will be visualized (see example in @fig-balance). Covariate balance is typically considered at a SMD \< 0.1.[@austin2009balance] Further, we will compute the average post-matching or post-weighting C-statistics.[@franklin2014metrics] In addition, we will use a published prognostic score fro OS[@becker2020enhanced] as a balance measure to visually assess if the prognostic score is balanced between treatment arms after propensity score matching or weighting as this approach was described to show the highest correlations with bias compared with other balance measures and not affected by model misspecification.[@stuart2013prognostic]
+
+Similarly, survival probabilities for individual time points will be estimated in each imputed and propensity score matched or weighted dataset according the Kaplan-Meier method.[@kaplan1958nonparametric] Since survival probabilities typically don't follow normal distributions which are required to apply Rubin's rule, these will be transformed through a complementary log-log transformation $log(-log(1-pr(surv)))$ with $pr(surv)$ denoting the survival probability at a given time during follow-up.[@warwick28685; @morisot2015prostate] The transformed survival probabilities are then pooled across imputed datasets and individual time points following Rubin's rule and back-transformed via $1-exp(-exp(qbar))$ with $qbar$ denoting the pooled survival probability. The median survival time can be finally determined by extracting the time point during follow-up at which the survival probability drops below 0.5 for the first time.
+
+### Reproducibility and consistency across emulation
 
 ## Agreement metrics {#sec-agreement-metrics}
 
@@ -197,7 +214,7 @@ The main parameters of interest in ENCORE are the marginal hazard ratio (HR) coe
 
 # Discussion
 
-...
+Target populations in international trials...genetic setup.
 
 ## Conclusions
 
@@ -242,12 +259,12 @@ tbl_eligibility_criteria |>
     )
 
 # save image to display within manuscript document
-tbl_eligibility_criteria |> 
+suppressMessages(tbl_eligibility_criteria |> 
   gtsave(
     filename = here("tables", "Table_1_trial_eligibility.png"),
     expand = 10, # amount of whitespace,
     zoom = 5 # higher resolution
-    )
+    ))
 
 include_graphics(path = here("tables", "Table_1_trial_eligibility.png"))
 ```
@@ -286,12 +303,12 @@ tbl_rct_selection |>
     )
 
 # save image to display within manuscript document
-tbl_rct_selection |> 
+suppressMessages(tbl_rct_selection |> 
   gtsave(
     filename = here("tables", "Table_2_trial_selection.png"),
     expand = 10, # amount of whitespace,
     zoom = 5 # higher resolution
-    )
+    ))
 
 include_graphics(path = here("tables", "Table_2_trial_selection.png"))
 ```
@@ -327,7 +344,6 @@ file_copy(
 #| fig-cap: "Descriptive drug utilization analyses."
 #| fig-widh: 4
 #| fig-height: 7
-#| warnings: false
 
 data <- tibble::tibble(
   drug = c(rep("Drug A", 5), rep("Drug B", 5)),
@@ -367,22 +383,115 @@ switchers <- data |>
 # combine plots with shared legend
 shared_legend <- get_legend(initiators)
 
-plot_utilization <- plot_grid(
+plot_utilization <- suppressMessages(plot_grid(
   plot_grid(initiators + theme(legend.position = "top")),
   plot_grid(switchers + theme(legend.position = "none")),
   ncol = 1,
   nrow = 2,
   labels = c("a)", "b)"),
   shared_legend
-  )
+  ))
 
 # save
-ggsave(
+suppressMessages(ggsave(
   plot = plot_utilization,
   filename = "Figure_2_utlization.png",
   path = here("manuscript"),
-  dpi = 800)
+  dpi = 800
+  ))
 
 # print to manuscript
 include_graphics(path = here("manuscript", "Figure_2_utlization.png"))
+```
+
+{{< pagebreak >}}
+
+```{r}
+#| label: fig-balance
+#| fig-cap: "Assessment of balance after propensity score matching or weighting across multiple imputed datasets."
+#| fig-widh: 4
+#| fig-height: 7
+
+source(here("functions", "simulate_flaura.R"))
+
+data <- simulate_flaura(
+  n_total = 2000, 
+  seed = 41, 
+  include_id = FALSE, 
+  imposeNA = TRUE,
+  propNA = .25
+  ) |> 
+  mutate(treat = ifelse(treat == 1, "Drug A", "Drug B"))
+ 
+# impute
+mids_data <- mice(data, m = 10, printFlag = F)
+
+# weight
+covariates <- data |> 
+  select(starts_with("dem_"), starts_with("c_"))
+
+# ps formula
+ps_formula <- as.formula(paste0("treat ~ ", paste0(colnames(covariates), collapse = " + ")))
+
+# weighting  
+wimids_data <- weightthem(
+  datasets = mids_data, 
+  formula = ps_formula, 
+  method = "glm",
+  estimand = "ATO"
+  )
+
+# Create the named character vector
+# named_covariates <- setNames(paste("Covariate", seq_len(ncol(covariates))), colnames(covariates))
+
+# covariate balance
+covariate_balance <- love.plot(
+  x = wimids_data,
+  abs = TRUE,
+  var.names = named_covariates,
+  thresholds = 0.1, 
+  drop.distance = TRUE,
+  var.order = "unadjusted",
+  colors = c("orange", "blue"), 
+  stars = "std",
+  shapes = 17, 
+  size = 4, 
+  grid = TRUE,
+  position = "top"
+  )
+
+# distributional balance
+score_balance <- bal.plot(
+  x = wimids_data,
+  var.name = "prop.score",
+  which = "both",
+  which.imp = .none,
+  colors = c("orange", "blue")
+  ) +
+  labs(
+    x = "Prognostic score",
+    title = "Distributional balance for prognostic score"
+    ) +
+  theme(legend.position = "top")
+
+plot_balance <- suppressMessages(plot_grid(
+  plot_grid(covariate_balance),
+  plot_grid(score_balance),
+  ncol = 2,
+  nrow = 1,
+  labels = c("a)", "b)"),
+  shared_legend
+  ))
+
+# save
+suppressMessages(ggsave(
+  plot = plot_balance,
+  filename = "Figure_3_balance.png",
+  path = here("manuscript"),
+  dpi = 800,
+  width = 15
+  ))
+
+# print to manuscript
+include_graphics(path = here("manuscript", "Figure_3_balance.png"))
 ```
