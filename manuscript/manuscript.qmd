@@ -13,11 +13,6 @@ format:
     tbl-cap-location: top
     reference-doc: custom-reference-doc.docx
   pdf:
-    include-in-header: 
-      text: |
-        \usepackage{lscape}
-        \newcommand{\blandscape}{\begin{landscape}}
-        \newcommand{\elandscape}{\end{landscape}}
     fig-cap-location: top
     tbl-cap-location: top
     
@@ -46,6 +41,7 @@ library(cowplot)
 library(mice)
 library(MatchThem)
 library(cobalt)
+library(gtExtras)
 ```
 
 **Authors**: Janick Weberpals^1^, Kenneth L. Kehl^2^, Donna R. Rivera^3^, Pallavi Mishra-Kalyani^3^, ..., Sebastian Schneeweiss^1^, Shirley V. Wang^1^
@@ -212,7 +208,7 @@ Given that a large number of factors could influence a difference between RCT re
 
 ### Reproducibility and consistency across emulation
 
-To ensure a transparent, reproducible and consistent way of deriving analytic cohorts and performing statistical analyses across trial emulations, we developed and internal R package `encore.io`with parameterized functions. A detailed documentation can be found in the Supplementary Material.
+To ensure a transparent, reproducible and consistent way of deriving analytic cohorts and performing statistical analyses across trial emulations, we developed and internal R package `encore.io` with parameterized functions. A detailed documentation can be found in the Supplementary Material.
 
 ## Agreement metrics {#sec-agreement-metrics}
 
@@ -220,7 +216,7 @@ To formally compare treatment effects between RCTs and their respective emulatio
 
 -   **Regulatory agreement**: agreement between RCT and emulated trial treatment effect with regards to directionality and statistical significance. This agreement metric mimics the question if RWE would have lead to the same regulatory conclusion as the trial, based on standard regulatory decision rules.
 
--   **Estimate agreement**: agreement that the estimated RWE treatment treatment effect is within the 95% CI of the RCT treatment effect estimate. Provided that for some emulations the power of the RWE study may be larger than that of the original RCT, this could lead to situations where there us no regulatory agreement although the treatment effect estimates are highly overlapping but the RCT estimate crosses the null (or vice versa).
+-   **Estimate agreement**: agreement that the estimated RWE treatment treatment effect is within the 95% CI of the RCT treatment effect estimate. Provided that for some emulations, the power of the RWE study may be larger than that of the original RCT, this could lead to situations where there is no regulatory agreement although the treatment effect estimates are highly overlapping but with the RCT estimate crossing the null (or vice versa in case the RCT has a larger power than the RWE emulation).
 
 -   **SMD agreement**: quantification of the agreement between the emulated RWE and RCT treatment effect estimate. The SMD is calculated as
 
@@ -230,13 +226,19 @@ $$
 
 where $\hat{\theta}$ are the treatment effect estimates (hazard ratios or median survival times) and $\text{Var}(\hat{\theta})$ are the corresponding variances. The resulting SMDs will be interpreted such that with an SMD of 1.00, the effect estimate from the RCT and the RWE emulation are 1 standard deviation apart. For an $\alpha$-level of 0.05, the null hypothesis of no difference would be rejected whenever $|Z| > 1.96$.
 
-We would like to note that only the SMD agreement metric will be applicable to absolute risk measures like median survival times or survival probabilities.
+For the secondary endpoints of interest (e.g., median survival time or survival probabilities) only the SMD agreement metric will be applicable.
 
 {{< pagebreak >}}
 
 # Discussion
 
-Target populations in international trials...genetic setup.
+Building off an established approach based on the RCT DUPLICATE project[@wang2023emulation; @franklin2020nonrandomized], the ENCORE project aims to emulate 12 oncology trials using multiple EHR data sources to assess the potential use of RWE for regulatory science. The project focuses on four common cancers and will evaluate the agreement of treatment effect estimates between RCTs and their respective emulations.
+
+-   Distributions of target populations in international trials...genetic setup.
+
+-   Bias towards the null, per protocol effect difficult
+
+-   Transportability =\> RWE estimates may not be the same as RCT but still informative given more generalizable/broader populations considered
 
 ## Conclusions
 
@@ -526,9 +528,66 @@ suppressMessages(ggsave(
   path = here("manuscript"),
   dpi = 800,
   width = 15,
-  height = 10
+  height = 8
   ))
 
 # print to manuscript
 include_graphics(path = here("manuscript", "Figure_3_balance.png"))
+```
+
+```{r}
+#| label: fig-metrics
+#| fig-cap: "Visualization of agreement metrics example."
+#| fig-widh: 4
+#| fig-height: 7
+
+source(here("functions","smd_agreement.R"))
+
+data <- tribble(
+  ~group, ~estimate, ~lower, ~upper,
+  "RCT", 0.75, 0.61, 0.91,
+  "RWE", 0.80, 0.51, 1.1
+  )
+
+smd <- smd_agreement(
+  rct_estimate = data |> filter(group == "RCT") |> pull(estimate),
+  rct_lower = data |> filter(group == "RCT") |> pull(lower),
+  rct_upper = data |> filter(group == "RCT") |> pull(upper),
+  rwe_estimate = data |> filter(group == "RWE") |> pull(estimate),
+  rwe_lower = data |> filter(group == "RWE") |> pull(lower),
+  rwe_upper = data |> filter(group == "RWE") |> pull(upper)
+  )
+
+data |> 
+  gt() |> 
+  gt_plt_conf_int(
+    column = estimate, 
+    ci_columns = c(lower, upper),
+    ref_line = 1,
+    palette = c("red", "lightgrey", "black", "red")
+    ) |> 
+  cols_hide(c(lower, upper)) |> 
+  # add agreement metrics
+  cols_add(
+    metric = c(md("Regulatory agreement: <br><br> Estimate agreement:"), "SMD:"),
+    results = c(md("No <br><br> Yes"), ifelse(abs(smd) < 1.96, "Yes", "No"))
+    ) |> 
+  tab_options(
+    table_body.hlines.width = px(0)
+  ) |> 
+  cols_label(
+    group = "",
+    estimate = "HR (95% CI)",
+    metric = "Agreement metrics",
+    results = ""
+    ) |> 
+  fmt_markdown() |> 
+  tab_style(
+    style = cell_text(align = "center", v_align = "middle"),
+    locations = cells_column_labels()
+    ) |> 
+  tab_style(
+    style = cell_text(weight = "bold"),
+    locations = cells_column_labels()
+    )
 ```
