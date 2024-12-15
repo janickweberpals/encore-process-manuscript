@@ -501,7 +501,7 @@ file_copy(
   )
 ```
 
-[View figure in higher resolution here](https://github.com/janickweberpals/encore-process-manuscript/blob/main/figures/process.png)
+[View figure in higher resolution here](https://github.com/janickweberpals/encore-process-manuscript/blob/main/manuscript/Figure_1_process.png)
 
 {{< pagebreak >}}
 
