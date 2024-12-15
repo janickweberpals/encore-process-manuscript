@@ -46,7 +46,7 @@ library(knitr)
 include_graphics(here("figures", "consort_nsclc.png"))
 ```
 
-*Note that @fig-consort-nsclc results in four shortlisted candidates because both CheckMate017/057 have been both shortlisted and only differ in the squamous versus nonsquamous histological eligibility of the trial population.*
+*Note that Supplementary @fig-consort-nsclc results in four shortlisted candidates because both CheckMate017/057 have been both shortlisted and only differ in the squamous versus nonsquamous histological eligibility of the trial population.*
 
 {{< pagebreak >}}
 
