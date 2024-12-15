@@ -74,11 +74,13 @@ Email: [SWANG1\@BWH.HARVARD.EDU](SWANG1@BWH.HARVARD.EDU)
 
 [**Article type:**]{.underline} Review
 
-[**Word count:**]{.underline} xxx words / xxx words
+[**Manuscript word count:**]{.underline} xxx words / 8,000 words
 
-[**Tables:**]{.underline} x
+[**Abstract word count:**]{.underline} xxx words / 250 words
 
-[**Figures:**]{.underline} x
+[**Tables:**]{.underline} 3
+
+[**Figures:**]{.underline} 3
 
 [**Supplementary material:**]{.underline} Supplementary tables and figures
 
@@ -90,9 +92,9 @@ Email: [SWANG1\@BWH.HARVARD.EDU](SWANG1@BWH.HARVARD.EDU)
 
 [**Competing Interests Statement:**]{.underline} Dr. Weberpals is now an employee of AstraZeneca and owns stocks in AstraZeneca. Dr. Wang has consulted ad hoc for Exponent Inc. and MITRE a federally funded research center for the Centers for Medicare and Medicaid Services on unrelated work. Dr. Schneeweiss is participating in investigator-initiated grants to the Brigham and Women's Hospital from Boehringer Ingelheim, Takeda, and UCB unrelated to the topic of this study. He owns equity in Aetion Inc., a software manufacturer. He is an advisor to Temedica GmbH, a patient-oriented data generation company. His interests were declared, reviewed, and approved by the Brigham and Women's Hospital in accordance with their institutional compliance policies.
 
-[**Data sharing statement:**]{.underline} ...
+[**Data sharing statement:**]{.underline} No data was analyzed as part of this project.
 
-[**Analytic code sharing statement:**]{.underline} ...
+[**Analytic code sharing statement:**]{.underline} Code to reproduce this manuscript, including all figures and tables, can be found at <https://gitlab-scm.partners.org/drugepi/encore/encore-process-paper>.
 
 [***Proposed target journals:***]{.underline} *CPT =\> JCO CCI =\> ...*
 
@@ -102,9 +104,7 @@ Email: [SWANG1\@BWH.HARVARD.EDU](SWANG1@BWH.HARVARD.EDU)
 
 # Abstract {.unnumbered}
 
-xxx words/xxx words
-
-...
+Real-world data (RWD) is increasingly utilized to complement randomized controlled trials (RCTs) and contextualize the efficacy and safety of medical interventions through real-world evidence (RWE) studies. Simultaneously, advancements in the curation and accessibility of electronic health record data (EHR) at scale have presented the opportunity to investigate disease domains that have previously been inaccessible through administrative healthcare claims databases, including the field of oncology. The RCT DUPLICATE initiative has previously enhanced our understanding of when RWE studies can draw causal conclusions by emulating trials in the cardio-metabolic, renal, and pulmonary clinical areas. In this process paper, we present the Emulation of Comparative Oncology Trials with Real-world Evidence (ENCORE) project, which aims to extend this work to the field of oncology. This expansion will emulate 12 RCTs in multiple EHR databases and across four different cancer indications, including non-small cell lung cancer, breast cancer, colorectal cancer, and multiple myeloma. The objectives of this project are to develop state-of-the-art methodological approaches and apply these to create insights that may provide guidance on the potential use of RWE in oncology. The project will place a special emphasis on a systematic evaluation of the suitability of fit-for-purpose data in relation to the study design and statistical analysis, and assessing the agreement of treatment effect estimates between RCTs and their respective emulations. Through extensive sensitivity analyses, the ENCORE project will further assess as to which measurement, design, and analytic decisions influence bias and validity in oncological RWE studies by calibrating those against RCTs.
 
 {{< pagebreak >}}
 
@@ -234,17 +234,17 @@ For the secondary endpoints of interest (e.g., median survival time or survival 
 
 # Discussion
 
-Building off an established approach based on the RCT DUPLICATE project[@wang2023emulation; @franklin2020nonrandomized], the ENCORE project aims to emulate 12 oncology trials using multiple EHR data sources to assess the potential use of RWE for regulatory science. The project focuses on four common cancers and will evaluate the agreement of treatment effect estimates between RCTs and their respective emulations.
+Building off an established approach based on the RCT DUPLICATE project[@wang2023emulation; @franklin2020nonrandomized], the ENCORE project aims to emulate 12 oncology trials using multiple EHR data sources to assess the potential use of RWE for regulatory science. The project focuses on four common cancers and will evaluate the agreement of treatment effect estimates between RCTs and their respective emulations. Historically, administrative health claims databases have been the backbone of most research in RWE. With increasing access to EHR and a maturing set of methodological approaches to draw causal inferences from such data, the ENCORE project is one of the first of its kind to evaluate when and how RWD can be used to deliver similar causal conclusions compared to RCTs in the field of oncology.
 
--   Distributions of target populations in international trials...genetic setup.
+The RCT DUPLICATE project[@wang2023emulation; @franklin2020nonrandomized] identified multiple emulation challenges which we expect to also encounter in ENCORE. One particular aspect that we may not always be able emulate is the exact distribution of patient characteristics of the trial population. This can be due to the lack of data granularity and comprehensiveness to emulate relevant eligibility criteria or the fact that large pivotal trials in oncology are typically conducted in multiple countries worldwide, which we won't be able to mirror given that all considered databases reflect the US only. This may be a critical factor especially given that the pathophysiology, prognosis and factors that drive heterogeneous treatment outcomes of certain cancers differ between countries. For example, some cancer indications (e.g., GI cancers) or some genetic mutations (e.g., EGFR mutations) are much more prevalent in Asian countries compared to the US or Europe.
 
--   Bias towards the null, per protocol effect difficult
+Another common challenge in the emulation of oncology trials is the estimation of an "intention-to-treat" (ITT) analogous estimand which is usually the primary estimand reported in oncology RCTs. Due to intercurrent events, such as non-adherence or the crossover of a high proportion of patients from the control to the intervention arm, trial emulation are prone to be biased towards the null. Although this is also a common challenge in the analysis of RCTs[@rufibach2018], treatment protocols in routine care are often observed to be less stringent compared to trials.[@merola2024calibrating] In order to derive comparable estimands it is therefore crucial to understand and contextualize the proportion and timing of treatment switching and discontinuation in both the trial and its emulation.
 
--   Transportability =\> RWE estimates may not be the same as RCT but still informative given more generalizable/broader populations considered
+This issue may be even augmented with more complex treatment protocols like combination regimens (e.g., CheckMate9LA) as compared to monotherapies (CheckMate057) since the ascertainment of the exposure needs to happen over a pre-defined time window which is often difficult to calibrate in RWD. As a result, exposure misclassification (due to too narrow ascertainment windows) and selection bias (due to too long ascertainment windows) are common trade-offs in such scenarios. Alternative analytic approaches which target a per-protocol estimand, such as the clone-censor-weight design[@gaber2024mystifying], may be viable options if the ITT estimand cannot be estimated due to the aforementioned parameters and provided that necessary covariate measurements are available to account for the artificial censoring introduced with these methods.
 
 ## Conclusions
 
-...
+RWE based on fit-for-purpose data and principled, well-designed and reproducible studies may complement evidence coming from RCTs. The ENCORE project will systematically assess and eventually increase our understanding as to which measurement, design and analytic decisions influence bias and validity in oncological RWE studies by calibrating those against RCTs.
 
 {{< pagebreak >}}
 
@@ -361,12 +361,12 @@ data <- tribble(
   pivot_wider(names_from = group, values_from = c(estimate, lower, upper)) |> 
   mutate(
     smd_value = smd_agreement(
-      rct_estimate = estimate_RCT, 
-      rct_lower = lower_RCT, 
-      rct_upper = upper_RCT,
-      rwe_estimate = estimate_RWE,
-      rwe_lower = lower_RWE, 
-      rwe_upper = upper_RWE
+      rct_estimate = log(estimate_RCT), 
+      rct_lower = log(lower_RCT), 
+      rct_upper = log(upper_RCT),
+      rwe_estimate = log(estimate_RWE),
+      rwe_lower = log(lower_RWE), 
+      rwe_upper = log(upper_RWE)
       )
     ) |> 
   mutate(
@@ -455,7 +455,8 @@ tbl_metrics <- data |>
       columns = smd,
       rows = estimate == "No"
       )
-    )
+    ) |> 
+  tab_footnote("Abbreviations: CI = Confidence interval, HR = Hazard ratio, RCT = Randomized controlled trial, RWE = Real-world evidence, SMD = standardized mean difference (based on log hazard ratios)")
 
 # save table as .docx document
 tbl_metrics |> 
@@ -500,7 +501,7 @@ file_copy(
 
 ```{r}
 #| label: fig-initiators
-#| fig-cap: "Descriptive drug utilization analyses."
+#| fig-cap: "Visualization of descriptive drug utilization analyses displaying a) initiation trends between compared regimens based on calendar time, b) cumulative rate of patients switching to another line of treatment."
 #| fig-widh: 4
 #| fig-height: 7
 
@@ -567,7 +568,7 @@ include_graphics(path = here("manuscript", "Figure_2_utlization.png"))
 
 ```{r}
 #| label: fig-balance
-#| fig-cap: "Assessment of balance after propensity score matching or weighting across multiple imputed datasets."
+#| fig-cap: "Assessment of a) covariate bbalance and b) distributional balance of a prognostic score for overall survival before and after propensity score matching or weighting across multiple imputed datasets."
 #| fig-widh: 4
 #| fig-height: 7
 
