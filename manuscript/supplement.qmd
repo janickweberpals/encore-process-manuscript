@@ -95,8 +95,3 @@ The `encore.io` package will be continually developed throughout the ENCORE proj
 $\vspace{0.25cm}$
 
 *Supplementary Material last updated: `r Sys.Date()`*
-
-# References {.unnumbered}
-
-::: refs
-:::
