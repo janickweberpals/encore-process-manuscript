@@ -94,7 +94,7 @@ Email: [SWANG1\@BWH.HARVARD.EDU](SWANG1@BWH.HARVARD.EDU)
 
 [**Data sharing statement:**]{.underline} No data was analyzed as part of this project.
 
-[**Analytic code sharing statement:**]{.underline} Code to reproduce this manuscript, including all figures and tables, can be found at <https://gitlab-scm.partners.org/drugepi/encore/encore-process-paper>.
+[**Analytic code sharing statement:**]{.underline} Code to reproduce this manuscript, including all figures and tables, can be found at <https://github.com/janickweberpals/encore-process-manuscript>.
 
 [***Proposed target journals:***]{.underline} *CPT =\> JCO CCI =\> ...*
 
