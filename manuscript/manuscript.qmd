@@ -74,15 +74,15 @@ Email: [SWANG1\@BWH.HARVARD.EDU](SWANG1@BWH.HARVARD.EDU)
 
 [**Article type:**]{.underline} Review
 
-[**Manuscript word count:**]{.underline} xxx words / 8,000 words
+[**Manuscript word count:**]{.underline} 4,131 words / 8,000 words
 
-[**Abstract word count:**]{.underline} xxx words / 250 words
+[**Abstract word count:**]{.underline} 248 words / 250 words
 
 [**Tables:**]{.underline} 3
 
 [**Figures:**]{.underline} 3
 
-[**Supplementary material:**]{.underline} Supplementary tables and figures
+[**Supplementary material:**]{.underline} Supplementary figures and material
 
 [**Short running title**]{.underline}: Emulation of Comparative Oncology Trials with Real-world Evidence (ENCORE)
 
@@ -170,13 +170,17 @@ For each shortlisted and selected RCT, a detailed protocol, pre-specifying key e
 
 ### Emulation feasibility
 
-**Fit-for-purpose data.** Real-world data fitness and emulation feasibility for a given shortlisted candidate trial will be assessed in multiple steps based on guidance of the oncology quality, characterization, and assessment of real-world data (Oncology QCARD) Initiative.[@rivera2022friends] The first step assesses if relevant variables like exposure/line of therapy, outcomes, and covariates are generally available, measured and operationalizable in routine-care. Since a vast majority of oncological RCTs in recent years have focused on selected, biomarker-defined populations, subtleties in measurement and operationalizability of specific biomarkers must be reflected to ensure a representative and large enough study population. For example, immunotherapies have significantly changed the cancer treatment landscape since the approval of the first PD-L1 inhibitor in 2015. With many trials that have followed thereafter, the operationalization of the expression of the PD-L1 biomarker in RCTs (e.g., as a percent staining, tumor proportion score or combined positive score) has also evolved since then and PD-L1 '*positivity'* may have different definitions across calendar years based on different cut-off values.
+#### **Fit-for-purpose data**
+
+Real-world data fitness and emulation feasibility for a given shortlisted candidate trial will be assessed in multiple steps based on guidance of the oncology quality, characterization, and assessment of real-world data (Oncology QCARD) Initiative.[@rivera2022friends] The first step assesses if relevant variables like exposure/line of therapy, outcomes, and covariates are generally available, measured and operationalizable in routine-care. Since a vast majority of oncological RCTs in recent years have focused on selected, biomarker-defined populations, subtleties in measurement and operationalizability of specific biomarkers must be reflected to ensure a representative and large enough study population. For example, immunotherapies have significantly changed the cancer treatment landscape since the approval of the first PD-L1 inhibitor in 2015. With many trials that have followed thereafter, the operationalization of the expression of the PD-L1 biomarker in RCTs (e.g., as a percent staining, tumor proportion score or combined positive score) has also evolved since then and PD-L1 '*positivity'* may have different definitions across calendar years based on different cut-off values.
 
 According to the *Structured Process to Identify Fit-For-Purpose Data* (SPIFD) framework[@gatto2022structured], the next step will outline tables that describe how eligibility criteria will be ascertained using a color-coded heatmap that will indicate the level of confidence on how well each criterion can be emulated in each selected database. As there are general eligibility criteria in oncology trials which either won't be possible to emulate (e.g., physician-assessed survival prognosis of xy months) or that are clinically not relevant for the emulation of the trial (e.g., male patients should be willing to use barrier contraception), the study team will decide on key eligibility criteria for the emulation of the trial.
 
 We will additionally provide a definition on how exposures, outcomes and covariates are exactly defined and operationalized in each respective database. There will be special emphasis on how exposure, in context of their respective disease and line of therapy settings, and the OS outcome will be emulated. For all considered databases, the OS endpoint is typically a composite that is derived from different sources comprising EHR abstractions, social security death index, obituary and other linkages. Given that not all relevant sources that provide mortality data are synchronized and updated uniformly, sensitivity analyses with more conservative (i.e., earlier) censoring dates will be considered for each trial emulation to mitigate the potential impact of ghost-time bias.[@meyer2020open]
 
-**Descriptives and data exploration.** Critical aspects when emulating oncology trials are the choice and estimation of the appropriate estimand of interest.[@rufibach2018] Particularly when emulating pivotal trials of paradigm-changing treatments, multiple aspects need to be considered such as the contemporaneity of the (historical) control cohort, the adoption rate of the novel intervention in routine care, the magnitude of the clinical treatment benefit and the rate in which (particularly patients in the control arm) discontinue or cross-over to the interventional treatment, which could lastly bias emulated treatment effects towards the null. To that end, comprehensive data explorations will be performed as part of the protocol development to contextualize these parameters and (if reported) draw comparisons to the emulated trial. Example for such standard diagnostics are visualized in @fig-initiators.
+#### **Descriptives and data exploration**
+
+Critical aspects when emulating oncology trials are the choice and estimation of the appropriate estimand of interest.[@rufibach2018] Particularly when emulating pivotal trials of paradigm-changing treatments, multiple aspects need to be considered such as the contemporaneity of the (historical) control cohort, the adoption rate of the novel intervention in routine care, the magnitude of the clinical treatment benefit and the rate in which (particularly patients in the control arm) discontinue or cross-over to the interventional treatment, which could lastly bias emulated treatment effects towards the null. To that end, comprehensive data explorations will be performed as part of the protocol development to contextualize these parameters and (if reported) draw comparisons to the emulated trial. Example for such standard diagnostics are visualized in @fig-initiators.
 
 The distribution of patient characteristics, stratified by exposure status, will be examined in Table 1's before and after applying eligibility criteria and contrasted with the distributions of patient characteristics of the original RCT. Initial propensity score matching or weighting methods will be applied to ensure that measured pre-exposure covariates can be balanced, eposure cohorts are conditionally exchangeable at baseline and resulting sample sizes are still sufficient after matching or weighting. At this stage, all exploratory analyses will be conducted blinded towards the outcome to not bias any study design and analytic choices based on known outcome information.
 
@@ -216,11 +220,11 @@ To ensure a transparent, reproducible and consistent way of deriving analytic co
 
 To formally compare treatment effects between RCTs and their respective emulations, we will adapt the approach of the RCT-DUPLICATE project.[@franklin2020nonrandomized; @wang2023emulation] That is, for the primary endpoint of interest (HR and corresponding 95% confidence intervals), we will derive two qualitative agreement metrics (regulatory agreement, estimate agreement) and one quantitative agreement based on the SMD (examples are illustrated @tbl-metrics).
 
--   **Regulatory agreement**: agreement between RCT and emulated trial treatment effect with regards to directionality and statistical significance. This agreement metric mimics the question if RWE would have lead to the same regulatory conclusion as the trial, based on standard regulatory decision rules.
+**Regulatory agreement**: agreement between RCT and emulated trial treatment effect with regards to directionality and statistical significance. This agreement metric mimics the question if RWE would have lead to the same regulatory conclusion as the trial, based on standard regulatory decision rules.
 
--   **Estimate agreement**: agreement that the estimated RWE treatment treatment effect is within the 95% CI of the RCT treatment effect estimate. Provided that for some emulations, the power of the RWE study may be larger than that of the original RCT, this could lead to situations where there is no regulatory agreement although the treatment effect estimates are highly overlapping but with the RCT estimate crossing the null (or vice versa in case the RCT has a larger power than the RWE emulation).
+**Estimate agreement**: agreement that the estimated RWE treatment treatment effect is within the 95% CI of the RCT treatment effect estimate. Provided that for some emulations, the power of the RWE study may be larger than that of the original RCT, this could lead to situations where there is no regulatory agreement although the treatment effect estimates are highly overlapping but with the RCT estimate crossing the null (or vice versa in case the RCT has a larger power than the RWE emulation).
 
--   **SMD agreement**: quantification of the agreement between the emulated RWE and RCT treatment effect estimate. The SMD is calculated as
+**SMD agreement**: quantification of the agreement between the emulated RWE and RCT treatment effect estimate. The SMD is calculated as
 
 $$
 SMD = \frac{\hat{\theta}_{RCT} - \hat{\theta}_{RWE}}{\sqrt{\text{Var}(\hat{\theta}_{RCT}) + \text{Var}(\hat{\theta}_{RWE})}}
