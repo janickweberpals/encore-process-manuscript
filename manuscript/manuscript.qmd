@@ -42,6 +42,8 @@ library(mice)
 library(MatchThem)
 library(cobalt)
 library(gtExtras)
+library(glue)
+library(tidyr)
 ```
 
 **Authors**: Janick Weberpals^1^, Kenneth L. Kehl^2^, Donna R. Rivera^3^, Pallavi Mishra-Kalyani^3^, ..., Sebastian Schneeweiss^1^, Shirley V. Wang^1^
@@ -212,7 +214,7 @@ To ensure a transparent, reproducible and consistent way of deriving analytic co
 
 ## Agreement metrics {#sec-agreement-metrics}
 
-To formally compare treatment effects between RCTs and their respective emulations, we will adapt the approach of the RCT-DUPLICATE project.[@franklin2020nonrandomized; @wang2023emulation] That is, for the primary endpoint of interest (HR and corresponding 95% confidence intervals), we will derive two qualitative agreement metrics (regulatory agreement, estimate agreement) and one quantitative agreement based on the SMD.
+To formally compare treatment effects between RCTs and their respective emulations, we will adapt the approach of the RCT-DUPLICATE project.[@franklin2020nonrandomized; @wang2023emulation] That is, for the primary endpoint of interest (HR and corresponding 95% confidence intervals), we will derive two qualitative agreement metrics (regulatory agreement, estimate agreement) and one quantitative agreement based on the SMD (examples are illustrated @tbl-metrics).
 
 -   **Regulatory agreement**: agreement between RCT and emulated trial treatment effect with regards to directionality and statistical significance. This agreement metric mimics the question if RWE would have lead to the same regulatory conclusion as the trial, based on standard regulatory decision rules.
 
@@ -335,6 +337,141 @@ suppressMessages(tbl_rct_selection |>
     ))
 
 include_graphics(path = here("tables", "Table_2_trial_selection.png"))
+```
+
+{{< pagebreak >}}
+
+```{r}
+#| label: tbl-metrics
+#| tbl-cap: "Visualization of agreement metrics example."
+
+source(here("functions","smd_agreement.R"))
+
+data <- tribble(
+  ~trial, ~group, ~estimate, ~lower, ~upper,
+  "Trial 1", "RCT", 0.75, 0.61, 0.91,
+  "Trial 1", "RWE", 0.80, 0.51, 1.1,
+  "Trial 2", "RCT", 0.62, 0.51, 0.71,
+  "Trial 2", "RWE", 0.65, 0.55, 0.69,
+  "Trial 3", "RCT", 0.71, 0.67, 0.80,
+  "Trial 3", "RWE", 0.51, 0.41, 0.61,
+  "Trial 4", "RCT", 0.90, 0.81, 0.99,
+  "Trial 4", "RWE", 1.2, 1.09, 1.34,
+  ) |> 
+  pivot_wider(names_from = group, values_from = c(estimate, lower, upper)) |> 
+  mutate(
+    smd_value = smd_agreement(
+      rct_estimate = estimate_RCT, 
+      rct_lower = lower_RCT, 
+      rct_upper = upper_RCT,
+      rwe_estimate = estimate_RWE,
+      rwe_lower = lower_RWE, 
+      rwe_upper = upper_RWE
+      )
+    ) |> 
+  mutate(
+    regulatory = ifelse(
+      # superiority
+      estimate_RCT < 1 & upper_RCT < 1 & estimate_RWE < 1 & upper_RWE < 1 |
+        # non-inferiority
+        estimate_RCT < 1 & upper_RCT >= 1 & estimate_RWE < 1 & upper_RWE >= 1 |
+        # inferiority (made up)
+        estimate_RCT >= 1 & lower_RCT >= 1 & estimate_RWE >= 1 & upper_RWE >= 1,
+      "Yes", "No"
+      ),
+    estimate = ifelse(
+      estimate_RWE >= lower_RCT & estimate_RWE <= upper_RCT, "Yes", "No"
+      ),
+    smd = ifelse(
+      abs(smd_value) < 1.96, "Yes", "No"
+      )
+    )
+
+tbl_metrics <- data |> 
+  mutate(across(where(is.numeric), function(x) format(x, digits = 2, nsmall = 2))) |> 
+  mutate(
+    RCT = glue("{estimate_RCT} ({lower_RCT} - {upper_RCT})"),
+    RWE = glue("{estimate_RWE} ({lower_RWE} - {upper_RWE})"),
+    smd = glue("{smd} ({smd_value})")
+  ) |> 
+  select(trial, RCT, RWE, regulatory, estimate, smd) |> 
+  gt() |> 
+  tab_spanner(
+    label = "HR (95% CI)",
+    columns = c(RCT, RWE)
+  ) |> 
+  cols_label(
+    trial = "Trial",
+    regulatory = md("Regulatory <br> agreement"),
+    estimate = md("Estimate <br> agreement"),
+    smd = "SMD"
+    ) |> 
+  tab_style(
+    style = cell_text(weight = "bold"),
+    locations = cells_column_labels()
+    ) |> 
+    tab_style(
+    style = cell_text(weight = "bold"),
+    locations = cells_column_spanners()
+    ) |> 
+  tab_style(
+    style = cell_text(color = "darkgreen"), # Pink for "Inactive"
+    locations = cells_body(
+      columns = regulatory,
+      rows = regulatory == "Yes"
+      )
+    ) |> 
+  tab_style(
+    style = cell_text(color = "darkred"), # Pink for "Inactive"
+    locations = cells_body(
+      columns = regulatory,
+      rows = regulatory == "No"
+      )
+    ) |> 
+  tab_style(
+    style = cell_text(color = "darkgreen"), # Pink for "Inactive"
+    locations = cells_body(
+      columns = estimate,
+      rows = estimate == "Yes"
+      )
+    ) |> 
+  tab_style(
+    style = cell_text(color = "darkred"), # Pink for "Inactive"
+    locations = cells_body(
+      columns = estimate,
+      rows = estimate == "No"
+      )
+    ) |> 
+  tab_style(
+    style = cell_text(color = "darkgreen"), # Pink for "Inactive"
+    locations = cells_body(
+      columns = smd,
+      rows = grepl("^Yes", smd)
+      )
+    ) |> 
+  tab_style(
+    style = cell_text(color = "darkred"), # Pink for "Inactive"
+    locations = cells_body(
+      columns = smd,
+      rows = estimate == "No"
+      )
+    )
+
+# save table as .docx document
+tbl_metrics |> 
+   gtsave(
+    filename = here("manuscript", "Table_3_agreement_metrics.docx")
+    )
+
+# save image to display within manuscript document
+suppressMessages(tbl_metrics |> 
+  gtsave(
+    filename = here("tables", "Table_3_agreement_metrics.png"),
+    expand = 10, # amount of whitespace,
+    zoom = 5 # higher resolution
+    ))
+
+include_graphics(path = here("tables", "Table_3_agreement_metrics.png"))
 ```
 
 {{< pagebreak >}}
@@ -533,61 +670,4 @@ suppressMessages(ggsave(
 
 # print to manuscript
 include_graphics(path = here("manuscript", "Figure_3_balance.png"))
-```
-
-```{r}
-#| label: fig-metrics
-#| fig-cap: "Visualization of agreement metrics example."
-#| fig-widh: 4
-#| fig-height: 7
-
-source(here("functions","smd_agreement.R"))
-
-data <- tribble(
-  ~group, ~estimate, ~lower, ~upper,
-  "RCT", 0.75, 0.61, 0.91,
-  "RWE", 0.80, 0.51, 1.1
-  )
-
-smd <- smd_agreement(
-  rct_estimate = data |> filter(group == "RCT") |> pull(estimate),
-  rct_lower = data |> filter(group == "RCT") |> pull(lower),
-  rct_upper = data |> filter(group == "RCT") |> pull(upper),
-  rwe_estimate = data |> filter(group == "RWE") |> pull(estimate),
-  rwe_lower = data |> filter(group == "RWE") |> pull(lower),
-  rwe_upper = data |> filter(group == "RWE") |> pull(upper)
-  )
-
-data |> 
-  gt() |> 
-  gt_plt_conf_int(
-    column = estimate, 
-    ci_columns = c(lower, upper),
-    ref_line = 1,
-    palette = c("red", "lightgrey", "black", "red")
-    ) |> 
-  cols_hide(c(lower, upper)) |> 
-  # add agreement metrics
-  cols_add(
-    metric = c(md("Regulatory agreement: <br><br> Estimate agreement:"), "SMD:"),
-    results = c(md("No <br><br> Yes"), ifelse(abs(smd) < 1.96, "Yes", "No"))
-    ) |> 
-  tab_options(
-    table_body.hlines.width = px(0)
-  ) |> 
-  cols_label(
-    group = "",
-    estimate = "HR (95% CI)",
-    metric = "Agreement metrics",
-    results = ""
-    ) |> 
-  fmt_markdown() |> 
-  tab_style(
-    style = cell_text(align = "center", v_align = "middle"),
-    locations = cells_column_labels()
-    ) |> 
-  tab_style(
-    style = cell_text(weight = "bold"),
-    locations = cells_column_labels()
-    )
 ```

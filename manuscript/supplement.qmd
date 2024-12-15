@@ -80,11 +80,7 @@ include_graphics(here("figures", "consort_mm.png"))
 
 {{< pagebreak >}}
 
-# Supplementary Tables
-
-{{< pagebreak >}}
-
-\addcontentsline{toc}{section}{\protect\numberline{}R package documentation}
+# R package documentation
 
 The following documentation for the internal `encore.io` packages describes and details reproducible functions to query analytic cohorts consistently across trial emulations.
 
