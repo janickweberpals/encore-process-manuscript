@@ -84,11 +84,11 @@ Email: [SWANG1\@BWH.HARVARD.EDU](SWANG1@BWH.HARVARD.EDU)
 
 [**Supplementary material:**]{.underline} Supplementary tables and figures
 
-[**Short running title**]{.underline}: ...
+[**Short running title**]{.underline}: Emulation of Comparative Oncology Trials with Real-world Evidence (ENCORE)
 
 [**Keywords:**]{.underline} Oncology, Real-World Evidence, Trial emulation, EHR
 
-[**Funding Statement:**]{.underline} This project was supported by ...
+[**Funding Statement:**]{.underline} This project was supported by an FDA BAA contract with contract number 75F40122C00181.
 
 [**Competing Interests Statement:**]{.underline} Dr. Weberpals is now an employee of AstraZeneca and owns stocks in AstraZeneca. Dr. Wang has consulted ad hoc for Exponent Inc. and MITRE a federally funded research center for the Centers for Medicare and Medicaid Services on unrelated work. Dr. Schneeweiss is participating in investigator-initiated grants to the Brigham and Women's Hospital from Boehringer Ingelheim, Takeda, and UCB unrelated to the topic of this study. He owns equity in Aetion Inc., a software manufacturer. He is an advisor to Temedica GmbH, a patient-oriented data generation company. His interests were declared, reviewed, and approved by the Brigham and Women's Hospital in accordance with their institutional compliance policies.
 
