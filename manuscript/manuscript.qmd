@@ -501,6 +501,8 @@ file_copy(
   )
 ```
 
+[View figure in higher resolution here](https://github.com/janickweberpals/encore-process-manuscript/blob/main/figures/process.png)
+
 {{< pagebreak >}}
 
 ```{r}
@@ -567,6 +569,8 @@ suppressMessages(ggsave(
 # print to manuscript
 include_graphics(path = here("manuscript", "Figure_2_utlization.png"))
 ```
+
+[View figure in higher resolution here](https://github.com/janickweberpals/encore-process-manuscript/blob/main/manuscript/Figure_2_utlization.png)
 
 {{< pagebreak >}}
 
@@ -676,3 +680,5 @@ suppressMessages(ggsave(
 # print to manuscript
 include_graphics(path = here("manuscript", "Figure_3_balance.png"))
 ```
+
+[View figure in higher resolution here](https://github.com/janickweberpals/encore-process-manuscript/blob/main/manuscript/Figure_3_balance.png)
