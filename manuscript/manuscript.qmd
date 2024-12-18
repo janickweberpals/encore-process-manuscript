@@ -421,45 +421,45 @@ tbl_metrics <- data |>
     locations = cells_column_spanners()
     ) |> 
   tab_style(
-    style = cell_text(color = "darkgreen"), # Pink for "Inactive"
+    style = cell_text(color = "darkgreen"), 
     locations = cells_body(
       columns = regulatory,
       rows = regulatory == "Yes"
       )
     ) |> 
   tab_style(
-    style = cell_text(color = "darkred"), # Pink for "Inactive"
+    style = cell_text(color = "darkred"), 
     locations = cells_body(
       columns = regulatory,
       rows = regulatory == "No"
       )
     ) |> 
   tab_style(
-    style = cell_text(color = "darkgreen"), # Pink for "Inactive"
+    style = cell_text(color = "darkgreen"), 
     locations = cells_body(
       columns = estimate,
       rows = estimate == "Yes"
       )
     ) |> 
   tab_style(
-    style = cell_text(color = "darkred"), # Pink for "Inactive"
+    style = cell_text(color = "darkred"), 
     locations = cells_body(
       columns = estimate,
       rows = estimate == "No"
       )
     ) |> 
   tab_style(
-    style = cell_text(color = "darkgreen"), # Pink for "Inactive"
+    style = cell_text(color = "darkgreen"), 
     locations = cells_body(
       columns = smd,
-      rows = grepl("^Yes", smd)
+      rows = stringr::str_detect(smd, "Yes")
       )
     ) |> 
   tab_style(
-    style = cell_text(color = "darkred"), # Pink for "Inactive"
+    style = cell_text(color = "darkred"), 
     locations = cells_body(
       columns = smd,
-      rows = estimate == "No"
+      rows = stringr::str_detect(smd, "No")
       )
     ) |> 
   tab_footnote("Abbreviations: CI = Confidence interval, HR = Hazard ratio, RCT = Randomized controlled trial, RWE = Real-world evidence, SMD = standardized mean difference (based on log hazard ratios)")
