@@ -206,7 +206,7 @@ $$
 
 where $\hat{\theta}$ are the treatment effect estimates (hazard ratios or median survival times) and $\text{Var}(\hat{\theta})$ are the corresponding variances. The resulting SMDs will be interpreted such that with an SMD of 1.00, the effect estimate from the RCT and the RWE emulation are 1 standard deviation apart. For an $\alpha$-level of 0.05, the null hypothesis of no difference would be rejected whenever $|Z| > 1.96$.
 
-For the secondary endpoints of interest (e.g., median survival time or survival probabilities) only the quantitative SMD agreement metric will be applicable.
+For the secondary endpoints of interest (e.g., median survival time or survival probabilities) only the SMD agreement metric will be applicable.
 
 ## Study design and statistical analysis
 
