@@ -5,3 +5,7 @@
 .DS_Store
 .Renviron
 *.parquet
+*.RDS
+
+# symlink to Dropbox files (co-author reviews, etc.)
+process paper Dropbox alias
