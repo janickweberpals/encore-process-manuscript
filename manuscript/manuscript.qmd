@@ -194,7 +194,7 @@ Causal analyses of observational data may not have the same pre-requisites in te
 
 To formally compare treatment effects between RCTs and their respective emulations, we will adapt the approach of the RCT-DUPLICATE project.[@franklin2020nonrandomized; @wang2023emulation] That is, for the primary endpoint of interest (HR and corresponding 95% confidence intervals), we will derive three qualitative agreement metrics: regulatory agreement, estimate agreement and agreement based on the standardized mean difference (SMD). Examples are illustrated @tbl-metrics.
 
-Statistical significance agreement: agreement between RCT and emulated trial treatment effect with regards to directionality and statistical significance.
+**Statistical significance agreement**: agreement between RCT and emulated trial treatment effect with regards to directionality and statistical significance.
 
 **Estimate agreement**: agreement that the estimated RWE treatment treatment effect is within the 95% CI of the RCT treatment effect estimate. Provided that for some emulations, the power of the RWE study may be larger than that of the original RCT, this could lead to situations where there is no regulatory agreement although the treatment effect estimates are highly overlapping but with the RCT estimate crossing the null (or vice versa in case the RCT has a larger power than the RWE emulation).
 
