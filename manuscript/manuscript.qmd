@@ -186,7 +186,7 @@ he distribution of patient characteristics, stratified by exposure status, will 
 
 #### **Statistical power**
 
-Causal analyses of observational data may not have the same pre-requisites in terms of formal hypothesis testing and statistical power than RCTs since the number of 'recruited' patients is given and cannot be influenced.[@hernan2022causal] For this project, however, the emulations in EHR data must have at least equal power to the relevant trial for interpretation of the pre-specified agreements metrics between RCT and RWD results. Since the main outcome of interest is defined as time to all-cause mortality (OS), the estimation of the statistical power is driven by the number of events rather than the number of patients. To assess if the unstratified number of events is sufficient such that a significant difference can be detected based on the original RCT-reported hazard ratio (HR), the statistical power $\beta$ will be estimated using Schoenfeld's sample-size formula for the proportional-hazards regression model.[@schoenfeld1981asymptotic]
+Causal analyses of observational data may not have the same pre-requisites in terms of formal hypothesis testing and statistical power than RCTs since the number of 'recruited' patients is given and cannot be influenced.[@hernan2022causal] For this project, however, the emulations in EHR data must have at least equal power to the relevant trial for interpretation of the pre-specified agreements metrics between RCT and RWD results. Since the main outcome of interest is defined as time to all-cause mortality (OS), the estimation of the statistical power is driven by the number of events rather than the number of patients. To assess if the overall number of events, unstratified by exposure, is sufficient such that a significant difference can be detected based on the original RCT-reported hazard ratio (HR), the statistical power $\beta$ will be estimated using Schoenfeld's sample-size formula for the proportional-hazards regression model.[@schoenfeld1981asymptotic]
 
 <!--# https://github.com/keaven/gsDesign/blob/master/R/nEvents.R#L22C12-L22C78 -->
 
@@ -194,7 +194,7 @@ Causal analyses of observational data may not have the same pre-requisites in te
 
 To formally compare treatment effects between RCTs and their respective emulations, we will adapt the approach of the RCT-DUPLICATE project.[@franklin2020nonrandomized; @wang2023emulation] That is, for the primary endpoint of interest (HR and corresponding 95% confidence intervals), we will derive three qualitative agreement metrics: regulatory agreement, estimate agreement and agreement based on the standardized mean difference (SMD). Examples are illustrated @tbl-metrics.
 
-**Regulatory agreement**: agreement between RCT and emulated trial treatment effect with regards to directionality and statistical significance.
+Statistical significance agreement: agreement between RCT and emulated trial treatment effect with regards to directionality and statistical significance.
 
 **Estimate agreement**: agreement that the estimated RWE treatment treatment effect is within the 95% CI of the RCT treatment effect estimate. Provided that for some emulations, the power of the RWE study may be larger than that of the original RCT, this could lead to situations where there is no regulatory agreement although the treatment effect estimates are highly overlapping but with the RCT estimate crossing the null (or vice versa in case the RCT has a larger power than the RWE emulation).
 
@@ -234,7 +234,7 @@ Given that a large number of factors could influence a difference between RCT re
 
 ### Reproducibility and consistency across emulation
 
-To ensure a transparent, reproducible and consistent way of deriving analytic cohorts and performing statistical analyses across trial emulations, we developed and internal R package `encore.io` with parameterized functions. A detailed documentation can be found in the Supplementary Material.
+To ensure a transparent, reproducible and consistent way of deriving analytic cohorts and performing statistical analyses across trial emulations, we developed and internal R package `encore.io` with parameterized functions. Detailed documentation can be found in the Supplementary Material.
 
 {{< pagebreak >}}
 
