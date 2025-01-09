@@ -46,7 +46,7 @@ library(glue)
 library(tidyr)
 ```
 
-**Authors**: Janick Weberpals^1^, Kenneth L. Kehl^2^, Donna R. Rivera^3^, Pallavi Mishra-Kalyani^3^, Priyanka Anand^1^, ..., Sebastian Schneeweiss^1^, Shirley V. Wang^1^
+**Authors**: Janick Weberpals^1^, Kenneth L. Kehl^2^, Donna R. Rivera^3^, Pallavi Mishra-Kalyani^3^, Georg Hahn^1^, Priyanka Anand^1^, ..., Sebastian Schneeweiss^1^, Shirley V. Wang^1^
 
 [Author affiliations:]{.underline}
 
@@ -406,7 +406,7 @@ tbl_metrics <- data |>
   ) |> 
   cols_label(
     trial = "Trial",
-    regulatory = md("Regulatory <br> agreement"),
+    regulatory = md("Statistical <br> significance <br> agreement"),
     estimate = md("Estimate <br> agreement"),
     smd = "SMD"
     ) |> 
