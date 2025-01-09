@@ -259,6 +259,8 @@ RWE based on fit-for-purpose data and principled, well-designed and reproducible
 ::: {#refs}
 :::
 
+{{< pagebreak >}}
+
 # Tables {.unnumbered}
 
 ```{r}
