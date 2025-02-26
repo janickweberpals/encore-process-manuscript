@@ -46,7 +46,7 @@ library(glue)
 library(tidyr)
 ```
 
-**Authors**: Janick Weberpals^1^, Kenneth L. Kehl^2^, Donna R. Rivera^3^, Pallavi Mishra-Kalyani^3^, Georg Hahn^1^, Priyanka Anand^1^, Yanina Natanzon^4^, Janet Espirito^5^, Nicholas J Robert^5^, Andrew J. Belli^6^, Ching-Kun Wang^6^, Robert J. Glynn^1^ ,Sebastian Schneeweiss^1^, Shirley V. Wang^1^
+**Authors**: Janick Weberpals^1^, Kenneth L. Kehl^2^, Donna R. Rivera^3^, Pallavi Mishra-Kalyani^3^, Georg Hahn^1^, Priyanka Anand^1^, Yanina Natanzon^4^, Andrew J. Belli^5^, Ching-Kun Wang^5^, Jenna Collins^6^**,** JonathanKish^6^**,** Janet Espirito^7^, Nicholas J Robert^7^, Robert J. Glynn^1^ ,Sebastian Schneeweiss^1^, Shirley V. Wang^1^
 
 [Author affiliations:]{.underline}
 
@@ -58,9 +58,11 @@ library(tidyr)
 
 ^4^ ConcertAI, Cambridge, MA, USA
 
-^5^ Ontada, Boston, MA, USA
+^5^ COTA, Inc., New York, NY, USA
 
-^6^ COTA, Inc., New York, NY, USA
+^6^ Flatiron Health, Inc., New York, NY, USA
+
+^7^ Ontada, Boston, MA, USA
 
 [**Correspondence:**]{.underline}
 
