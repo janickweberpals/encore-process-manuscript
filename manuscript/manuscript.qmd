@@ -530,8 +530,8 @@ file_copy(
 ```{r}
 #| label: fig-initiators
 #| fig-cap: "Example visualization of descriptive drug utilization analyses displaying a) initiation trends between compared regimens based on calendar time, b) cumulative rate of patients switching to another line of treatment."
-#| fig-widh: 3
-#| fig-height: 6
+#| fig-widh: 2.5
+#| fig-height: 5
 #| fig-pos: 'h'
 #| tbl-pos: 'h'
 
