@@ -15,6 +15,10 @@ format:
   pdf:
     fig-cap-location: top
     tbl-cap-location: top
+    extra_dependencies: ["float"]
+    keep-tex: true
+    fig-pos: 'h'
+    tbl-pos: 'h'
     
 editor: visual
 bibliography: references.bib
@@ -275,6 +279,8 @@ RWE based on fit-for-purpose data and principled, well-designed and reproducible
 #| label: tbl-criteria
 #| tbl-cap: "Criteria to select eligible trials for emulation in ENCORE."
 #| tbl-cap-location: top
+#| fig-pos: 'h'
+#| tbl-pos: 'h'
 
 # read excel blueprint
 eligibility_criteria <- read_excel(
@@ -315,6 +321,8 @@ include_graphics(path = here("tables", "Table_1_trial_eligibility.png"))
 #| label: tbl-rcts
 #| tbl-cap: "Tentative list of randomized controlled trials (RCTs) considered for emulation."
 #| tbl-cap-location: top
+#| fig-pos: 'h'
+#| tbl-pos: 'h'
 
 rct_selection <- read_excel(
   path = here("tables", "helper_tables.xlsx"),
@@ -358,6 +366,8 @@ include_graphics(path = here("tables", "Table_2_trial_selection.png"))
 ```{r}
 #| label: tbl-metrics
 #| tbl-cap: "Visualization of agreement metrics example."
+#| fig-pos: 'h'
+#| tbl-pos: 'h'
 
 source(here("functions","smd_agreement.R"))
 
@@ -498,6 +508,8 @@ include_graphics(path = here("tables", "Table_3_agreement_metrics.png"))
 #| fig-cap: "Systematic process to understand effectiveness claims of oncology trials using real-world evidence."
 #| fig-cap-location: top
 #| fig-width: 12
+#| fig-pos: 'h'
+#| tbl-pos: 'h'
 
 knitr::include_graphics(here("figures", "process.png"))
 
@@ -509,7 +521,9 @@ file_copy(
   )
 ```
 
+::: {.content-visible unless-format="pdf"}
 [View figure in higher resolution here](https://github.com/janickweberpals/encore-process-manuscript/blob/main/manuscript/Figure_1_process.png)
+:::
 
 {{< pagebreak >}}
 
@@ -518,6 +532,8 @@ file_copy(
 #| fig-cap: "Example visualization of descriptive drug utilization analyses displaying a) initiation trends between compared regimens based on calendar time, b) cumulative rate of patients switching to another line of treatment."
 #| fig-widh: 3
 #| fig-height: 6
+#| fig-pos: 'h'
+#| tbl-pos: 'h'
 
 data <- tibble::tibble(
   drug = c(rep("Drug A", 5), rep("Drug B", 5)),
@@ -578,7 +594,9 @@ suppressMessages(ggsave(
 include_graphics(path = here("manuscript", "Figure_2_utlization.png"))
 ```
 
+::: {.content-visible unless-format="pdf"}
 [View figure in higher resolution here](https://github.com/janickweberpals/encore-process-manuscript/blob/main/manuscript/Figure_2_utlization.png)
+:::
 
 {{< pagebreak >}}
 
@@ -587,6 +605,8 @@ include_graphics(path = here("manuscript", "Figure_2_utlization.png"))
 #| fig-cap: "Assessment of a) covariate balance and b) distributional balance of a prognostic score for overall survival before and after propensity score matching or weighting across multiple imputed datasets."
 #| fig-widh: 4
 #| fig-height: 7
+#| fig-pos: 'h'
+#| tbl-pos: 'h'
 
 source(here("functions", "simulate_data.R"))
 
@@ -689,4 +709,6 @@ suppressMessages(ggsave(
 include_graphics(path = here("manuscript", "Figure_3_balance.png"))
 ```
 
+::: {.content-visible unless-format="pdf"}
 [View figure in higher resolution here](https://github.com/janickweberpals/encore-process-manuscript/blob/main/manuscript/Figure_3_balance.png)
+:::
