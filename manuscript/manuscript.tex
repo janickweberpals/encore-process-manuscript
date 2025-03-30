@@ -182,7 +182,7 @@
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same} % disable monospaced font for URLs
 \hypersetup{
-  pdftitle={A Process for Emulating Comparative Oncology Trials with Real-world Evidence Studies},
+  pdftitle={A Process for Emulating Comparative Oncology Trials with Real-world Evidence Studies (ENCORE): Process Development and Methodological Considerations for Oncology Real-World Data},
   colorlinks=true,
   linkcolor={blue},
   filecolor={Maroon},
@@ -192,7 +192,8 @@
 
 
 \title{A Process for Emulating Comparative Oncology Trials with
-Real-world Evidence Studies}
+Real-world Evidence Studies (ENCORE): Process Development and
+Methodological Considerations for Oncology Real-World Data}
 \author{}
 \date{}
 
@@ -202,14 +203,18 @@ Real-world Evidence Studies}
 
 \textbf{Authors}: Janick Weberpals\textsuperscript{1}, Kenneth L.
 Kehl\textsuperscript{2}, Donna R. Rivera\textsuperscript{3}, Pallavi
-Mishra-Kalyani\textsuperscript{3}, Georg Hahn\textsuperscript{1},
-Priyanka Anand\textsuperscript{1}, Yanina Natanzon\textsuperscript{4},
-Andrew J. Belli\textsuperscript{5}, Ching-Kun Wang\textsuperscript{5},
-Jenna Collins\textsuperscript{6}\textbf{,}
-JonathanKish\textsuperscript{6}\textbf{,} Janet
-Espirito\textsuperscript{7}, Nicholas J Robert\textsuperscript{7},
-Robert J. Glynn\textsuperscript{1}, Sebastian
-Schneeweiss\textsuperscript{1}, Shirley V. Wang\textsuperscript{1}
+Mishra-Kalyani\textsuperscript{3}, Catherine C.
+Lerro\textsuperscript{3}, Erin Larkins\textsuperscript{4}, Sonia
+Singh\textsuperscript{4}, Preeti Narayan\textsuperscript{4}, Richard
+Curley\textsuperscript{4}, Paul Kluetz\textsuperscript{4}, Georg
+Hahn\textsuperscript{1}, Priyanka Anand\textsuperscript{1}, Yanina
+Natanzon\textsuperscript{5}, Andrew J. Belli\textsuperscript{6},
+Ching-Kun Wang\textsuperscript{6}, Jenna
+Collins\textsuperscript{7}\textbf{,} Jonathan
+Kish\textsuperscript{7}\textbf{,} Janet Espirito\textsuperscript{8},
+Nicholas J Robert\textsuperscript{8}, Robert J.
+Glynn\textsuperscript{1}, Sebastian Schneeweiss\textsuperscript{1},
+Shirley V. Wang\textsuperscript{1}
 
 \ul{Author affiliations:}
 
@@ -222,13 +227,16 @@ Harvard Medical School, Boston, MA, USA
 \textsuperscript{3} Oncology Center of Excellence, US Food and Drug
 Administration, Silver Spring, MD, USA
 
-\textsuperscript{4} ConcertAI, Cambridge, MA, USA
+\textsuperscript{4} Center for Drug Evaluation and Research, US Food and
+Drug Administration, Silver Spring, MD, USA
 
-\textsuperscript{5} COTA, Inc., New York, NY, USA
+\textsuperscript{5} ConcertAI, Cambridge, MA, USA
 
-\textsuperscript{6} Flatiron Health, Inc., New York, NY, USA
+\textsuperscript{6} COTA, Inc., New York, NY, USA
 
-\textsuperscript{7} Ontada, Boston, MA, USA
+\textsuperscript{7} Flatiron Health, Inc., New York, NY, USA
+
+\textsuperscript{8} Ontada, Boston, MA, USA
 
 \ul{\textbf{Correspondence:}}
 
@@ -292,59 +300,61 @@ manuscript, including all figures and tables, can be found at
 \ul{\textbf{\emph{Proposed target journals:}}} \emph{CPT =\textgreater{}
 JCO CCI =\textgreater{} \ldots{}}
 
-\emph{Manuscript last updated: 2025-03-04 18:43:42.372054}
+\emph{Manuscript last updated: 2025-03-30 15:14:45.088413}
 
 \newpage{}
 
 \section*{Abstract}\label{abstract}
 \addcontentsline{toc}{section}{Abstract}
 
-Real-world evidence (RWE) studies are increasingly used to complement
-evidence from randomized controlled trials (RCTs), contextualizing the
+Real-world evidence (RWE) is increasingly used to complement evidence
+from randomized controlled trials (RCTs), contextualizing the
 effectiveness and safety of medical interventions as delivered in
-clinical practice. Advancements in the curation and accessibility of
-electronic health record data (EHR) have presented the opportunity to
-investigate disease domains such as oncology, where administrative
-healthcare claims databases alone are not fit-for-purpose. The RCT
-DUPLICATE initiative has previously enhanced understanding of when RWE
-studies come to the same causal conclusions by emulating trials in
-non-oncology indications. Here, we present the Emulation of Comparative
-Oncology Trials with Real-world Evidence (ENCORE) project, which aims to
-extend this work to oncology. ENCORE will emulate 12 RCTs in four
+routine clinical practice. Advancements in the curation and
+accessibility of electronic health record data (EHR) have presented the
+opportunity to utilize real-world data (RWD) to investigate therapeutic
+areas such as oncology, where administrative healthcare claims databases
+alone are often not fit-for-purpose. The RCT DUPLICATE initiative has
+previously enhanced understanding of when RWE can most appropriately
+draw causal conclusions by emulating trials in non-oncology indications.
+Here, we present the Emulation of Comparative Oncology Trials with
+Real-world Evidence (ENCORE) project, which aims to extend this work to
+oncology. ENCORE is designed to emulate 12 RCTs in four
 oncology-specialized EHR databases across four different cancer
 indications, specifically non-small cell lung cancer, breast cancer,
 colorectal cancer, and multiple myeloma. It will place a special
 emphasis on systematic evaluation of fitness of data in relation to the
 study design and statistical analysis for a particular research
-question, and pre-registration of study protocols prior to analysis.
-Agreement of treatment effect estimates between RCTs and their
-respective emulations will be assessed using pre-specified criteria.
-Through extensive sensitivity analyses benchmarked against RCT results,
-the ENCORE project will inform understanding of how measurement, design,
-and analytic decisions influence the validity of oncological RWE
-studies.
+question, and pre-registration of study protocols prior to initiation
+and analysis. Agreement of treatment effect estimates between RCTs and
+their respective emulations will be assessed using pre-specified
+criteria. Through extensive sensitivity analyses benchmarked against RCT
+results, the ENCORE project will inform understanding of how
+measurement, design, and analytic decisions influence the validity of
+oncological RWE studies.
 
 \newpage{}
 
 \section{Background}\label{background}
 
-Randomized controlled trials (RCTs) have been the go-to methodology for
+Randomized controlled trials (RCTs) are the go-to methodology for
 establishing the efficacy and safety of medical products. Under the
-21\textsuperscript{st} Century Cures Act directive,\textsuperscript{1}
-the Food and Drug Administration (FDA) established a framework to
-increasingly consider real-world evidence (RWE) generated from
-routine-care health data such as electronic health records (EHR) to
-evaluate and contextualize the comparative safety and effectiveness of
-novel cancer therapies.\textsuperscript{2} Accounting for 21\% of all
-approvals, oncology was the disease area with the most FDA drug
-approvals in 2023.\textsuperscript{3} RWE has particularly important
+21\textsuperscript{st} Century Cures Act,\textsuperscript{1} the Food
+and Drug Administration (FDA) established a framework to factor
+consideration of real-world evidence (RWE) generated from routine-care
+health data such as electronic health records (EHR) to evaluate and
+contextualize the safety and effectiveness of novel cancer
+therapies.\textsuperscript{2} Accounting for 30\% of new drug approvals,
+oncology was the disease area with the most FDA drug approvals in
+2024\textsuperscript{3} and has many areas of high unmet medical need to
+treat serious conditions. Therefore, RWE has particularly important
 potential to complement evidence coming from RCTs in the field of
-precision oncology, where potential use cases include the assessment of
-effectiveness in specific patient populations that are underrepresented
-in RCTs, the construction of external control arms in single-arm trials
-where active recruitment to a randomized trial may not be feasible, or
-the discovery of biomarkers among pan-tumor populations that harbor
-specific genomic and immuno-pathological signatures.
+oncology. Potential use cases include the assessment of effectiveness in
+specific patient populations that are underrepresented in RCTs, the
+construction of external control arms in single-arm trials that have
+feasibility or equipoise challenges, or the precision oncology-focused
+discovery of biomarkers among pan-tumor populations that harbor specific
+genomic and immuno-pathological signatures.
 
 However, the validity and transportability of results derived between
 RWE studies and RCTs depends on multiple factors. Frequently referenced
@@ -353,41 +363,41 @@ study sizes, data discontinuity,\textsuperscript{4, 5} adoption of
 changes in guidelines in real-world care and the inability to measure
 and emulate common eligibility criteria, including prognostic factors,
 and standardized response assessments in real-world data
-(RWD).\textsuperscript{6} While there are already published examples of
-oncology trial emulations,\textsuperscript{6--8} a systematic and scaled
+(RWD).\textsuperscript{6} While examples of oncology trial emulations
+have been published,\textsuperscript{6--8} a systematic and scaled
 approach to emulate a diverse set of different oncology trials with
 multiple heterogeneous databases is necessary to gain confidence in the
-validity of RWE studies and to provide context as to which questions can
-be validly answered.
+validity of RWE studies, evaluate regulatory considerations, and to
+provide context as to which questions can be validly answered.
 
 The RCT DUPLICATE initiative\textsuperscript{9} increased our
 understanding of when RWE studies can come to causal conclusions on
 treatment effects by benchmarking results against RCTs under the
 assumption that each RCT finding reflects a causal treatment effect. In
-settings where the RCT designs could be emulated well, RWE studies came
-to the same conclusions.\textsuperscript{10} However, prior work from
-RCT-DUPLICATE has focused primarily on emulating trials in non-oncology
-settings using claims databases.
+settings where the RCT designs could be emulated well, RWE studies were
+able to reach the same conclusions.\textsuperscript{10} However, this
+prior work from RCT-DUPLICATE focused primarily on emulating trials in
+non-oncology settings using claims databases.
 
 The \emph{Emulation of Comparative Oncology Trials with Real-world
 Evidence} (ENCORE) project\textsuperscript{11} aims to extend this work
 to oncology. Studies in oncology come with their own unique set of
-challenges which must be systematically explored and understood.
-Building on a process co-developed with the FDA through RCT
+methodological challenges which must be systematically explored and
+understood. Building on a process co-developed with the FDA through RCT
 DUPLICATE,\textsuperscript{9} this expansion to oncology will emulate 12
 randomized clinical trials using multiple specialty oncology EHR data
 sources. The process will emphasize transparency and include documented
-data fitness assessment\textsuperscript{12, 13} for each RWD source with
-respect to each trial emulation as well as extensive sensitivity
-analyses to assess robustness of findings.
+data fit-for-purpose assessment\textsuperscript{12, 13} for each RWD
+source with respect to each trial emulation as well as extensive
+sensitivity analyses to assess robustness of findings.
 
 The objectives of this project are to 1) develop state-of-the-art
-methodological approaches and 2) to apply them to create insights that
-may provide guidance on the potential use of RWE for regulatory science
-in oncology. To achieve these objectives, this demonstration project
-will systematically emulate 12 oncology trials across four cancers and
-assess the agreement of treatment effect estimates between RCTs and
-their respective emulations.
+methodological approaches and 2) to apply them to create insights into
+the potential use of RWE to enhance regulatory science in oncology. To
+achieve these objectives, this demonstration project will systematically
+emulate 12 oncology trials across four cancer types and assess the
+agreement of treatment effect estimates between RCTs and their
+respective emulations.
 
 Here, we describe the design and process for the selection of the 12
 oncology RCTs, the assessment of the database quality and selection,
@@ -402,31 +412,30 @@ to final results is provided in Figure~\ref{fig-process}.
 
 \subsection{Trial selection}\label{trial-selection}
 
-The focus of ENCORE is to maximize potential learnings on when RWE
-studies can or cannot yield similar results compared to RCTs. To that
-end, the emphasis of the project is on trials of therapies for the most
-common cancers for which there has been substantial therapeutic
-development in recent years. After review and discussion with clinical
-and regulatory experts, four cancer indications were identified:
-non-small cell lung cancer, breast cancer, colorectal cancer and
-multiple myeloma. For each cancer type, we aim to conduct three trial
-emulations using multiple databases accessible for the scope of this
-project (i.e., the total number of emulations will equal 12 trials x
-\emph{n} databases which are found fit-for-purpose for each trial).
+The focus of ENCORE is to efficiently explore in what contexts RWE
+studies can or cannot yield similar results compared to RCTs. Therefore,
+the project emphasizes trials of therapies for common cancers for which
+there has been substantial therapeutic development in recent years.
+After review and collaboration with clinical and regulatory experts,
+four cancer indications were identified: non-small cell lung cancer,
+breast cancer, colorectal cancer and multiple myeloma. For each cancer
+type, we aim to conduct three trial emulations using multiple accessible
+databases (i.e., the total equaling 12 trial emulations x \emph{n}
+databases which are found fit-for-purpose for each trial).
 
-We used a semi-automated process for trial selection where the
-eligibility criteria are documented in CONSORT diagrams showing reasons
-for excluding RCTs for each cancer type. The search was conducted using
-the \emph{Aggregated Analysis of ClinicalTrials.gov} (AACT) database
-which is a publicly available relational database developed and
-maintained by the Clinical Trials Transformation Initiative (CTTI) that
-contains all information (protocol and result data elements) about every
-study registered on ClinicalTrials.gov.\textsuperscript{14} To identify
-eligible trials, we used a combined search query strategy of the
-National Library of Medicine (NLM)-controlled \emph{Medical Subject
-Headings \textbf{(}}MeSH) term and a free keyword search for the
-respective cancer indication in the \emph{conditions}, \emph{studies}
-and \emph{detailed\_descriptions} fields of each trial entry on
+We used a systematic process for trial selection where the eligibility
+criteria are documented in CONSORT diagrams showing reasons for
+excluding RCTs for each cancer type. The search was conducted using the
+\emph{Aggregated Analysis of ClinicalTrials.gov} (AACT) database which
+is a publicly available relational database developed and maintained by
+the Clinical Trials Transformation Initiative (CTTI) that contains
+information (protocol and result data elements) about studies registered
+on ClinicalTrials.gov.\textsuperscript{14} To identify eligible trials,
+we used a combined search query strategy of the National Library of
+Medicine (NLM)-controlled \emph{Medical Subject Headings
+\textbf{(}}MeSH) term and a free keyword search for the respective
+cancer indication in the \emph{conditions}, \emph{studies} and
+\emph{detailed\_descriptions} fields of each trial entry on
 ClinicalTrials.gov.
 
 Eligible trials had to fulfill the following basic criteria:
@@ -443,7 +452,7 @@ Eligible trials had to fulfill the following basic criteria:
 \item
   Trial start in 2011 or later
 \item
-  Primary purpose was to study treatment effects
+  Primary purpose was study treatment efficacy
 \item
   Overall survival must be one of the endpoints reported (either as
   hazard ratio or median overall survival time)
@@ -457,39 +466,39 @@ Eligible trials had to fulfill the following basic criteria:
 
 The rationale and operationalization of each criterion is listed in
 detail in Table~\ref{tbl-criteria}. We will mainly consider pivotal
-interventional, randomized trials after 2011 because treatment
+large late-phase interventional RCTs after 2011 because treatment
 guidelines among included cancer indications have undergone significant
-changes in recent years. Due to the rapid adoption of new breakthrough
+changes in recent years. Due to the rapid adoption of breakthrough
 therapies in routine care, it is unlikely to find patients who may be
 still treated with outdated treatment regimens in current clinical
 practice. Conversely, we excluded trials with results published too
 recently. To allow for enough data and follow-up time accrual in the
-databases used for this project. Although there have been substantial
-methodological advancements to increase our understanding on the
-emulation and comparison of real-world progression-free survival (PFS)
-and objective response rates (ORR) to a
+real-world databases used for this project. Although there have been
+substantial methodological advancements to increase our understanding on
+the emulation and comparison of real-world progression-free survival
+(PFS) and objective response rates (ORR) to a
 RECISTv1.1\textsuperscript{15}-based PFS and ORR assessment in
 RCTs\textsuperscript{16, 17}, imaging-based evaluations still hold a
-level of granularity which may not be necessarily reflected in
+level of granularity which may not is often not reflected in
 chart-abstracted assessments of a patient's progression in routine
 care.\textsuperscript{18, 19} The timing and cadence of intervals
 between progression assessments can differ between RCTs and routine care
 which may result in measurement error and bias.\textsuperscript{20}
-Given this, and the large number of other methodological challenges like
-missing data, small sample sizes, data discontinuity and rapidly
-changing guideline treatments, we focus on the emulation of overall
-survival (OS) as the endpoint of interest. Therefore, we include only
-trials that have reported overall survival (OS) as one of the
+Given this, and the large number of other methodological challenges
+including missing data, small sample sizes, data discontinuity and
+rapidly changing guideline treatments, we focus on the emulation of
+overall survival (OS) as the endpoint of interest. Therefore, we include
+only trials that have reported overall survival (OS) as one of the
 pre-specified endpoints in the protocol.
 
 While most trial eligibility criteria could be operationalized in an
 automated fashion, our final criterion was an assessment of emulation
 feasibility and clinical relevance. This criterion involved extensive
-human review. The critical points considered in this step include an
+human review. The fundamental points considered in this step include an
 initial feasibility assessment of the data fitness,\textsuperscript{19}
 including assessment of whether critical eligibility criteria (e.g.,
-biomarker status) and prognostic factors (e.g., ECOG performance score)
-are measurable and whether preliminary study size counts are reasonable.
+biomarker status) including prognostic factors (e.g., ECOG performance
+score) are measurable and whether preliminary study size is reasonable.
 Lastly, trial candidates were ranked and shortlisted into primary and
 runner-up candidates based on their clinical and regulatory relevance.
 
@@ -498,32 +507,32 @@ Table~\ref{tbl-rcts} and the corresponding selection process is
 illustrated in the CONSORT diagrams (Supplementary Figures 1-4).
 Naturally, the majority of trials cover advanced (locally advanced,
 inoperable, recurrent/progressive disease) or metastatic cancer
-populations because a large proportion of drug development efforts start
-in these settings. A key objective that we aim to foster with the
-shortlisted trials is to achieve a better understanding how different
-disease settings (early, late), line settings ({[}neo{]}adjuvant, first
-line, advanced lines of therapy), therapy protocols (monotherapy,
-combination therapy) and population characteristics (simple versus
-complex genetic or immunological signatures) can be emulated using RWD.
-If more thorough feasibility assessments suggest that the threat of bias
-from mis-measurement of key study parameters or residual confounding
-remains high, or that the study size is not sufficient, then runner-up
-candidates will be considered instead.
+populations because a large proportion of drug development efforts have
+recently focused on these settings. A key objective that we aim to
+explore with the selected trials is to achieve a better understanding
+how different disease settings (early, late), line settings
+({[}neo{]}adjuvant, first line, advanced lines of therapy), therapy
+protocols (monotherapy, combination therapy) and clinical
+characteristics (all-comer versus complex genetic or immunological
+signatures) can be emulated using RWD. If more thorough feasibility
+assessments suggest that the threat of bias from mis-measurement of key
+study parameters or residual confounding remains high, or that the study
+size is not sufficient, then runner-up candidate trials will be
+considered instead.
 
 \subsection{Databases}\label{databases}
 
 The ENCORE project will use data from four oncology-specific electronic
-health records (EHR)-derived data sources (in alphabetical order):
-ConcertAI, COTA, Flatiron Health, and Ontada/McKesson. All available
-databases draw from a comprehensive national sample of patients with
-cancer in the US with the detailed EHR-based data necessary to study
-medication effectiveness in oncology. A detailed description and
-methodology on how patients are sampled will be provided with each trial
-emulation protocol. For ENCORE, not all databases will be available for
-each cancer indication and the names of the databases will be blinded
-and referred to as ENCORE DataBase (EDB) 1, 2, 3 and 4 for the final
-reporting of results (the numbering does not coincide with the above
-order of mention of the databases). If more than one database is
+health records (EHR)-derived RWD data sources (in alphabetical order):
+ConcertAI, COTA, Flatiron Health, and Ontada/McKesson. The included
+databases comprise the necessary information to study medical product
+effectiveness in oncology derived from US-based oncology EHRs. A
+detailed description and sampling methodology will be provided with each
+trial emulation protocol. For ENCORE, not all databases will be
+available for each cancer indication and the names of the databases will
+be blinded and referred to as ENCORE DataBase (EDB) 1, 2, 3 and 4 for
+the final reporting of results (the numbering does not coincide with the
+above order of mention of the databases). If more than one database is
 considered fit-for-purpose for a respective trial emulation, the best
 possible analytic model will be employed for each database separately
 and final treatment effect estimates will be pooled using a
@@ -535,23 +544,22 @@ between databases) models.\textsuperscript{21}
 
 \subsection{Protocol development}\label{protocol-development}
 
-For each shortlisted and selected RCT, a detailed protocol,
-pre-specifying key elements of the trial emulation, will be developed
-using the HARPER protocol template\textsuperscript{22} recommended for
-regulatory submissions of RWE studies\textsuperscript{23} and will be
-registered on ClinicalTrials.gov after review by a clinical and FDA
-regulatory expert panel. Following the target trial emulation framework,
-we will provide an explicit statement and rationale on how each element
-will be emulated including database selection, covariate measurement,
-operationalization of key eligibility criteria, study design, data
-analysis and causal contrasts of interest.\textsuperscript{24, 25} Since
-it is common that oncology RCTs update OS estimates periodically based
-on accrued follow-up time, the protocol will give a brief summary of
-each emulated RCT and specify which target OS estimates will be used to
-compare agreement metrics to (see Section~\ref{sec-agreement-metrics}).
-All eligibility criteria will be extracted based on publications,
-publicly available protocols and statistical analysis plans of the
-selected RCT.
+For each selected RCT, a detailed protocol, pre-specifying key elements
+of the trial emulation, will be developed using the HARPER protocol
+template\textsuperscript{22} recommended for regulatory submissions of
+RWE studies\textsuperscript{23} and will be registered on
+ClinicalTrials.gov after review by a clinical and FDA regulatory expert
+panel. Following the target trial emulation framework, we will provide
+an explicit statement and rationale on how each element will be emulated
+including database selection, covariate measurement, operationalization
+of key eligibility criteria, study design, data analysis and causal
+contrasts of interest.\textsuperscript{24, 25} Since it is common that
+oncology RCTs update OS estimates periodically based on accrued
+follow-up time, the protocol will give a brief summary of each emulated
+RCT and specify which target OS estimates will be used for agreement
+metric evaluation (see Section~\ref{sec-agreement-metrics}). All
+eligibility criteria will be extracted based on publications, publicly
+available protocols, and statistical analysis plans of the selected RCT.
 
 \subsubsection{Emulation feasibility}\label{emulation-feasibility}
 
@@ -559,98 +567,96 @@ selected RCT.
 data}}{Fit-for-purpose data}}\label{fit-for-purpose-data}
 
 Real-world data fitness and emulation feasibility for each shortlisted
-candidate trial will be assessed in multiple steps based on guidance of
-the oncology quality, characterization, and assessment of real-world
-data (Oncology QCARD) Initiative.\textsuperscript{19} The first step
-assesses if relevant variables like exposure/line of therapy, outcomes,
-and covariates are generally available, measured and operationalizable
-in routine-care. Since many oncological RCTs in recent years have
-focused on selected, biomarker-defined populations, subtleties in
-measurement and operationalizability of specific biomarkers must be
+candidate trial will be assessed in multiple steps based on direction
+from of the oncology quality, characterization, and assessment of
+real-world data (Oncology QCARD) Initiative.\textsuperscript{19} The
+first step assesses if relevant variables like exposure, line of
+therapy, outcomes, and covariates are generally available, measured and
+operationalizable in routine-care. Since many oncological RCTs in recent
+years have focused on selected, biomarker-defined populations, nuances
+in measurement and operationalizability of specific biomarkers must be
 reflected to ensure a representative and large enough study population.
 For example, immune checkpoint inhibitors have significantly changed the
 cancer treatment landscape since the first approvals of the CTLA-4
 inhibitor ipilimumab in 2011 and the PD-1 inhibitors pembrolizumab and
-nivolumab in 2014 in the United States. With many trials that have
-followed thereafter, the operationalization of the expression of the
-PD-L1 biomarker in RCTs (e.g., as a percent staining, tumor proportion
-score or combined positive score) has also evolved, and PD-L1
-'\emph{positivity'} may have different definitions across calendar years
-based on different cut-off values.
+nivolumab in 2014 in the United States. However, the operationalization
+of the expression of the PD-L1 biomarker in RCTs (e.g., as a percent
+staining, tumor proportion score or combined positive score) has
+evolved, and as such PD-L1 '\emph{positivity'} may have different
+definitions across calendar years based on different cut-off values.
 
 According to the \emph{Structured Process to Identify Fit-For-Purpose
-Data} (SPIFD) framework\textsuperscript{13}, the next step will outline
-tables that describe how eligibility criteria will be ascertained using
-a color-coded heatmap that will indicate the level of confidence on how
-well each criterion can be emulated in each selected database. As there
-are general eligibility criteria in oncology trials which either will
-not be possible to emulate (e.g., physician-assessed survival prognosis
-of x months) or that are clinically not relevant for the emulation of
-the trial (e.g., male patients should be willing to use barrier
+Data} (SPIFD) framework\textsuperscript{13}, the next step outlines how
+eligibility criteria will be ascertained using a color-coded heatmap
+that will indicate the level of confidence on how well each criterion
+can be emulated in each selected database. As there are general
+eligibility criteria in oncology clinical trials which either are
+infeasible to emulate (e.g., physician-assessed survival prognosis of x
+months) or that are clinically not relevant for the emulation of the
+trial (e.g., male patients should be willing to use barrier
 contraception), the study team will decide on key eligibility criteria
 for the emulation of the trial.
 
-We will additionally provide a definition on how exposures, outcomes and
-covariates are exactly defined and operationalized in each respective
+Additionally, we will provide conceptual and operationalized definitions
+on how exposures, outcomes and covariates are defined in each respective
 database. There will be special emphasis on how exposure, in context of
-their respective disease and line of therapy settings, and the OS
-outcome will be emulated. For all considered databases, the OS endpoint
-is typically a composite that, depending on the underlying database, can
-be derived from different sources comprising EHR documentation, social
-security death index, obituary and other linkages. Given that not all
-relevant sources that provide mortality data are synchronized and
-updated uniformly, sensitivity analyses with more conservative (i.e.,
-earlier) censoring dates will be considered for each trial emulation to
-mitigate the potential impact of ghost-time bias.\textsuperscript{26}
+disease and line of therapy settings, and the OS outcome are emulated.
+For all considered databases, OS is typically a composite measure that,
+depending on the underlying database, can be derived from different
+mortality sources (i.e., EHR documentation, social security death index,
+obituary and other linkages). Given that not all relevant sources that
+provide mortality data are synchronized and updated uniformly,
+sensitivity analyses with more conservative (i.e., earlier) censoring
+dates will be considered for each trial emulation to mitigate the
+potential impact of ghost-time bias.\textsuperscript{26}
 
 \paragraph{\texorpdfstring{\textbf{Descriptives and data
 exploration}}{Descriptives and data exploration}}\label{descriptives-and-data-exploration}
 
-Critical aspects when emulating oncology trials are the choice and
+One important aspect when emulating oncology trials is the choice and
 estimation of the appropriate estimand of interest.\textsuperscript{27}
 Particularly when emulating pivotal trials of paradigm-changing
 treatments, multiple aspects need to be considered such as the
-contemporaneity of the (historical) control cohort, the adoption rate of
-the novel intervention in routine care, the magnitude of the clinical
-treatment benefit and the rate in which (particularly patients in the
-control arm) discontinue or cross-over to the interventional treatment,
-which could lastly bias emulated treatment effects towards the null. To
-that end, comprehensive data explorations will be performed as part of
-the protocol development to contextualize these parameters and (if
-reported) draw comparisons to the emulated trial. Examples for such
-standard diagnostics are visualized in Figure~\ref{fig-initiators}. All
+contemporaneity of the control cohort, the adoption rate of the novel
+medical product in routine care, the magnitude of the clinical treatment
+benefit and the rate in which (particularly patients in the control arm)
+discontinue or cross-over to the interventional treatment, which could
+lastly bias emulated treatment effects towards the null. To that end,
+comprehensive data explorations will be performed as part of the
+protocol development to contextualize these parameters and (if reported)
+draw comparisons to the emulated trial. Examples for such standard
+diagnostics are visualized in Figure~\ref{fig-initiators}. All
 exploratory analyses will be conducted blinded towards the outcome to
 avoid influencing study design and analytic choices.
 
-The distribution of patient characteristics, stratified by exposure
-status, will be examined in Table 1's before and after applying
-eligibility criteria and contrasted with the distributions of patient
-characteristics of the original RCT. Initial propensity score matching
-or weighting methods will be applied to ensure that measured
-pre-exposure covariates can be balanced, exposure cohorts are
-conditionally exchangeable at baseline and resulting sample sizes are
-still sufficient after matching or weighting. At this stage, all
-exploratory analyses will be conducted blinded towards the outcome to
-not bias any study design and analytic choices based on known outcome
-information.
+The distribution of patient characteristics, by exposure status, will be
+examined using Table 1's before and after applying eligibility criteria
+and contrasted with the distributions of patient characteristics of the
+original RCT. Initial propensity score matching or weighting methods
+will be applied to ensure that measured pre-exposure covariates can be
+balanced, exposure cohorts are conditionally exchangeable at baseline
+and resulting sample sizes are still sufficient after matching or
+weighting. At this stage, all exploratory analyses will be conducted
+blinded towards the outcome to not bias any study design or analytic
+choices based on known outcome information.
 
 \paragraph{\texorpdfstring{\textbf{Statistical power
 considerations}}{Statistical power considerations}}\label{statistical-power-considerations}
 
-Causal analyses of observational data may not have the same
-pre-requisites in terms of formal hypothesis testing and statistical
-power as RCTs since the number of `recruited' patients is given and
-cannot be influenced.\textsuperscript{28} For this project, however, the
-emulations in EHR data must have at least equal power to the relevant
-trial for interpretation of the pre-specified agreements metrics between
-RCT and RWD results. Since the main outcome of interest is defined as
-time to all-cause mortality (OS), the estimation of the statistical
-power is driven by the number of events rather than the number of
-patients. To assess if the overall number of events, unstratified by
-exposure, is sufficient such that a significant difference can be
-detected based on the original RCT-reported hazard ratio (HR), the
-statistical power (1-\(\beta\)) will be estimated using Schoenfeld's
-sample-size formula for the proportional-hazards regression
+Causal analyses of observational data are often not designed with
+respect to formal hypothesis testing and statistical power in the same
+manner as RCTs since the number of `recruited' patients is limited by
+available data and cannot be influenced.\textsuperscript{28} For this
+project, however, the emulations in EHR data must have at least equal
+power to the relevant trial for interpretation of the pre-specified
+agreements metrics between RCT and RWD results. Since the main outcome
+of interest is defined as time to all-cause mortality (OS), the
+estimation of the statistical power is driven by the number of events
+rather than the number of patients. To assess if the overall number of
+events, unstratified by exposure, is sufficient such that a significant
+difference can be detected based on the original RCT-reported hazard
+ratio (HR), the statistical power (1-\(\beta\)) will be estimated using
+Schoenfeld's sample-size formula for the proportional-hazards regression
 model.\textsuperscript{29}
 
 \subsection{Agreement metrics}\label{sec-agreement-metrics}
@@ -707,50 +713,48 @@ to the cohort entry time.\textsuperscript{31}
 
 \subsubsection{Missing data}\label{missing-data}
 
-To establish an analytic cohort, key eligibility criteria will be
-applied in which patients with missing values in eligibility criteria
-are considered eligible in the respective attrition steps to allow for
-thorough missing data investigations. These missing data investigations
-will empirically assess assumptions on potential underlying missingness
+To establish an analytic cohort, missingness will be assessed in a first
+iteration across patients who meet all eligibility criteria, including
+those with missing values. These missing data investigations will
+empirically assess assumptions on potential underlying missingness
 mechanisms according to Rubin's classification of missing data (i.e.,
 missing completely at random {[}MCAR{]}, missing at random {[}MAR{]} and
-missing not at random {[}MNAR{]}).\textsuperscript{32} To that end, we
-will adopt a principled process on missing data that empirically
-evaluates different aspects across partially observed covariates based
-on three group diagnostics.\textsuperscript{33, 34} These diagnostics
-cover (1) comparisons of patients characteristics with and without an
-observed level of the partially observed covariate, (2) ability to
-predict missingness given observed data, and (3) assessments if outcomes
-between patients with a missing value are systematically different.
-Together with expert domain knowledge and assumptions about the
-underlying missing data structure through canonical causal
-diagrams,\textsuperscript{35} this will inform decisions regarding the
-in- or exclusion of patients with missing values in key eligibility
-criteria and potential sensitivity analyses to assess the robustness of
-these decisions.\textsuperscript{36}
+missing not at random {[}MNAR{]}).\textsuperscript{32} We will adopt a
+principled process on missing data that empirically evaluates different
+aspects across partially observed covariates based on three group
+diagnostics.\textsuperscript{33, 34} These diagnostics cover (1)
+comparisons of patients characteristics with and without an observed
+level of the partially observed covariate, (2) ability to predict
+missingness given observed data, and (3) assessments if outcomes between
+patients with a missing value are systematically different. Expert
+domain knowledge and assumptions about the underlying missing data
+structure through canonical causal diagrams\textsuperscript{35} will
+additionally inform decisions regarding the inclusion or exclusion of
+patients with missing values in key eligibility criteria and potential
+sensitivity analyses to assess the robustness of these
+decisions.\textsuperscript{36}
 
 While the MAR assumption is a strong assumption to hold across all
-considered covariates, it was shown that especially in the context of
-partially observed covariate data (as opposed to missing exposure and
+considered covariates, it has been shown that especially in the context
+of partially observed covariate data (as opposed to missing exposure and
 outcome data), only mechanisms in which a covariate causes its own
-missingness leads to critical bias (MNAR).\textsuperscript{35} Hence,
+missingness lead to critical bias (MNAR).\textsuperscript{35} Hence,
 methodologies which retain patients and give the potential to adjust for
 a broader set of prognostic factors (e.g., multiple
 imputation\textsuperscript{37} or doubly robust
 methods\textsuperscript{38}) may be preferred over complete case
 analyses.
 
-\subsubsection{Endpoints and propensity score
-analyses}\label{endpoints-and-propensity-score-analyses}
+\subsubsection{Outcome and propensity score
+analyses}\label{outcome-and-propensity-score-analyses}
 
 Due to its ubiquity in oncology trials, the primary parameter of
 interest in ENCORE will be defined as the marginal hazard ratio (HR)
-coefficient for the treatment comparison for time to all-cause mortality
-(OS).\textsuperscript{39} We will also consider alternative endpoints on
-an absolute risk scale such as median survival times, survival
-probabilities at pre-defined time points during
-follow-up\textsuperscript{40} and restricted mean survival times as
-secondary endpoints of interest.
+coefficient for the treatment comparison for OS.\textsuperscript{39} We
+will also consider alternative endpoints on an absolute risk scale such
+as median survival times, survival probabilities at pre-defined time
+points during follow-up\textsuperscript{40} and restricted mean survival
+times as secondary endpoints of interest.
 
 For the estimation of marginal treatment effects, we will employ
 propensity score methods to adjust for measured confounding between
@@ -770,9 +774,9 @@ sufficient estimation of the variance.\textsuperscript{42}
 To asses the balance of pre-exposure covariates after matching or
 weighting on each imputed dataset, the average SMD and corresponding
 minimum and maximum SMD range will be visualized (see example in
-Figure~\ref{fig-balance}). Covariate balance is typically considered at
-a SMD \textless{} 0.1.\textsuperscript{46} Further, we will compute the
-average post-matching or post-weighting
+Figure~\ref{fig-balance}). Covariate balance is often reasonably
+considered at a SMD \textless{} 0.1.\textsuperscript{46} Further, we
+will compute the average post-matching or post-weighting
 C-statistics.\textsuperscript{47} In addition, we will use a published
 prognostic score for OS\textsuperscript{41} as a balance measure to
 visually assess if the prognostic score is balanced between treatment
@@ -799,13 +803,13 @@ probability drops below 0.5 for the first time.
 \subsubsection{Sensitivity analyses}\label{sensitivity-analyses}
 
 With the goal to better understand which factors could influence a
-difference between RCT results and emulated trial results, a range of
-sensitivity analyses will be conducted. This can comprise decisions on
-the considered databases, calendar time period, covariate measurement
-(e.g., measurement windows or trade-offs on sensitivity versus
-specificity in measurements), approaches to missing data, selection of
-covariates for imputation and propensity score models and decisions on
-when to censor patients. All sensitivity analyses will be pre-specified
+difference between RCT results and emulated trial results, it is
+appropriate to conduct a range of sensitivity analyses. This can
+comprise decisions on the considered databases, calendar time period,
+covariate measurement (e.g., measurement windows or trade-offs on
+sensitivity versus specificity in measurements), approaches to missing
+data, selection of covariates for imputation and propensity score models
+and censoring decisions. All sensitivity analyses will be pre-specified
 in the study protocol and reported using appropriate visualizations such
 as forest plots.
 
@@ -825,30 +829,33 @@ Supplementary Material.
 Building on an established approach developed by the RCT DUPLICATE
 project\textsuperscript{9, 30}, the ENCORE project aims to emulate 12
 oncology trials using four oncology EHR data sources to inform the
-potential use of RWE for regulatory science in oncology. The project
+potential use of RWD for regulatory purposes in oncology. The project
 focuses on four common cancers and will evaluate the agreement of
 treatment effect estimates between RCTs and their respective emulations.
-Historically, administrative health claims databases have been the
-backbone of most research in RWE. With increasing access to EHR data and
-a maturing set of methodological approaches to draw causal inferences
-from such data, the ENCORE project is one of the first of its kind to
-evaluate when and how RWD can be used to deliver similar causal
-conclusions compared to RCTs in the field of oncology.
+Historically, administrative claims databases have been the predominant
+data source used to evaluate medical product safety and effectiveness in
+the postmarketing setting. With increasing access to EHR data, which are
+more fit for use in oncology than claims due to availability of clinical
+data elements, and a maturing set of methodological approaches for
+causal inference using such data, the ENCORE project is one of the first
+of its kind to evaluate when and how RWD can be used to evaluate similar
+causal conclusions compared to RCTs in the field of oncology.
 
 The RCT DUPLICATE initiative\textsuperscript{9, 30} identified multiple
-emulation challenges which we expect to also encounter in ENCORE. One
-particular aspect that we may not always be able to emulate is the exact
-distribution of patient characteristics of the trial population. This
-can be due to the lack of data granularity and comprehensiveness to
+emulation challenges that may be similar in ENCORE. One particular
+aspect that we may not always be able to emulate is the exact
+distribution of patient characteristics of the trial population, or that
+the comparability between these two populations may not be known. This
+can be due to the lack of RWD granularity and comprehensiveness to
 emulate relevant eligibility criteria or the fact that large pivotal
 trials in oncology are typically conducted in multiple countries
-worldwide, which we will not be able to mirror given that all considered
-databases reflect the US only. This may be a critical factor especially
-given that the pathophysiology, prognosis and factors that drive
-heterogeneous treatment outcomes of certain cancers differ between
-countries. For example, some cancer indications (e.g., GI cancers) or
-some genetic mutations (e.g., EGFR mutations in lung adenocarcinoma) are
-much more prevalent in Asian countries compared to the US or Europe.
+worldwide (all considered databases reflect the US only). This may be a
+factor especially given that the pathophysiology, prognosis, and factors
+that drive heterogeneous treatment outcomes of certain cancers differ
+between countries. For example, some cancer indications (e.g., GI
+cancers) or some genetic mutations (e.g., EGFR mutations in lung
+adenocarcinoma) are much more prevalent in certain geographic regions
+compared to the US.
 
 Another common challenge in the emulation of oncology trials is the
 estimation of an ``intention-to-treat'' (ITT) analogous estimand which
@@ -858,19 +865,19 @@ proportion of patients from the control to the intervention arm, or
 differences in subsequent therapy lines there may be estimand
 differences between trial and emulation.\textsuperscript{51} Although
 this is also a common challenge in the analysis of
-RCTs,\textsuperscript{27} treatment protocols in routine care are often
-observed to be less stringent compared to trials.\textsuperscript{8} In
-order to derive comparable estimands it is therefore crucial to
-understand and contextualize the proportion and timing of treatment
-switching and discontinuation in both the trial and its emulation.
+RCTs,\textsuperscript{27} treatment practice in routine clinical might
+be less stringent compared to trials.\textsuperscript{8} In order to
+derive comparable estimands it is therefore crucial to understand and
+contextualize the proportion and timing of treatment switching and
+discontinuation in both the trial and its emulation.
 
-This issue may be even augmented with more complex treatment protocols
-like combination regimens (e.g., CheckMate9LA) as compared to
-monotherapies (e.g., CheckMate057) since the ascertainment of the
-exposure needs to happen over a pre-defined time window which is often
-difficult to calibrate in RWD. As a result, exposure misclassification
-(due to overly ascertainment windows) and selection bias (due to overly
-long ascertainment windows) are common trade-offs in such scenarios.
+This issue may be amplified with more complex treatment protocols like
+combination regimens (e.g., CheckMate9LA) as compared to monotherapies
+(e.g., CheckMate057) since the ascertainment of the exposure needs to
+happen over a pre-defined time window which is often difficult to
+calibrate in RWD. As a result, exposure misclassification (due to overly
+ascertainment windows) and selection bias (due to overly long
+ascertainment windows) are common trade-offs in such scenarios.
 Alternative analytic approaches which target a per-protocol estimand,
 such as the clone-censor-weight design,\textsuperscript{52} may be
 viable options if the ITT estimand cannot be estimated due to the
@@ -881,10 +888,10 @@ introduced with these methods.
 \subsection{Conclusions}\label{conclusions}
 
 RWE based on fit-for-purpose data and principled, well-designed and
-reproducible studies may complement evidence coming from RCTs. Through a
+reproducible studies may complement evidence from RCTs. Through a
 systematic benchmarking approach, the ENCORE project will provide
 insights as to how measurement, design and analytic decisions influence
-bias and validity in oncological RWE studies.
+bias and validity in oncological non-interventional studies.
 
 \newpage{}
 
@@ -1224,7 +1231,7 @@ emulation in ENCORE.}
 
 \begin{table}[h]
 
-\caption{\label{tbl-metrics}Visualization of agreement metrics example.}
+\caption{\label{tbl-metrics}Example visualization of agreement metrics.}
 
 \centering{
 
