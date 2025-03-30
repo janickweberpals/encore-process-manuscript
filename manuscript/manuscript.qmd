@@ -158,7 +158,7 @@ Eligible trials had to fulfill the following basic criteria:
 
 -   Trial start in 2011 or later
 
--   Primary purpose was study treatment efficacy
+-   Primary purpose was to study treatment efficacy
 
 -   Overall survival must be one of the endpoints reported (either as hazard ratio or median overall survival time)
 
