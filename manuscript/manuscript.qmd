@@ -256,7 +256,7 @@ With the goal to better understand which factors could influence a difference be
 
 ### Reproducibility and consistency across emulation
 
-To ensure a transparent, reproducible and consistent way of deriving analytic cohorts and performing statistical analyses across trial emulations, we developed an internal R package `encore.io` with parameterized functions. Detailed documentation can be found in the Supplementary Material.
+To ensure a transparent, reproducible and consistent way of deriving analytic cohorts and performing statistical analyses across trial emulations, we developed two R packages. The first package, `encore.io,` streamlines the query of analytic cohorts and measurement of covariates and outcomes using parameterized functions. Due to the blinding of databases used for ENCORE, this package cannot be made public but we provide a comprehensive and detailed documentation for each function in the Supplementary Material. A second open-source R package, `encore.analytics`, will then facilitate the complex multi-step workflows of multiple imputation, propensity score matching and weighting and estimating pooled marginal treatment effects and Kaplan-Meier curves along with other established statistical R packages.[@anesrake; @MatchThem; @survival; @encore.analytics; @gtsummary; @ggsurvfit] Simulated examples with code that illustrate the analytic workflows described in this manuscript are available in the online Supplementary Material at <https://janickweberpals.github.io/imputation-ps-workflows/> and can be reproduced via the `encore.analytics` R package (<https://github.com/janickweberpals/encore.analytics/>).
 
 {{< pagebreak >}}
 
