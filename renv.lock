@@ -1653,7 +1653,7 @@
     },
     "survival": {
       "Package": "survival",
-      "Version": "3.5-8",
+      "Version": "3.8-3",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
@@ -1665,7 +1665,7 @@
         "stats",
         "utils"
       ],
-      "Hash": "184d7799bca4ba8c3be72ea396f4b9a3"
+      "Hash": "fe42836742a4f065b3f3f5de81fccab9"
     },
     "tibble": {
       "Package": "tibble",
