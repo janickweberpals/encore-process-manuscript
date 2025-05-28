@@ -1,4 +1,5 @@
 % Options for packages loaded elsewhere
+% Options for packages loaded elsewhere
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
 \PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
@@ -7,21 +8,22 @@
   letterpaper,
   DIV=11,
   numbers=noendperiod]{scrartcl}
-
+\usepackage{xcolor}
 \usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
   \usepackage{textcomp} % provide euro and other symbols
 \else % if luatex or xetex
-  \usepackage{unicode-math}
+  \usepackage{unicode-math} % this also loads fontspec
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
 \fi
 \usepackage{lmodern}
-\ifPDFTeX\else  
-    % xetex/luatex font selection
+\ifPDFTeX\else
+  % xetex/luatex font selection
 \fi
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
@@ -39,16 +41,6 @@
 }{% if KOMA class
   \KOMAoptions{parskip=half}}
 \makeatother
-\usepackage{xcolor}
-\ifLuaTeX
-  \usepackage{luacolor}
-  \usepackage[soul]{lua-ul}
-\else
-  \usepackage{soul}
-  
-\fi
-\setlength{\emergencystretch}{3em} % prevent overfull lines
-\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
 % Make \paragraph and \subparagraph free-standing
 \makeatletter
 \ifx\paragraph\undefined\else
@@ -74,8 +66,7 @@
 \makeatother
 
 
-\providecommand{\tightlist}{%
-  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}\usepackage{longtable,booktabs,array}
+\usepackage{longtable,booktabs,array}
 \usepackage{calc} % for calculating minipage widths
 % Correct order of tables after \paragraph or \subparagraph
 \usepackage{etoolbox}
@@ -100,6 +91,14 @@
 % Set default figure placement to htbp
 \def\fps@figure{htbp}
 \makeatother
+
+\ifLuaTeX
+  \usepackage{luacolor}
+  \usepackage[soul]{lua-ul}
+\else
+  \usepackage{soul}
+\fi
+
 % definitions for citeproc citations
 \NewDocumentCommand\citeproctext{}{}
 \NewDocumentCommand\citeproc{mm}{%
@@ -133,6 +132,18 @@
 \newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{\strut#1\strut}}
 \newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
 \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+
+
+
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+
+
+ 
+
 
 \KOMAoption{captions}{tableheading,figureheading}
 \makeatletter
@@ -176,11 +187,9 @@
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
 \@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
 \makeatother
-
 \usepackage{bookmark}
-
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\urlstyle{same} % disable monospaced font for URLs
+\urlstyle{same}
 \hypersetup{
   pdftitle={A Process for Emulating Comparative Oncology Trials with Real-world Evidence Studies (ENCORE): Process Development and Methodological Considerations for Oncology Real-World Data},
   colorlinks=true,
@@ -196,7 +205,6 @@ Real-world Evidence Studies (ENCORE): Process Development and
 Methodological Considerations for Oncology Real-World Data}
 \author{}
 \date{}
-
 \begin{document}
 \maketitle
 
@@ -257,7 +265,7 @@ Email: \url{SWANG1@BWH.HARVARD.EDU}
 
 \ul{\textbf{Article type:}} Review
 
-\ul{\textbf{Manuscript word count:}} 4,200 words / 8,000 words
+\ul{\textbf{Manuscript word count:}} 4,509 words / 8,000 words
 
 \ul{\textbf{Abstract word count:}} 224 words / 250 words
 
@@ -265,7 +273,8 @@ Email: \url{SWANG1@BWH.HARVARD.EDU}
 
 \ul{\textbf{Figures:}} 3
 
-\ul{\textbf{Supplementary material:}} Supplementary figures and material
+\ul{\textbf{Supplementary material:}} Supplementary figures, tables and
+material
 
 \ul{\textbf{Short running title}}: Emulation of Comparative Oncology
 Trials with Real-world Evidence (ENCORE)
@@ -296,14 +305,17 @@ with their institutional compliance policies.
 \ul{\textbf{Data sharing statement:}} No data was analyzed as part of
 this project.
 
-\ul{\textbf{Analytic code sharing statement:}} Code to reproduce this
-manuscript, including all figures and tables, can be found at
-\url{https://github.com/janickweberpals/encore-process-manuscript}.
+\ul{\textbf{Analytic code sharing statement:}} Simulated examples and
+code to implement analytic workflows described in this manuscript are
+illustrated at
+\url{https://janickweberpals.github.io/imputation-ps-workflows/} and can
+be reproduced via the \texttt{encore.analytics} R package
+(\url{https://github.com/janickweberpals/encore.analytics/}).
 
 \ul{\textbf{\emph{Proposed target journals:}}} \emph{CPT =\textgreater{}
 JCO CCI =\textgreater{} \ldots{}}
 
-\emph{Manuscript last updated: 2025-03-30 17:24:56.551312}
+\emph{Manuscript last updated: 2025-05-28 16:51:13.630823}
 
 \newpage{}
 
@@ -505,29 +517,33 @@ automated fashion, our final criterion was an assessment of emulation
 feasibility and clinical relevance. This criterion involved extensive
 human review. The fundamental points considered in this step include an
 initial feasibility assessment of the data fitness,\textsuperscript{19}
-including assessment of whether critical eligibility criteria (e.g.,
+involving an assessment of whether critical eligibility criteria (e.g.,
 biomarker status) including prognostic factors (e.g., ECOG performance
-score) are measurable and whether preliminary study size is reasonable.
-Lastly, trial candidates were ranked and shortlisted into primary and
-runner-up candidates based on their clinical and regulatory relevance.
+score) are measurable, and whether preliminary study size based on a
+rough estimation of the number of patients observed in the data with the
+combination of treatment regimen and line of treatment is reasonable for
+shortlisting the trial. Lastly, trial candidates were ranked and
+shortlisted into primary and runner-up candidates based on their
+clinical and regulatory relevance.
 
 A list of tentative, shortlisted primary candidates is presented in
-Table~\ref{tbl-rcts} and the corresponding selection process is
-illustrated in the CONSORT diagrams (Supplementary Figures 1-4).
-Naturally, the majority of trials cover advanced (locally advanced,
-inoperable, recurrent/progressive disease) or metastatic cancer
-populations because a large proportion of drug development efforts have
-recently focused on these settings. A key objective that we aim to
-explore with the selected trials is to achieve a better understanding
-how different disease settings (early, late), line settings
-({[}neo{]}adjuvant, first line, advanced lines of therapy), therapy
-protocols (monotherapy, combination therapy) and clinical
+Table~\ref{tbl-rcts}. The corresponding selection process is illustrated
+in the CONSORT diagrams (\textbf{Supplementary Figures 1-4}) and runner
+up candidate trials are listed in \textbf{Supplementary Table 1}.
+Naturally, the majority of shortliested trials cover advanced (locally
+advanced, inoperable, recurrent/progressive disease) or metastatic
+cancer populations because a large proportion of drug development
+efforts have recently focused on these settings. A key objective that we
+aim to explore with the selected trials is to achieve a better
+understanding how different disease settings (early, late), line
+settings ({[}neo{]}adjuvant, first line, advanced lines of therapy),
+therapy protocols (monotherapy, combination therapy) and clinical
 characteristics (all-comer versus complex genetic or immunological
 signatures) can be emulated using RWD. If more thorough feasibility
-assessments suggest that the threat of bias from mis-measurement of key
-study parameters or residual confounding remains high, or that the study
-size is not sufficient, then runner-up candidate trials will be
-considered instead.
+assessments after applying all relevant eligibility criteria suggest
+that the threat of bias from mis-measurement of key study parameters or
+residual confounding remains high, or that the study size is not
+sufficient, then runner-up candidate trials will be considered instead.
 
 \subsection{Databases}\label{databases}
 
@@ -569,6 +585,29 @@ RCT and specify which target OS estimates will be used for agreement
 metric evaluation (see Section~\ref{sec-agreement-metrics}). All
 eligibility criteria will be extracted based on publications, publicly
 available protocols, and statistical analysis plans of the selected RCT.
+
+\textbf{Emulating the RCT estimand}
+
+One important aspect when emulating oncology trials is the choice and
+estimation of the appropriate estimand of interest.\textsuperscript{26}
+In prior RCT-DUPLICATE efforts, a ``while on treatment'' strategy was
+chosen for database studies that were designed to emulate trials where
+the primary trial analysis was intention-to-treat (e.g., a ``treatment
+policy'' estimand). This estimand was chosen to mimic the high adherence
+typically observed in large cardiovascular clinical trials in the
+context of low adherence in clinical practice. However, a ``while on
+treatment'' estimand would be inappropriate when emulating oncology
+trials, not only because of highly informative censoring, but also
+because OS outcome analyses in oncology are typically ``treatment
+policy'' estimands that allow crossover.\textsuperscript{27} We plan to
+focus on ``treatment policy'' estimands for the primary analyses in our
+trial emulations. However, allowing crossover can dilute treatment
+effects, moving point estimates toward the null. Therefore, differences
+in cross-over and discontinuation rates between the trial and emulation
+may still contribute to estimand differences. Recognizing these
+practical challenges, we will carefully characterize the patterns of
+discontinuation or cross-over in both the trials and the database
+studies designed to emulate them.
 
 \subsubsection{Emulation feasibility}\label{emulation-feasibility}
 
@@ -617,24 +656,22 @@ obituary and other linkages). Given that not all relevant sources that
 provide mortality data are synchronized and updated uniformly,
 sensitivity analyses with more conservative (i.e., earlier) censoring
 dates will be considered for each trial emulation to mitigate the
-potential impact of ghost-time bias.\textsuperscript{26}
+potential impact of ghost-time bias.\textsuperscript{28}
 
 \paragraph{\texorpdfstring{\textbf{Descriptives and data
 exploration}}{Descriptives and data exploration}}\label{descriptives-and-data-exploration}
 
-One important aspect when emulating oncology trials is the choice and
-estimation of the appropriate estimand of interest.\textsuperscript{27}
 Particularly when emulating pivotal trials of paradigm-changing
-treatments, multiple aspects need to be considered such as the
+treatments, multiple aspects need to be considered, such as the
 contemporaneity of the control cohort, the adoption rate of the novel
 medical product in routine care, the magnitude of the clinical treatment
-benefit and the rate in which (particularly patients in the control arm)
-discontinue or cross-over to the interventional treatment, which could
-lastly bias emulated treatment effects towards the null. To that end,
-comprehensive data explorations will be performed as part of the
-protocol development to contextualize these parameters and (if reported)
-draw comparisons to the emulated trial. Examples for such standard
-diagnostics are visualized in Figure~\ref{fig-initiators}. All
+benefit and the rate in which patients discontinue or cross-over, which
+could dilute effect estimates.
+
+To that end, comprehensive data explorations will be performed as part
+of the protocol development to contextualize these parameters and (if
+reported) draw comparisons to the emulated trial. Examples for such
+standard diagnostics are visualized in Figure~\ref{fig-initiators}. All
 exploratory analyses will be conducted blinded towards the outcome to
 avoid influencing study design and analytic choices.
 
@@ -655,7 +692,7 @@ considerations}}{Statistical power considerations}}\label{statistical-power-cons
 Causal analyses of observational data are often not designed with
 respect to formal hypothesis testing and statistical power in the same
 manner as RCTs since the number of `recruited' patients is limited by
-available data and cannot be influenced.\textsuperscript{28} For this
+available data and cannot be influenced.\textsuperscript{29} For this
 project, however, the emulations in EHR data must have at least equal
 power to the relevant trial for interpretation of the pre-specified
 agreements metrics between RCT and RWD results. Since the main outcome
@@ -666,13 +703,13 @@ events, unstratified by exposure, is sufficient such that a significant
 difference can be detected based on the original RCT-reported hazard
 ratio (HR), the statistical power (1-\(\beta\)) will be estimated using
 Schoenfeld's sample-size formula for the proportional-hazards regression
-model.\textsuperscript{29}
+model.\textsuperscript{30}
 
 \subsection{Agreement metrics}\label{sec-agreement-metrics}
 
 To formally compare treatment effects between RCTs and their respective
 emulations, we will adapt the approach of the RCT-DUPLICATE
-project.\textsuperscript{9, 30} That is, for the primary endpoint of
+project.\textsuperscript{9, 31} That is, for the primary endpoint of
 interest (HR for OS and corresponding 95\% confidence intervals), we
 will derive three qualitative agreement metrics: statistical agreement,
 estimate agreement and agreement based on the standardized mean
@@ -718,7 +755,7 @@ analysis}\label{study-design-and-statistical-analysis}
 The study design for each trial emulation will be visualized as part of
 the protocol using a graphical depiction of the exact measurement
 windows of eligibility criteria, washout periods and covariates relative
-to the cohort entry time.\textsuperscript{31}
+to the cohort entry time.\textsuperscript{32}
 
 \subsubsection{Missing data}\label{missing-data}
 
@@ -728,30 +765,30 @@ those with missing values. These missing data investigations will
 empirically assess assumptions on potential underlying missingness
 mechanisms according to Rubin's classification of missing data (i.e.,
 missing completely at random {[}MCAR{]}, missing at random {[}MAR{]} and
-missing not at random {[}MNAR{]}).\textsuperscript{32} We will adopt a
+missing not at random {[}MNAR{]}).\textsuperscript{33} We will adopt a
 principled process on missing data that empirically evaluates different
 aspects across partially observed covariates based on three group
-diagnostics.\textsuperscript{33, 34} These diagnostics cover (1)
+diagnostics.\textsuperscript{34, 35} These diagnostics cover (1)
 comparisons of patients characteristics with and without an observed
 level of the partially observed covariate, (2) ability to predict
 missingness given observed data, and (3) assessments if outcomes between
 patients with a missing value are systematically different. Expert
 domain knowledge and assumptions about the underlying missing data
-structure through canonical causal diagrams\textsuperscript{35} will
+structure through canonical causal diagrams\textsuperscript{36} will
 additionally inform decisions regarding the inclusion or exclusion of
 patients with missing values in key eligibility criteria and potential
 sensitivity analyses to assess the robustness of these
-decisions.\textsuperscript{36}
+decisions.\textsuperscript{37}
 
 While the MAR assumption is a strong assumption to hold across all
 considered covariates, it has been shown that especially in the context
 of partially observed covariate data (as opposed to missing exposure and
 outcome data), only mechanisms in which a covariate causes its own
-missingness lead to critical bias (MNAR).\textsuperscript{35} Hence,
+missingness lead to critical bias (MNAR).\textsuperscript{36} Hence,
 methodologies which retain patients and give the potential to adjust for
 a broader set of prognostic factors (e.g., multiple
-imputation\textsuperscript{37} or doubly robust
-methods\textsuperscript{38}) may be preferred over complete case
+imputation\textsuperscript{38} or doubly robust
+methods\textsuperscript{39}) may be preferred over complete case
 analyses.
 
 \subsubsection{Outcome and propensity score
@@ -759,49 +796,49 @@ analyses}\label{outcome-and-propensity-score-analyses}
 
 Due to its ubiquity in oncology trials, the primary parameter of
 interest in ENCORE will be defined as the marginal hazard ratio (HR)
-coefficient for the treatment comparison for OS.\textsuperscript{39} We
+coefficient for the treatment comparison for OS.\textsuperscript{40} We
 will also consider alternative endpoints on an absolute risk scale such
 as median survival times, survival probabilities at pre-defined time
-points during follow-up\textsuperscript{40} and restricted mean survival
+points during follow-up\textsuperscript{41} and restricted mean survival
 times as secondary endpoints of interest.
 
 For the estimation of marginal treatment effects, we will employ
 propensity score methods to adjust for measured confounding between
 treatment arms. The selection of important prognostic covariates will be
 based on expert clinical knowledge and published literature on
-prognostic scores in oncology.\textsuperscript{41} The implementation of
+prognostic scores in oncology.\textsuperscript{42} The implementation of
 propensity scores in combination with multiple imputation will follow
 the `\emph{within}' methodology as described by Leyrat et
-al.\textsuperscript{42, 43} That is, propensity score matching or
+al.\textsuperscript{43, 44} That is, propensity score matching or
 weighting will be applied to each imputed dataset. The marginal
 treatment effect will then be estimated in each imputed and matched or
 weighted dataset separately and pooled into a final estimate following
-Rubin's rule.\textsuperscript{44, 45} This approach has been shown to
+Rubin's rule.\textsuperscript{45, 46} This approach has been shown to
 lead to unbiased estimates across different simulated scenarios with a
-sufficient estimation of the variance.\textsuperscript{42}
+sufficient estimation of the variance.\textsuperscript{43}
 
 To asses the balance of pre-exposure covariates after matching or
 weighting on each imputed dataset, the average SMD and corresponding
 minimum and maximum SMD range will be visualized (see example in
 Figure~\ref{fig-balance}). Covariate balance is often reasonably
-considered at a SMD \textless{} 0.1.\textsuperscript{46} Further, we
+considered at a SMD \textless{} 0.1.\textsuperscript{47} Further, we
 will compute the average post-matching or post-weighting
-C-statistics.\textsuperscript{47} In addition, we will use a published
-prognostic score for OS\textsuperscript{41} as a balance measure to
+C-statistics.\textsuperscript{48} In addition, we will use a published
+prognostic score for OS\textsuperscript{42} as a balance measure to
 visually assess if the prognostic score is balanced between treatment
 arms after propensity score matching or weighting as this approach was
 described to show the highest correlations with bias compared with other
 balance measures and not affected by model
-misspecification.\textsuperscript{48}
+misspecification.\textsuperscript{49}
 
 Similarly, survival probabilities for individual time points will be
 estimated in each imputed and propensity score matched or weighted
-dataset according to the Kaplan-Meier method.\textsuperscript{40} Since
+dataset according to the Kaplan-Meier method.\textsuperscript{41} Since
 survival probabilities typically do not follow normal distributions
 which are required to apply Rubin's rule, these will be transformed
 through a complementary log-log transformation \(log(-log(1-pr(surv)))\)
 with \(pr(surv)\) denoting the survival probability at a given time
-during follow-up.\textsuperscript{49, 50} The transformed survival
+during follow-up.\textsuperscript{50, 51} The transformed survival
 probabilities are then pooled across imputed datasets and individual
 time points following Rubin's rule and back-transformed via
 \(1-exp(-exp(qbar))\) with \(qbar\) denoting the pooled survival
@@ -827,16 +864,29 @@ emulation}\label{reproducibility-and-consistency-across-emulation}
 
 To ensure a transparent, reproducible and consistent way of deriving
 analytic cohorts and performing statistical analyses across trial
-emulations, we developed an internal R package \texttt{encore.io} with
-parameterized functions. Detailed documentation can be found in the
-Supplementary Material.
+emulations, we developed two R packages. The first package,
+\texttt{encore.io,} streamlines the query of analytic cohorts and
+measurement of covariates and outcomes using parameterized functions.
+Due to the blinding of databases used for ENCORE, this package cannot be
+made public but we provide a comprehensive and detailed documentation
+for each function in the Supplementary Material. A second open-source R
+package, \texttt{encore.analytics}, will then facilitate the complex
+multi-step workflows of multiple imputation, propensity score matching
+and weighting and estimating pooled marginal treatment effects and
+Kaplan-Meier curves along with other established statistical R
+packages.\textsuperscript{52--57} Simulated examples with code that
+illustrate the analytic workflows described in this manuscript are
+available in the online Supplementary Material at
+\url{https://janickweberpals.github.io/imputation-ps-workflows/} and can
+be reproduced via the \texttt{encore.analytics} R package
+(\url{https://github.com/janickweberpals/encore.analytics/}).
 
 \newpage{}
 
 \section{Discussion}\label{discussion}
 
 Building on an established approach developed by the RCT DUPLICATE
-project\textsuperscript{9, 30}, the ENCORE project aims to emulate 12
+project\textsuperscript{9, 31}, the ENCORE project aims to emulate 12
 oncology trials using four oncology EHR data sources to inform the
 potential use of RWD for regulatory purposes in oncology. The project
 focuses on four common cancers and will evaluate the agreement of
@@ -850,7 +900,7 @@ causal inference using such data, the ENCORE project is one of the first
 of its kind to evaluate when and how RWD can be used to evaluate similar
 causal conclusions compared to RCTs in the field of oncology.
 
-The RCT DUPLICATE initiative\textsuperscript{9, 30} identified multiple
+The RCT DUPLICATE initiative\textsuperscript{9, 31} identified multiple
 emulation challenges that may be similar in ENCORE. One particular
 aspect that we may not always be able to emulate is the exact
 distribution of patient characteristics of the trial population, or that
@@ -867,18 +917,18 @@ adenocarcinoma) are much more prevalent in certain geographic regions
 compared to the US.
 
 Another common challenge in the emulation of oncology trials is the
-estimation of an ``intention-to-treat'' (ITT) analogous estimand which
-is usually the primary estimand reported in oncology RCTs. Due to
-intercurrent events, such as non-adherence, crossover of a high
-proportion of patients from the control to the intervention arm, or
+estimation of an ``treatment policy''/``intention-to-treat'' analogous
+estimand which is usually the primary estimand reported in oncology
+RCTs. Due to intercurrent events, such as non-adherence, crossover of a
+high proportion of patients from the control to the intervention arm, or
 differences in subsequent therapy lines there may be estimand
-differences between trial and emulation.\textsuperscript{51} Although
+differences between trial and emulation.\textsuperscript{27} Although
 this is also a common challenge in the analysis of
-RCTs,\textsuperscript{27} treatment practice in routine clinical might
-be less stringent compared to trials.\textsuperscript{8} In order to
-derive comparable estimands it is therefore crucial to understand and
-contextualize the proportion and timing of treatment switching and
-discontinuation in both the trial and its emulation.
+RCTs,\textsuperscript{26} treatment practice in routine clinical
+practice might be less stringent compared to trials.\textsuperscript{8}
+In order to derive comparable estimands it is therefore crucial to
+understand and contextualize the proportion and timing of treatment
+switching and discontinuation in both the trial and its emulation.
 
 This issue may be amplified with more complex treatment protocols like
 combination regimens (e.g., CheckMate9LA) as compared to monotherapies
@@ -888,7 +938,7 @@ calibrate in RWD. As a result, exposure misclassification (due to overly
 ascertainment windows) and selection bias (due to overly long
 ascertainment windows) are common trade-offs in such scenarios.
 Alternative analytic approaches which target a per-protocol estimand,
-such as the clone-censor-weight design,\textsuperscript{52} may be
+such as the clone-censor-weight design,\textsuperscript{58} may be
 viable options if the ITT estimand cannot be estimated due to the
 aforementioned parameters, provided that necessary covariate
 measurements are available to account for the artificial censoring
@@ -1056,148 +1106,177 @@ target trial prevents immortal time bias and other self-inflicted
 injuries in observational analyses}. Journal of clinical epidemiology
 79:70--75, 2016
 
-\bibitem[\citeproctext]{ref-meyer2020open}
-\textbf{26}. Meyer A-M, Davies J, Taylor M, et al: Open cohorts and
-ghost-time bias in real world data, in PHARMACOEPIDEMIOLOGY AND DRUG
-SAFETY. WILEY 111 RIVER ST, HOBOKEN 07030-5774, NJ USA, 2020, pp
-426--426
-
 \bibitem[\citeproctext]{ref-rufibach2018}
-\textbf{27}. Rufibach K: Treatment effect quantification for
+\textbf{26}. Rufibach K: Treatment effect quantification for
 time{-}to{-}event endpoints{\textendash}Estimands, analysis strategies,
 and beyond {[}Internet{]}. Pharmaceutical Statistics 18:145--165,
 2018Available from: \url{http://dx.doi.org/10.1002/pst.1917}
 
+\bibitem[\citeproctext]{ref-manitz2022estimands}
+\textbf{27}. Manitz J, Kan-Dobrosky N, Buchner H, et al: Estimands for
+overall survival in clinical trials with treatment switching in
+oncology. Pharmaceutical Statistics 21:150--162, 2022
+
+\bibitem[\citeproctext]{ref-meyer2020open}
+\textbf{28}. Meyer A-M, Davies J, Taylor M, et al: Open cohorts and
+ghost-time bias in real world data, in PHARMACOEPIDEMIOLOGY AND DRUG
+SAFETY. WILEY 111 RIVER ST, HOBOKEN 07030-5774, NJ USA, 2020, pp
+426--426
+
 \bibitem[\citeproctext]{ref-hernan2022causal}
-\textbf{28}. Hernán MA: Causal analyses of existing databases: No power
+\textbf{29}. Hernán MA: Causal analyses of existing databases: No power
 calculations required. Journal of clinical epidemiology 144:203--205,
 2022
 
 \bibitem[\citeproctext]{ref-schoenfeld1981asymptotic}
-\textbf{29}. Schoenfeld D: The asymptotic properties of nonparametric
+\textbf{30}. Schoenfeld D: The asymptotic properties of nonparametric
 tests for comparing survival distributions. Biometrika 68:316--319, 1981
 
 \bibitem[\citeproctext]{ref-franklin2020nonrandomized}
-\textbf{30}. Franklin JM, Pawar A, Martin D, et al: Nonrandomized
+\textbf{31}. Franklin JM, Pawar A, Martin D, et al: Nonrandomized
 real-world evidence to support regulatory decision making: Process for a
 randomized trial replication project. Clinical Pharmacology \&
 Therapeutics 107:817--826, 2020
 
 \bibitem[\citeproctext]{ref-schneeweiss2019graphical}
-\textbf{31}. Schneeweiss S, Rassen JA, Brown JS, et al: Graphical
+\textbf{32}. Schneeweiss S, Rassen JA, Brown JS, et al: Graphical
 depiction of longitudinal study designs in health care databases. Annals
 of internal medicine 170:398--406, 2019
 
 \bibitem[\citeproctext]{ref-rubin1976inference}
-\textbf{32}. Rubin DB: Inference and missing data. Biometrika
+\textbf{33}. Rubin DB: Inference and missing data. Biometrika
 63:581--592, 1976
 
 \bibitem[\citeproctext]{ref-weberpals2024smdi}
-\textbf{33}. Weberpals J, Raman SR, Shaw PA, et al: Smdi: An r package
+\textbf{34}. Weberpals J, Raman SR, Shaw PA, et al: Smdi: An r package
 to perform structural missing data investigations on partially observed
 confounders in real-world evidence studies. JAMIA open 7:ooae008, 2024
 
 \bibitem[\citeproctext]{ref-weberpals2024}
-\textbf{34}. Weberpals J, Raman SR, Shaw PA, et al: A principled
+\textbf{35}. Weberpals J, Raman SR, Shaw PA, et al: A principled
 approach to characterize and analyze partially observed confounder data
 from electronic health records {[}Internet{]}. Clinical Epidemiology
 16:329--343, 2024Available
-from:\href{\%20\%0A\%20\%20\%20\%20\%0A\%20\%20\%20\%20\%0A\%20\%20\%20\%20\%20\%20\%20\%20https://www.tandfonline.com/doi/abs/10.2147/CLEP.S436131\%0A\%20\%20\%20\%20\%0A\%0A}{
-https://www.tandfonline.com/doi/abs/10.2147/CLEP.S436131 }
+from:\href{\%20\%0A\%20\%20\%20\%20\%0A\%20\%20\%20\%20\%0A\%20\%20\%20\%20\%20\%20\%20\%20https://www.tandfonline.com/doi/abs/10.2147/CLEP.S436131\%0A\%20\%20\%20\%20\%0A\%0A}{https://www.tandfonline.com/doi/abs/10.2147/CLEP.S436131
+}
 
 \bibitem[\citeproctext]{ref-moreno2018canonical}
-\textbf{35}. Moreno-Betancur M, Lee KJ, Leacy FP, et al: Canonical
+\textbf{36}. Moreno-Betancur M, Lee KJ, Leacy FP, et al: Canonical
 causal diagrams to guide the treatment of missing data in epidemiologic
 studies. American journal of epidemiology 187:2705--2715, 2018
 
 \bibitem[\citeproctext]{ref-tompsett2018use}
-\textbf{36}. Tompsett DM, Leacy F, Moreno-Betancur M, et al: On the use
+\textbf{37}. Tompsett DM, Leacy F, Moreno-Betancur M, et al: On the use
 of the not-at-random fully conditional specification (NARFCS) procedure
 in practice. Statistics in medicine 37:2338--2353, 2018
 
 \bibitem[\citeproctext]{ref-weberpals2024hdmi}
-\textbf{37}. Weberpals J, Shaw PA, Lin KJ, et al: High-dimensional
+\textbf{38}. Weberpals J, Shaw PA, Lin KJ, et al: High-dimensional
 multiple imputation (HDMI) for partially observed confounders including
 natural language processing-derived auxiliary covariates {[}Internet{]}.
 American Journal of Epidemiology, 2025Available from:
 \url{https://arxiv.org/abs/2405.10925}
 
 \bibitem[\citeproctext]{ref-Shaw2024}
-\textbf{38}. Shaw CK P., Williamson BD: Assessing treatment effects in
+\textbf{39}. Shaw CK P., Williamson BD: Assessing treatment effects in
 observational data with missing confounders: A comparative study of
 practical doubly-robust and traditional missing data methods
 {[}Internet{]}. GitHub repository, 2024Available from:
 \url{https://github.com/PamelaShaw/Missing-Confounders-Methods}
 
 \bibitem[\citeproctext]{ref-cox1972regression}
-\textbf{39}. Cox DR: Regression models and life-tables. Journal of the
+\textbf{40}. Cox DR: Regression models and life-tables. Journal of the
 royal statistical society. Series B (Methodological) 34:187--220, 1972
 
 \bibitem[\citeproctext]{ref-kaplan1958nonparametric}
-\textbf{40}. Kaplan EL, Meier P: Nonparametric estimation from
+\textbf{41}. Kaplan EL, Meier P: Nonparametric estimation from
 incomplete observations. Journal of the American statistical association
 53:457--481, 1958
 
 \bibitem[\citeproctext]{ref-becker2020enhanced}
-\textbf{41}. Becker T, Weberpals J, Jegg A, et al: An enhanced
+\textbf{42}. Becker T, Weberpals J, Jegg A, et al: An enhanced
 prognostic score for overall survival of patients with cancer derived
 from a large real-world cohort. Annals of Oncology 31:1561--1568, 2020
 
 \bibitem[\citeproctext]{ref-leyrat2019propensity}
-\textbf{42}. Leyrat C, Seaman SR, White IR, et al: Propensity score
+\textbf{43}. Leyrat C, Seaman SR, White IR, et al: Propensity score
 analysis with partially observed covariates: How should multiple
 imputation be used? Statistical methods in medical research 28:3--19,
 2019
 
 \bibitem[\citeproctext]{ref-pishgar2020matchthem}
-\textbf{43}. Pishgar F, Greifer N, Leyrat C, et al: MatchThem:: Matching
+\textbf{44}. Pishgar F, Greifer N, Leyrat C, et al: MatchThem:: Matching
 and weighting after multiple imputation. arXiv preprint arXiv:200911772,
 2020
 
 \bibitem[\citeproctext]{ref-rubin2018multiple}
-\textbf{44}. Rubin DB: Multiple imputation, in Flexible imputation of
+\textbf{45}. Rubin DB: Multiple imputation, in Flexible imputation of
 missing data, second edition. Chapman; Hall/CRC, 2018, pp 29--62
 
 \bibitem[\citeproctext]{ref-van2011mice}
-\textbf{45}. Van Buuren S, Groothuis-Oudshoorn K: Mice: Multivariate
+\textbf{46}. Van Buuren S, Groothuis-Oudshoorn K: Mice: Multivariate
 imputation by chained equations in r. Journal of statistical software
 45:1--67, 2011
 
 \bibitem[\citeproctext]{ref-austin2009balance}
-\textbf{46}. Austin PC: Balance diagnostics for comparing the
+\textbf{47}. Austin PC: Balance diagnostics for comparing the
 distribution of baseline covariates between treatment groups in
 propensity-score matched samples. Statistics in medicine 28:3083--3107,
 2009
 
 \bibitem[\citeproctext]{ref-franklin2014metrics}
-\textbf{47}. Franklin JM, Rassen JA, Ackermann D, et al: Metrics for
+\textbf{48}. Franklin JM, Rassen JA, Ackermann D, et al: Metrics for
 covariate balance in cohort studies of causal effects. Statistics in
 medicine 33:1685--1699, 2014
 
 \bibitem[\citeproctext]{ref-stuart2013prognostic}
-\textbf{48}. Stuart EA, Lee BK, Leacy FP: Prognostic score--based
+\textbf{49}. Stuart EA, Lee BK, Leacy FP: Prognostic score--based
 balance measures can be a useful diagnostic for propensity score methods
 in comparative effectiveness research. Journal of clinical epidemiology
 66:S84--S90, 2013
 
 \bibitem[\citeproctext]{ref-warwick28685}
-\textbf{49}. Marshall A(Andrea), Billingham LJ, Bryan S: Can we afford
+\textbf{50}. Marshall A(Andrea), Billingham LJ, Bryan S: Can we afford
 to ignore missing data in cost-effectiveness analyses? {[}Internet{]}.
 European Journal of Health Economics Vol.10:1--3, 2009Available from:
 \url{http://dx.doi.org/10.1007/s10198-008-0129-y}
 
 \bibitem[\citeproctext]{ref-morisot2015prostate}
-\textbf{50}. Morisot A, Bessaoud F, Landais P, et al: Prostate cancer:
+\textbf{51}. Morisot A, Bessaoud F, Landais P, et al: Prostate cancer:
 Net survival and cause-specific survival rates after multiple
 imputation. BMC medical research methodology 15:1--14, 2015
 
-\bibitem[\citeproctext]{ref-manitz2022estimands}
-\textbf{51}. Manitz J, Kan-Dobrosky N, Buchner H, et al: Estimands for
-overall survival in clinical trials with treatment switching in
-oncology. Pharmaceutical Statistics 21:150--162, 2022
+\bibitem[\citeproctext]{ref-anesrake}
+\textbf{52}. Pasek J: Anesrake: ANES raking implementation, 2018
+
+\bibitem[\citeproctext]{ref-MatchThem}
+\textbf{53}. Pishgar F, Greifer N, Leyrat C, et al: MatchThem:: Matching
+and weighting after multiple imputation {[}Internet{]}, 2021Available
+from: \url{https://journal.r-project.org/archive/2021/RJ-2021-073/}
+
+\bibitem[\citeproctext]{ref-survival}
+\textbf{54}. Therneau TM: A package for survival analysis in r
+{[}Internet{]}, 2024Available from:
+\url{https://CRAN.R-project.org/package=survival}
+
+\bibitem[\citeproctext]{ref-encore.analytics}
+\textbf{55}. Weberpals J: Encore.analytics: Functions and wrappers to
+streamline complex analytic workflows in real-world data studies based
+on the ENCORE trial emulation project {[}Internet{]}, 2025Available
+from: \url{https://github.com/janickweberpals/encore.analytics}
+
+\bibitem[\citeproctext]{ref-gtsummary}
+\textbf{56}. Sjoberg DD, Whiting K, Curry M, et al: Reproducible summary
+tables with the gtsummary package {[}Internet{]}13:570--580,
+2021Available from: \url{https://doi.org/10.32614/RJ-2021-053}
+
+\bibitem[\citeproctext]{ref-ggsurvfit}
+\textbf{57}. Sjoberg DD, Baillie M, Fruechtenicht C, et al: Ggsurvfit:
+Flexible time-to-event figures {[}Internet{]}, 2024Available from:
+\url{https://github.com/pharmaverse/ggsurvfit}
 
 \bibitem[\citeproctext]{ref-gaber2024mystifying}
-\textbf{52}. Gaber CE, Ghazarian AA, Strassle PD, et al: De-mystifying
+\textbf{58}. Gaber CE, Ghazarian AA, Strassle PD, et al: De-mystifying
 the clone-censor-weight method for causal research using observational
 data: A primer for cancer researchers. Cancer Medicine 13:e70461, 2024
 
