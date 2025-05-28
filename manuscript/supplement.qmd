@@ -30,13 +30,16 @@ bibliography: references.bib
 
 library(here)
 library(knitr)
+library(readxl)
+library(gt)
+library(dplyr)
 
 # table_cap <- captioner(prefix = "Supplementary Table")
 ```
 
 {{< pagebreak >}}
 
-# Supplementary Figures
+# Supplementary Figures and Tables
 
 ```{r}
 #| label: fig-consort-nsclc
@@ -76,6 +79,44 @@ include_graphics(here("figures", "consort_crc.png"))
 #| out-width: "115%"
 
 include_graphics(here("figures", "consort_mm.png"))
+```
+
+```{r}
+#| label: tbl-runner-ups
+#| tbl-cap: "Oncology trial emulation potential runner up candidates."
+#| tbl-cap-location: top
+
+# read excel blueprint
+runner_ups <- read_excel(
+  path = here("tables", "helper_tables.xlsx"),
+  sheet = "runner_ups"
+  )
+
+# convert to gt table
+runner_ups_gt <- runner_ups |> 
+  group_by(cancer) |> 
+  gt() |> 
+  cols_label(
+    nctid = md("**NCTID**"),
+    acronym = md("**Acronym**"),
+    setting = md("**Clinical setting**"),
+    line = md("**Line of therapy**"),
+    exposures = md("**Treatment comparison**")
+    ) |> 
+  tab_style(
+    style = cell_text(weight = "bold"),
+    locations = cells_row_groups()
+    )
+
+# save image to display within manuscript document
+suppressMessages(runner_ups_gt |> 
+  gtsave(
+    filename = here("tables", "STable_runner_ups.png"),
+    expand = 10, # amount of whitespace,
+    zoom = 5 # higher resolution
+    ))
+
+include_graphics(path = here("tables", "STable_runner_ups.png"))
 ```
 
 {{< pagebreak >}}
