@@ -88,7 +88,7 @@ Email: [SWANG1\@BWH.HARVARD.EDU](SWANG1@BWH.HARVARD.EDU)
 
 [**Article type:**]{.underline} Review
 
-[**Manuscript word count:**]{.underline} 4,200 words / 8,000 words
+[**Manuscript word count:**]{.underline} 4,509 words / 8,000 words
 
 [**Abstract word count:**]{.underline} 224 words / 250 words
 
@@ -96,7 +96,7 @@ Email: [SWANG1\@BWH.HARVARD.EDU](SWANG1@BWH.HARVARD.EDU)
 
 [**Figures:**]{.underline} 3
 
-[**Supplementary material:**]{.underline} Supplementary figures and material
+[**Supplementary material:**]{.underline} Supplementary figures, tables and material
 
 [**Short running title**]{.underline}: Emulation of Comparative Oncology Trials with Real-world Evidence (ENCORE)
 
