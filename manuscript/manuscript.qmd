@@ -50,7 +50,7 @@ library(glue)
 library(tidyr)
 ```
 
-**Authors**: Janick Weberpals^1^, Kenneth L. Kehl^2^, Donna R. Rivera^3^, Pallavi Mishra-Kalyani^3^, Catherine C. Lerro^3^, Erin Larkins^4^, Sonia Singh^4^, Preeti Narayan^4^, Richard Curley^4^, Paul Kluetz^4^, Georg Hahn^1^, Priyanka Anand^1^, Yanina Natanzon^5^, Andrew J. Belli^6^, Ching-Kun Wang^6^, Jenna Collins^7^**,** Jonathan Kish^7^**,** Janet Espirito^8^, Nicholas J Robert^8^, Robert J. Glynn^1^, Sebastian Schneeweiss^1^, Shirley V. Wang^1^
+**Authors**: Janick Weberpals^1^, Sebastian Schneeweiss^1^, Kenneth L. Kehl^2^, Donna R. Rivera^3^, Pallavi Mishra-Kalyani^3^, Catherine C. Lerro^3^, Erin Larkins^4^, Sonia Singh^4^, Preeti Narayan^4^, Richard Curley^4^, Paul Kluetz^4^, Georg Hahn^1^, Priyanka Anand^1^, Yanina Natanzon^5^, Andrew J. Belli^6^, Ching-Kun Wang^6^, Jenna Collins^7^**,** Jonathan Kish^7^**,** Janet Espirito^8^, Nicholas J Robert^8^, Robert J. Glynn^1^, Shirley V. Wang^1^
 
 [Author affiliations:]{.underline}
 
