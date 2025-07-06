@@ -22,7 +22,7 @@ format:
     
 editor: visual
 bibliography: references.bib
-csl: journal-of-clinical-oncology.csl
+csl: clinical-pharmacology-and-therapeutics.csl
 
 filters:
   - docx-landscape.lua
