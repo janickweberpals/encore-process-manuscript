@@ -90,9 +90,9 @@ Email: [SWANG1\@BWH.HARVARD.EDU](SWANG1@BWH.HARVARD.EDU)
 
 [**Article type:**]{.underline} Review
 
-[**Manuscript word count:**]{.underline} 4,509 words / 8,000 words
+[**Manuscript word count:**]{.underline} 4,541 words / 8,000 words
 
-[**Abstract word count:**]{.underline} 224 words / 250 words
+[**Abstract word count:**]{.underline} 228 words / 250 words
 
 [**Tables:**]{.underline} 3
 
@@ -111,8 +111,6 @@ Email: [SWANG1\@BWH.HARVARD.EDU](SWANG1@BWH.HARVARD.EDU)
 [**Data sharing statement:**]{.underline} No data was analyzed as part of this project.
 
 [**Analytic code sharing statement:**]{.underline} Simulated examples and code to implement analytic workflows described in this manuscript are illustrated at <https://janickweberpals.github.io/imputation-ps-workflows/> and can be reproduced via the `encore.analytics` R package (<https://github.com/janickweberpals/encore.analytics/>).
-
-[***Proposed target journals:***]{.underline} *CPT =\> JCO CCI =\> ...*
 
 *Manuscript last updated: `r Sys.time()`*
 
