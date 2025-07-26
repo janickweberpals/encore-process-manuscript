@@ -313,7 +313,7 @@ illustrated at
 be reproduced via the \texttt{encore.analytics} R package
 (\url{https://github.com/janickweberpals/encore.analytics/}).
 
-\emph{Manuscript last updated: 2025-07-08 18:15:17.700176}
+\emph{Manuscript last updated: 2025-07-26 11:39:19.945045}
 
 \newpage{}
 
@@ -323,29 +323,28 @@ be reproduced via the \texttt{encore.analytics} R package
 Real-world evidence (RWE) is increasingly used to complement findings
 from randomized controlled trials (RCTs), contextualizing the
 effectiveness and safety of medical interventions as delivered in
-routine clinical practice. Advancements in the curation and
-accessibility of electronic health record data (EHR) present the
-opportunity to utilize real-world data (RWD) to investigate therapeutic
-areas including oncology, where administrative healthcare claims
-databases alone are often not fit-for-purpose. The RCT DUPLICATE
-initiative has previously enhanced understanding of when RWE can most
-appropriately draw causal conclusions by emulating trials for
-non-oncology indications. Here, we present the design and trial
-selection for the Emulation of Comparative Oncology Trials with
-Real-world Evidence (ENCORE) project, which extends this work to
-oncology. ENCORE is designed to emulate 12 RCTs in four
+routine clinical practice. Advances in the curation and accessibility of
+electronic health record data (EHR) present the opportunity to utilize
+real-world data (RWD) to investigate therapeutic areas including
+oncology, where administrative healthcare claims databases alone are
+often not fit-for-purpose. The RCT DUPLICATE initiative has previously
+evaluated when RWE can most appropriately draw causal conclusions by
+emulating trials for non-oncology indications. Here, we present the
+design and trial selection for the Emulation of Comparative Oncology
+Trials with Real-world Evidence (ENCORE) project, which extends this
+work to oncology. ENCORE is designed to emulate 12 RCTs in four
 oncology-specialized EHR databases across four different cancer
 indications, specifically non-small cell lung cancer, breast cancer,
-colorectal cancer, and multiple myeloma. It will place a special
-emphasis on systematic evaluation of fitness of data in relation to the
-study design and statistical analysis for a particular research
-question, and pre-registration of study protocols prior to initiation
-and analysis. Agreement of treatment effect estimates between RCTs and
-their respective emulations will be assessed using pre-specified
-criteria. Through extensive sensitivity analyses benchmarked against RCT
-results, the ENCORE project will inform understanding of how
-measurement, design, and analytic decisions influence the interpretation
-of results from emulated oncology trials using RWD.
+colorectal cancer, and multiple myeloma. It will place special emphasis
+on systematic evaluation of fitness of data in relation to the study
+design and statistical analysis for a particular research question, and
+pre-registration of study protocols prior to initiation and analysis.
+Pre-specified criteria will assess agreement of treatment effect
+estimates between RCTs and their respective emulations. Through
+extensive sensitivity analyses benchmarked against RCT results, the
+ENCORE project aims to inform understanding of how measurement, design,
+and analytic decisions influence the interpretation of results from
+emulated oncology trials using RWD.
 
 \newpage{}
 
@@ -378,24 +377,24 @@ unmeasured confounding, small study sizes, data
 discontinuity,\textsuperscript{3,4} adoption of changes in treatment
 guidelines over time in routine clinical care and the inability to
 measure and emulate common eligibility criteria, including prognostic
-factors, and standardized response assessments in real-world data
+factors, and standardized endpoint assessments in real-world data
 (RWD).\textsuperscript{5} While examples of oncology trial emulations
 have been published,\textsuperscript{5--7} a systematic and scaled
 approach to emulate a diverse set of oncology trials with multiple
-heterogeneous databases is necessary to increase confidence in the
+heterogeneous databases would enhance increase confidence in the
 interpretability of non-interventional studies, evaluate regulatory
 considerations, and to provide context as to which questions can be
 validly answered.
 
-The RCT DUPLICATE initiative\textsuperscript{8} increased our
-understanding of when non-interventional studies can come to causal
-conclusions on treatment effects by benchmarking results against RCTs
-under the assumption that each RCT finding reflects a causal treatment
-effect. In settings where the RCT designs could be emulated well,
+The RCT DUPLICATE initiative\textsuperscript{8} evaluated when
+non-interventional studies can come to causal conclusions on treatment
+effects by benchmarking results against RCTs under the assumption that
+well-designed and conducted RCT findings reflect causal treatment
+effects. In settings where the RCT designs could be emulated well,
 non-interventional studies were able to reach similar
 conclusions.\textsuperscript{9} However, this prior work from
-RCT-DUPLICATE focused primarily on emulating trials in non-oncology
-settings using claims databases.
+RCT-DUPLICATE focused on emulating trials in non-oncology settings using
+claims databases.
 
 The \emph{Emulation of Comparative Oncology Trials with Real-world
 Evidence} (ENCORE) project\textsuperscript{10} aims to extend this work
@@ -430,17 +429,16 @@ to final results is provided in Figure~\ref{fig-process}.
 
 \subsection{Trial selection}\label{trial-selection}
 
-The focus of ENCORE is to efficiently explore in what contexts
-non-interventional studies can or cannot yield similar results compared
-to oncology RCTs. Therefore, the project emphasizes trials of therapies
-for common cancers for which there has been substantial therapeutic
-development in recent years. After review and collaboration with
-clinical and regulatory experts, four cancer indications were
-identified: non-small cell lung cancer, breast cancer, colorectal cancer
-and multiple myeloma. For each cancer type, we aim to conduct three
-trial emulations using multiple accessible databases (i.e., the total
-equaling 12 trial emulations x \emph{n} databases which are found
-fit-for-purpose for each trial).
+The focus of ENCORE is to clarify when non-interventional studies can or
+cannot yield similar results compared to oncology RCTs. Therefore, the
+project emphasizes trials of therapies for common cancers for which
+there has been substantial therapeutic development in recent years.
+After review and collaboration with clinical and regulatory experts,
+four cancer types were identified: non-small cell lung cancer, breast
+cancer, colorectal cancer and multiple myeloma. For each cancer type, we
+aim to conduct three trial emulations using multiple accessible
+databases (i.e., the total equaling 12 trial emulations x \emph{n}
+databases which are found fit-for-purpose for each trial).
 
 We used a systematic process for trial selection where the eligibility
 criteria are documented in CONSORT diagrams showing reasons for
@@ -479,23 +477,23 @@ Eligible trials had to fulfill the following basic criteria:
   Recruitment status: `Completed' or `Active, not recruiting'
 \item
   Feasibility and clinical relevance (latter was defined as treatment or
-  paradigm-changing trials or such that challenged existing treatment
+  paradigm-changing trials or trials that challenged existing treatment
   policies)
 \end{itemize}
 
-The rationale and operationalization for each criterion is listed in
-detail in Table~\ref{tbl-criteria}. We mainly considered pivotal large
-late-phase RCTs that were initiated after 2011 because treatment
-guidelines for included cancer indications have undergone significant
-changes in recent years. Due to the rapid adoption of newly-approved
-therapies in routine care, patients are less likely to receive outdated
-treatment regimens in clinical practice. Conversely, we excluded trials
-with results published too recently to allow for substantive medical
-product uptake and follow-up time accrual in real-world databases used
-for this project. We did not define a global cut-off as the requirements
-for follow-up time are different for each cancer type and population
-(e.g., advanced NSCLC versus early-stage breast cancer) and the
-decisions were made on a clinically relevant basis.
+The operationalization for each criterion is listed in detail in
+Table~\ref{tbl-criteria}. We mainly considered pivotal large late-phase
+RCTs that were initiated after 2011 because treatment guidelines for
+included cancer indications have undergone significant changes in recent
+years. Due to the rapid adoption of newly-approved therapies in routine
+care, patients are less likely to receive outdated treatment regimens in
+clinical practice. Conversely, we excluded trials with results published
+too recently to allow for substantive medical product uptake and
+follow-up time accrual in real-world databases used for this project. We
+did not define a global cut-off as the requirements for follow-up time
+are different for each cancer type and population (e.g., advanced NSCLC
+versus early-stage breast cancer) and the decisions were made on a
+clinically relevant basis.
 
 Although there have been substantial methodological advancements to
 increase our understanding on the emulation and comparison of real-world
@@ -542,10 +540,11 @@ advanced lines of therapy), therapy protocols (monotherapy, combination
 therapy) and clinical characteristics (all-comer versus complex genetic
 or immunological signatures) can be emulated using RWD. If more thorough
 feasibility assessments after applying all relevant eligibility criteria
-suggest that the threat of bias from mis-measurement of key study
-parameters or residual confounding remains high, or that the study size
-is not sufficient, then runner-up candidate trials will be considered
-instead.
+(including formal power calculations and assessment of sufficient
+balance after propensity score matching or weighting) suggest that the
+threat of bias from mis-measurement of key study parameters or residual
+confounding remains high, or that the study size is not sufficient, then
+runner-up candidate trials will be considered instead.
 
 \subsection{Databases}\label{databases}
 
@@ -561,10 +560,10 @@ randomly assigned order). If more than one database is considered
 fit-for-use for a respective trial emulation, the most suitable analytic
 model will be employed for each database separately and final treatment
 effect estimates will be pooled using a meta-analytic approach using
-fixed effects (weights reflect the inverse of the variance of each
-database study) and random effects (weights reflect the inverse of the
-variance of each database study plus an additional variance term that
-quantifies the assumed heterogeneity between databases)
+random effects (primary; weights reflect the inverse of the variance of
+each database study plus an additional variance term that quantifies the
+assumed heterogeneity between databases) and fixed effects (secondary;
+weights reflect the inverse of the variance of each database study)
 models.\textsuperscript{20}
 
 \subsection{Protocol development}\label{protocol-development}
@@ -679,12 +678,12 @@ The distribution of patient characteristics, by exposure status, will be
 examined before and after applying eligibility criteria and contrasted
 with the distributions of patient characteristics of the original RCT.
 Initial propensity score matching or weighting methods will be applied
-to ensure that measured pre-exposure covariates can be balanced,
-exposure cohorts are conditionally exchangeable at baseline, and
-resulting sample sizes are still sufficient after matching or weighting.
-At this stage, all exploratory analyses will be conducted blinded
-towards the outcome to not bias any study design or analytic choices
-based on known outcome information.
+to ensure that measured pre-exposure covariates can be
+balanced\textsuperscript{28}, exposure cohorts are conditionally
+exchangeable at baseline, and resulting sample sizes are still
+sufficient after matching or weighting. At this stage, all exploratory
+analyses will be conducted blinded towards the outcome to not bias any
+study design or analytic choices based on known outcome information.
 
 \paragraph{\texorpdfstring{\textbf{Statistical power
 considerations}}{Statistical power considerations}}\label{statistical-power-considerations}
@@ -692,24 +691,25 @@ considerations}}{Statistical power considerations}}\label{statistical-power-cons
 Causal analyses of non-interventional data are often not designed with
 respect to formal hypothesis testing and statistical power in the same
 manner as RCTs since the number of `recruited' patients is limited by
-available data .\textsuperscript{28} For this project, however, the
+available data .\textsuperscript{29} For this project, however, the
 emulations in EHR data must have at least equal power to the relevant
 trial for interpretation of the pre-specified agreement metrics between
 RCT and RWD results. Since the main outcome of interest is defined as
 time from index treatment initiation to all-cause mortality (rwOS), the
 estimation of the statistical power is driven by the number of events
-rather than the number of patients. To assess if the overall number of
-events, unstratified by exposure, is sufficient such that a significant
-difference can be detected based on the original RCT-reported hazard
-ratio (HR), the statistical power (1-\(\beta\)) will be estimated using
-Schoenfeld's sample-size formula for the proportional-hazards regression
-model.\textsuperscript{29}
+rather than the number of patients. To assess whether the overall number
+of events, unstratified by exposure, is sufficient such that a
+significant difference can be detected based on the original
+RCT-reported hazard ratio (HR), the statistical power (1-\(\beta\) with
+a 2-sided \(\alpha\) of 0.05) will be estimated using Schoenfeld's
+sample-size formula for the proportional-hazards regression
+model.\textsuperscript{30}
 
 \subsection{Agreement metrics}\label{sec-agreement-metrics}
 
 To formally compare treatment effects between RCTs and their respective
 emulations, we will adapt the approach of the RCT-DUPLICATE
-project.\textsuperscript{8,30} That is, for the primary endpoint of
+project.\textsuperscript{8,31} That is, for the primary endpoint of
 interest (hazard ratio {[}HR{]} for OS and corresponding 95\% confidence
 intervals), we will derive three qualitative agreement metrics:
 statistical agreement, estimate agreement and agreement based on the
@@ -737,7 +737,7 @@ SMD = \frac{\hat{\theta}_{RCT} - \hat{\theta}_{RWE}}{\sqrt{\text{Var}(\hat{\thet
 \]
 
 where \(\hat{\theta}_{RCT}\) and \(\hat{\theta}_{RWE}\) are the
-treatment effect estimates (hazard ratios or median survival time
+treatment effect estimates (log hazard ratios or median survival time
 differences) and \(\text{Var}(\hat{\theta}_{RCT})\) and
 \(\text{Var}(\hat{\theta}_{RWE})\) are the corresponding variances for
 RCT and RWE, respectively. The resulting SMDs will be interpreted such
@@ -756,7 +756,7 @@ analysis}\label{study-design-and-statistical-analysis}
 The study design for each trial emulation will be visualized as part of
 the protocol using a graphical depiction of the exact measurement
 windows of eligibility criteria, washout periods, and covariates
-relative to the cohort entry time.\textsuperscript{31}
+relative to the cohort entry time.\textsuperscript{32}
 
 \subsubsection{Missing data}\label{missing-data}
 
@@ -766,30 +766,30 @@ values as a first iteration. These missing data investigations will
 empirically assess assumptions on potential underlying missingness
 mechanisms according to Rubin's classification of missing data (i.e.,
 missing completely at random {[}MCAR{]}, missing at random {[}MAR{]} and
-missing not at random {[}MNAR{]}).\textsuperscript{32} We will adopt a
+missing not at random {[}MNAR{]}).\textsuperscript{33} We will adopt a
 principled process on missing data that empirically evaluates different
 aspects across partially observed covariates based on three group
-diagnostics.\textsuperscript{33,34} These diagnostics cover (1)
+diagnostics.\textsuperscript{34,35} These diagnostics cover (1)
 comparisons of patients characteristics with and without an observed
 level of the partially observed covariate, (2) ability to predict
 missingness given observed data, and (3) assessments if outcomes between
 patients with a missing value are systematically different. Expert
 domain knowledge and assumptions about the underlying missing data
-structure through canonical causal diagrams\textsuperscript{35} will
+structure through canonical causal diagrams\textsuperscript{36} will
 additionally inform decisions regarding the inclusion or exclusion of
 individuals with missing values in key eligibility criteria and
 potential sensitivity analyses to assess the robustness of these
-decisions.\textsuperscript{36}
+decisions.\textsuperscript{37}
 
-While the MAR assumption is a strong assumption to hold across all
-considered covariates, it has been shown that especially in the context
-of partially observed covariate data (as opposed to missing exposure and
+While MAR is a strong assumption to hold across all considered
+covariates, it has been shown that especially in the context of
+partially observed covariate data (as opposed to missing exposure and
 outcome data), generally only mechanisms in which a covariate causes its
-own missingness lead to significant bias (MNAR).\textsuperscript{35}
+own missingness lead to significant bias (MNAR).\textsuperscript{36}
 Hence, methodologies which retain otherwise eligible patients and give
 the potential to adjust for a broader set of prognostic factors (e.g.,
-multiple imputation\textsuperscript{37} or doubly robust
-methods\textsuperscript{38}) may be preferred over complete case
+multiple imputation\textsuperscript{38} or doubly robust
+methods\textsuperscript{39}) may be preferred over complete case
 analyses, although such tradeoffs must be carefully evaluated within the
 clinical and study contexts.
 
@@ -798,35 +798,35 @@ analyses}\label{outcome-and-propensity-score-analyses}
 
 Due to its frequency of use in oncology trials, the primary parameter of
 interest in ENCORE will be defined as the marginal HR coefficient for
-the treatment comparison for OS.\textsuperscript{39} We will also
+the treatment comparison for OS.\textsuperscript{40} We will also
 consider alternative endpoints on an absolute risk scale such as median
 survival times, survival probabilities at pre-defined time points during
-follow-up\textsuperscript{40} and restricted mean survival times as
+follow-up\textsuperscript{41} and restricted mean survival times as
 secondary endpoints of interest.
 
 For the estimation of marginal treatment effects, we will employ
 propensity score methods to adjust for measured confounding between
 treatment arms. The selection of relevant prognostic covariates will be
 based on expert clinical knowledge and published literature on
-prognostic scores in oncology.\textsuperscript{41} The implementation of
+prognostic scores in oncology.\textsuperscript{42} The implementation of
 propensity scores in combination with multiple imputation will follow
 the `\emph{within}' methodology as described by Leyrat et
-al.\textsuperscript{42,43} As appropriate, propensity score matching or
+al.\textsuperscript{43,44} As appropriate, propensity score matching or
 weighting will be applied to each imputed dataset. The marginal
 treatment effect will then be estimated in each imputed and matched or
 weighted dataset separately and pooled into a final estimate following
-Rubin's rule.\textsuperscript{44,45} This approach has been shown to
+Rubin's rule.\textsuperscript{45,46} This approach has been shown to
 lead to unbiased estimates across different simulated scenarios with a
-sufficient estimation of the variance.\textsuperscript{42}
+sufficient estimation of the variance.\textsuperscript{43}
 
 To assess the balance of pre-exposure covariates after matching or
 weighting on each imputed dataset, the average SMD and corresponding
 minimum and maximum SMD range will be visualized (see example in
 Figure~\ref{fig-balance}). Covariate balance is often considered
-reasonable at a SMD \textless{} 0.1.\textsuperscript{46} Further, we
+reasonable at a SMD \textless{} 0.1.\textsuperscript{28} Further, we
 will compute the average post-matching or post-weighting
 C-statistics.\textsuperscript{47} In addition, we will use a published
-prognostic score for OS\textsuperscript{41} as a balance measure to
+prognostic score for OS\textsuperscript{42} as a balance measure to
 visually assess if the prognostic score is balanced between treatment
 arms after propensity score matching or weighting as this approach was
 described to show the highest correlations with bias compared with other
@@ -835,7 +835,7 @@ misspecification.\textsuperscript{48}
 
 Similarly, survival probabilities for individual time points will be
 estimated in each imputed and propensity score matched or weighted
-dataset according to the Kaplan-Meier method.\textsuperscript{40} Since
+dataset according to the Kaplan-Meier method.\textsuperscript{41} Since
 survival probabilities typically do not follow normal distributions
 which are required to apply Rubin's rule, these will be transformed
 through a complementary log-log transformation \(log(-log(1-pr(surv)))\)
@@ -889,7 +889,7 @@ be reproduced via the \texttt{encore.analytics} R package
 \section{Discussion}\label{discussion}
 
 Building on an established approach developed by the RCT DUPLICATE
-project\textsuperscript{8,30}, the ENCORE project aims to emulate 12
+project\textsuperscript{8,31}, the ENCORE project aims to emulate 12
 oncology trials using four oncology EHR data sources to inform the
 potential use of RWD for regulatory purposes in oncology. The project
 focuses on four common cancers and will evaluate the agreement of
@@ -904,7 +904,7 @@ ENCORE project is one of the first of its kind to evaluate contexts
 where RWD may be reliably used to draw similar conclusions compared to
 RCTs in the field of oncology.
 
-The RCT DUPLICATE initiative\textsuperscript{8,30} identified multiple
+The RCT DUPLICATE initiative\textsuperscript{8,31} identified multiple
 emulation challenges that may be similar in ENCORE. One particular
 aspect that we may not always be able to emulate is the exact
 distribution of patient characteristics of the trial population. This
@@ -1157,45 +1157,52 @@ C. Open cohorts and ghost-time bias in real world data. In
 \emph{PHARMACOEPIDEMIOLOGY AND DRUG SAFETY} \textbf{29}, 426--426 (WILEY
 111 RIVER ST, HOBOKEN 07030-5774, NJ USA, 2020).}
 
-\bibitem[\citeproctext]{ref-hernan2022causal}
+\bibitem[\citeproctext]{ref-austin2009balance}
 \CSLLeftMargin{28. }%
+\CSLRightInline{Austin, P. C. Balance diagnostics for comparing the
+distribution of baseline covariates between treatment groups in
+propensity-score matched samples. \emph{Statistics in medicine}
+\textbf{28}, 3083--3107 (2009).}
+
+\bibitem[\citeproctext]{ref-hernan2022causal}
+\CSLLeftMargin{29. }%
 \CSLRightInline{Hernán, M. A. Causal analyses of existing databases: No
 power calculations required. \emph{Journal of clinical epidemiology}
 \textbf{144}, 203--205 (2022).}
 
 \bibitem[\citeproctext]{ref-schoenfeld1981asymptotic}
-\CSLLeftMargin{29. }%
+\CSLLeftMargin{30. }%
 \CSLRightInline{Schoenfeld, D. The asymptotic properties of
 nonparametric tests for comparing survival distributions.
 \emph{Biometrika} \textbf{68}, 316--319 (1981).}
 
 \bibitem[\citeproctext]{ref-franklin2020nonrandomized}
-\CSLLeftMargin{30. }%
+\CSLLeftMargin{31. }%
 \CSLRightInline{Franklin, J. M. \emph{et al.} Nonrandomized real-world
 evidence to support regulatory decision making: Process for a randomized
 trial replication project. \emph{Clinical Pharmacology \& Therapeutics}
 \textbf{107}, 817--826 (2020).}
 
 \bibitem[\citeproctext]{ref-schneeweiss2019graphical}
-\CSLLeftMargin{31. }%
+\CSLLeftMargin{32. }%
 \CSLRightInline{Schneeweiss, S. \emph{et al.} Graphical depiction of
 longitudinal study designs in health care databases. \emph{Annals of
 internal medicine} \textbf{170}, 398--406 (2019).}
 
 \bibitem[\citeproctext]{ref-rubin1976inference}
-\CSLLeftMargin{32. }%
+\CSLLeftMargin{33. }%
 \CSLRightInline{Rubin, D. B. Inference and missing data.
 \emph{Biometrika} \textbf{63}, 581--592 (1976).}
 
 \bibitem[\citeproctext]{ref-weberpals2024smdi}
-\CSLLeftMargin{33. }%
+\CSLLeftMargin{34. }%
 \CSLRightInline{Weberpals, J. \emph{et al.} Smdi: An r package to
 perform structural missing data investigations on partially observed
 confounders in real-world evidence studies. \emph{JAMIA open}
 \textbf{7}, ooae008 (2024).}
 
 \bibitem[\citeproctext]{ref-weberpals2024}
-\CSLLeftMargin{34. }%
+\CSLLeftMargin{35. }%
 \CSLRightInline{Weberpals, J. \emph{et al.}
 \href{https://doi.org/10.2147/CLEP.S436131}{A principled approach to
 characterize and analyze partially observed confounder data from
@@ -1203,21 +1210,21 @@ electronic health records}. \emph{Clinical Epidemiology} \textbf{16},
 329--343 (2024).}
 
 \bibitem[\citeproctext]{ref-moreno2018canonical}
-\CSLLeftMargin{35. }%
+\CSLLeftMargin{36. }%
 \CSLRightInline{Moreno-Betancur, M. \emph{et al.} Canonical causal
 diagrams to guide the treatment of missing data in epidemiologic
 studies. \emph{American journal of epidemiology} \textbf{187},
 2705--2715 (2018).}
 
 \bibitem[\citeproctext]{ref-tompsett2018use}
-\CSLLeftMargin{36. }%
+\CSLLeftMargin{37. }%
 \CSLRightInline{Tompsett, D. M., Leacy, F., Moreno-Betancur, M., Heron,
 J. \& White, I. R. On the use of the not-at-random fully conditional
 specification (NARFCS) procedure in practice. \emph{Statistics in
 medicine} \textbf{37}, 2338--2353 (2018).}
 
 \bibitem[\citeproctext]{ref-weberpals2024hdmi}
-\CSLLeftMargin{37. }%
+\CSLLeftMargin{38. }%
 \CSLRightInline{Weberpals, J. \emph{et al.} High-dimensional multiple
 imputation (HDMI) for partially observed confounders including natural
 language processing-derived auxiliary covariates. \emph{American Journal
@@ -1225,7 +1232,7 @@ of Epidemiology} (2025).at
 \textless{}\url{https://arxiv.org/abs/2405.10925}\textgreater{}}
 
 \bibitem[\citeproctext]{ref-Shaw2024}
-\CSLLeftMargin{38. }%
+\CSLLeftMargin{39. }%
 \CSLRightInline{Shaw, C. K., P. \& Williamson, B. D. Assessing treatment
 effects in observational data with missing confounders: A comparative
 study of practical doubly-robust and traditional missing data methods.
@@ -1233,55 +1240,48 @@ study of practical doubly-robust and traditional missing data methods.
 \textless{}\url{https://github.com/PamelaShaw/Missing-Confounders-Methods}\textgreater{}}
 
 \bibitem[\citeproctext]{ref-cox1972regression}
-\CSLLeftMargin{39. }%
+\CSLLeftMargin{40. }%
 \CSLRightInline{Cox, D. R. Regression models and life-tables. Journal of
 the royal statistical society. \emph{Series B (Methodological)}
 \textbf{34}, 187--220 (1972).}
 
 \bibitem[\citeproctext]{ref-kaplan1958nonparametric}
-\CSLLeftMargin{40. }%
+\CSLLeftMargin{41. }%
 \CSLRightInline{Kaplan, E. L. \& Meier, P. Nonparametric estimation from
 incomplete observations. \emph{Journal of the American statistical
 association} \textbf{53}, 457--481 (1958).}
 
 \bibitem[\citeproctext]{ref-becker2020enhanced}
-\CSLLeftMargin{41. }%
+\CSLLeftMargin{42. }%
 \CSLRightInline{Becker, T. \emph{et al.} An enhanced prognostic score
 for overall survival of patients with cancer derived from a large
 real-world cohort. \emph{Annals of Oncology} \textbf{31}, 1561--1568
 (2020).}
 
 \bibitem[\citeproctext]{ref-leyrat2019propensity}
-\CSLLeftMargin{42. }%
+\CSLLeftMargin{43. }%
 \CSLRightInline{Leyrat, C. \emph{et al.} Propensity score analysis with
 partially observed covariates: How should multiple imputation be used?
 \emph{Statistical methods in medical research} \textbf{28}, 3--19
 (2019).}
 
 \bibitem[\citeproctext]{ref-pishgar2020matchthem}
-\CSLLeftMargin{43. }%
+\CSLLeftMargin{44. }%
 \CSLRightInline{Pishgar, F., Greifer, N., Leyrat, C. \& Stuart, E.
 MatchThem:: Matching and weighting after multiple imputation.
 \emph{arXiv preprint arXiv:2009.11772} (2020).}
 
 \bibitem[\citeproctext]{ref-rubin2018multiple}
-\CSLLeftMargin{44. }%
+\CSLLeftMargin{45. }%
 \CSLRightInline{Rubin, D. B. Multiple imputation. In \emph{Flexible
 imputation of missing data, second edition} 29--62 (Chapman; Hall/CRC,
 2018).}
 
 \bibitem[\citeproctext]{ref-van2011mice}
-\CSLLeftMargin{45. }%
+\CSLLeftMargin{46. }%
 \CSLRightInline{Van Buuren, S. \& Groothuis-Oudshoorn, K. Mice:
 Multivariate imputation by chained equations in r. \emph{Journal of
 statistical software} \textbf{45}, 1--67 (2011).}
-
-\bibitem[\citeproctext]{ref-austin2009balance}
-\CSLLeftMargin{46. }%
-\CSLRightInline{Austin, P. C. Balance diagnostics for comparing the
-distribution of baseline covariates between treatment groups in
-propensity-score matched samples. \emph{Statistics in medicine}
-\textbf{28}, 3083--3107 (2009).}
 
 \bibitem[\citeproctext]{ref-franklin2014metrics}
 \CSLLeftMargin{47. }%
