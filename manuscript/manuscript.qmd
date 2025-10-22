@@ -50,7 +50,7 @@ library(glue)
 library(tidyr)
 ```
 
-**Authors**: Janick Weberpals^1^, Sebastian Schneeweiss^1^, Kenneth L. Kehl^2^, Donna R. Rivera^3^, Pallavi Mishra-Kalyani^3^, Catherine C. Lerro^3^, Erin Larkins^4^, Sonia Singh^4\*^, Preeti Narayan^4^, Richard Curley^4^, Georg Hahn^1^, Priyanka Anand^1^, Yanina Natanzon^5^, Andrew J. Belli^6^, Ching-Kun Wang^6^, Jenna Collins^7^**,** Jonathan Kish^7^**,** Janet Espirito^8^, Nicholas J Robert^8^, Robert J. Glynn^1^, Shirley V. Wang^1^
+**Authors**: Janick Weberpals^1^, Sebastian Schneeweiss^1^, Kenneth L. Kehl^2^, Donna R. Rivera^3\*^, Pallavi Mishra-Kalyani^3^, Catherine C. Lerro^3\*^, Erin Larkins^4^, Preeti Narayan^4^, Richard Curley^3^, Georg Hahn^1^, Priyanka Anand^1^, Yanina Natanzon^5^, Andrew J. Belli^6^, Ching-Kun Wang^6^, Jenna Collins^7^**,** Jonathan Kish^7^**,** Janet Espirito^8^, Nicholas J Robert^8^, Robert J. Glynn^1^, Shirley V. Wang^1^
 
 [Author affiliations:]{.underline}
 
@@ -104,7 +104,9 @@ Email: [SWANG1\@BWH.HARVARD.EDU](SWANG1@BWH.HARVARD.EDU)
 
 [**Keywords:**]{.underline} Oncology, Real-World Evidence, Trial emulation, EHR
 
-[**Funding Statement:**]{.underline} This project was supported by an FDA BAA contract with contract number 75F40122C00181.
+[**FDA Disclaimer:**]{.underline}This article reflects the views of the authors and should not be construed to represent FDA’s views or policies.
+
+[**Funding Statement:**]{.underline} This project was supported by the Oncology Center of Excellence, Food and Drug Administration (FDA) of the U.S. Department of Health and Human Services (HHS) as part of a contract \[75F40122C00181\]. The contents are those of the author(s) and do not necessarily represent the official views of, nor an endorsement by FDA/HHS, or the U.S. Government.
 
 [**Competing Interests Statement:**]{.underline} Dr. Weberpals is now an employee of AstraZeneca and owns stocks in AstraZeneca. Dr. Kehl has received research funding from Meta, Inc. to his institution. Drs. Espirito and Robert are employees of McKesson and own McKesson stock. Dr. Wang has consulted ad hoc for Exponent Inc. and MITRE a federally funded research center for the Centers for Medicare and Medicaid Services on unrelated work. Dr. Glynn has received support for investigator-initiated grants to the Brigham and Women's Hospital from Amarin, AstraZeneca, Kowa, Novartis, and Pfizer unrelated to the current work. Dr. Schneeweiss is participating in investigator-initiated grants to the Brigham and Women's Hospital from Bayer and UCB unrelated to the topic of this study. He consults for and owns equity in Aetion Inc., a software manufacturer. He is an advisor to Temedica GmbH, a patient-oriented data generation company. His interests were declared, reviewed, and approved by the Brigham and Women's Hospital in accordance with their institutional compliance policies.
 
