@@ -104,7 +104,7 @@ Email: [SWANG1\@BWH.HARVARD.EDU](SWANG1@BWH.HARVARD.EDU)
 
 [**Keywords:**]{.underline} Oncology, Real-World Evidence, Trial emulation, EHR
 
-[**FDA Disclaimer:**]{.underline}This article reflects the views of the authors and should not be construed to represent FDA’s views or policies.
+[**FDA Disclaimer**]{.underline}**:** This article reflects the views of the authors and should not be construed to represent FDA’s views or policies.
 
 [**Funding Statement:**]{.underline} This project was supported by the Oncology Center of Excellence, Food and Drug Administration (FDA) of the U.S. Department of Health and Human Services (HHS) as part of a contract \[75F40122C00181\]. The contents are those of the author(s) and do not necessarily represent the official views of, nor an endorsement by FDA/HHS, or the U.S. Government.
 
