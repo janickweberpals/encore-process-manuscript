@@ -1,0 +1,89 @@
+---
+title: "Response to Editor and Reviewers"
+
+engine: knitr
+code-fold: false
+echo: false
+number-sections: false
+
+format: 
+  docx:
+    fig-cap-location: top
+    tbl-cap-location: top
+    reference-doc: custom-reference-doc.docx
+  pdf:
+    include-in-header: 
+      text: |
+        usepackage{lscape}
+        newcommand{blandscape}{begin{landscape}}
+        newcommand{elandscape}{end{landscape}}
+    fig-cap-location: top
+    tbl-cap-location: top
+    
+editor: visual
+bibliography: references.bib
+csl: clinical-pharmacology-and-therapeutics.csl
+
+filters:
+  - docx-landscape.lua
+---
+
+Clinical Pharmacology & Therapeutics Editorial Board
+
+[Subject]{.underline}**:** Submission of revised manuscript **"**Emulating Comparative Oncology Trials with Real-world Evidence Studies (ENCORE): Process Development and Methodological Considerations for Oncology Real-World Data**"**
+
+Dear Dr. Rowland Yeo,
+
+We would like to thank you for your response and the invitation to submit a revised version of our manuscript "Emulating Comparative Oncology Trials with Real-world Evidence Studies (ENCORE): Process Development and Methodological Considerations for Oncology Real-World Data" to Clinical Pharmacology % Therapeutics (Manuscript ID 2025-1520).
+
+We are thankful for the constructive and thoughtful comments provided by the reviewers in evaluating this manuscript. We acknowledge the valuable insights and have refined the manuscript to align with the reviewers' recommendations. Please see our detailed responses one by one below.
+
+We believe that these revisions have significantly enhanced the quality and contribution of our work which we feel is now well-suited for publication in Clinical Pharmacology & Therapeutics.
+
+Thank you for your consideration of our revised manuscript.
+
+Sincerely,
+
+Janick Weberpals, RPh, PhD
+
+{{< pagebreak >}}
+
+## Reviewer #1 (Remarks to the Author):
+
+*This is a timely paper that will extend (and allow readers to learn from) previous work in non-oncology (RCT DUPLICATE) to explore similar themes in oncology trials (ENCORE). The paper describes process development and methodological considerations for assessing agreement between oncology RCTs and the real-world evidence studies designed to emulate a specific RCT.*
+
+\[RESPONSE\] We would like to thank the reviewer for the constructive review and feedback.
+
+### General Comments:
+
+1.  *The following sentence in the Background is unnecessarily long and confusing: "Frequently referenced limitations include lack of baseline randomization and the imbalance in prognostic factors resulting thereof, missing data, unmeasured confounding, small study sizes, data discontinuity,3,4 adoption of changes in treatment guidelines over time in routine clinical care and the inability to measure and emulate common eligibility criteria, including prognostic factors, and standardized endpoint assessments in real-world data (RWD).5"*
+
+\[RESPONSE\]
+
+> [SECTION]{.underline}: "..."
+
+2.  *The authors rightly point out one aspect that may impact their ability to fully emulate a specific RCT results from the fact that typically the majority of patients in larger pivotal (oncology) trials are enrolled outside the US and the real world databases that will be used are comprised of US patients. Having a pre-specified plan to deal with this potential challenge may be helpful.*
+
+\[RESPONSE\]
+
+3.  *Regarding 'fit-for-purpose' data, it may be helpful to provide some justification for the databases selected for those readers that are not necessarily expert in oncology real world databases, eg, extent of validation of mortality outcomes or important covariates or prognostic indicators.*
+
+\[RESPONSE\]
+
+## Reviewer #2 (Remarks to the Author):
+
+*The manuscript offers a commendable and thorough account of a well-established methodology by a respected team. While the approach is sound, the paper may benefit from availability of the results of the study. This would no doubt enhance the overall impact of your work. I look forward to seeing how your findings contribute to the ongoing discourse.*
+
+\[RESPONSE\]
+
+## Editorial Office Comments:
+
+*Please ensure the following items are addressed in your revision:*
+
+*Figure Files: Please do not embed the figures within the manuscript file. Figures should be submitted as separate files with one figure per file; figures with multiple panels (A, B, C, etc.) should be combined into a single file. Please list the figure captions at the end of the manuscript file (this does not apply to Supplementary Figures).\**
+
+*Table Files: Please submit as separate Table file(s) that are editable instead of as an image within the article file.*
+
+*Supplemental Material: Please do not embed supplemental material or its references within the manuscript file. The supplemental Figures/Tables should be referred to and labeled as Figure S1, Figure S2, etc; Table S1, Table S2, etc. The supplemental figure/table captions should be placed within the corresponding supplemental figure/table file. Supplemental material does not receive copyediting or get reformatted and should be submitted exactly as you want it to appear online. Supplemental material can be submitted as one file or multiple files.*
+
+\[RESPONSE\] We have addressed all above editorial comments in the revised version of the manuscript.

@@ -11,7 +11,7 @@ format:
   docx:
     fig-cap-location: top
     tbl-cap-location: top
-    reference-doc: custom-reference-doc.docx
+    reference-doc: custom-reference-doc-line-numbers.docx
   pdf:
     fig-cap-location: top
     tbl-cap-location: top
@@ -114,7 +114,7 @@ Email: [SWANG1\@BWH.HARVARD.EDU](SWANG1@BWH.HARVARD.EDU)
 
 [**Analytic code sharing statement:**]{.underline} Simulated examples and code to implement analytic workflows described in this manuscript are illustrated at <https://janickweberpals.github.io/imputation-ps-workflows/> and can be reproduced via the `encore.analytics` R package (<https://github.com/janickweberpals/encore.analytics/>).
 
-*Manuscript last updated: `r Sys.time()`*
+*Manuscript last updated: `r Sys.Date()`*
 
 {{< pagebreak >}}
 
@@ -174,7 +174,7 @@ Although there have been substantial methodological advancements to increase our
 
 While most trial eligibility criteria could be operationalized in an automated fashion, our final criterion was an assessment of emulation feasibility and clinical relevance. This criterion involved extensive human review. The fundamental points considered in this step include an initial feasibility assessment of the data fitness,[@rivera2022friends] involving an assessment of whether critical eligibility criteria (e.g., biomarker status) including prognostic factors (e.g., Eastern Cooperative Oncology Group \[ECOG\] performance score) are measurable, and whether preliminary study size based on a rough estimation of the number of patients observed in the data with the combination of treatment regimen and line of therapy is reasonable for shortlisting the trial. Lastly, trial candidates were ranked and shortlisted as primary or runner-up based on their clinical and regulatory relevance.
 
-A list of tentative, shortlisted primary candidates is presented in @tbl-rcts. The corresponding selection process is illustrated in the CONSORT diagrams (**Supplementary Figures 1-4**) and runner up candidate trials are listed in **Supplementary Table 1**. The majority of shortlisted trials represent indications for advanced (locally advanced, inoperable, recurrent/progressive disease) or metastatic cancer patients because a large proportion of drug development efforts have recently focused on these settings. A key objective that we aim to explore with the selected trials is to evaluate how stage (early, late), line of therapy (\[neo\]adjuvant, first line, advanced lines of therapy), therapy protocols (monotherapy, combination therapy) and clinical characteristics (all-comer versus complex genetic or immunological signatures) can be emulated using RWD. If more thorough feasibility assessments after applying all relevant eligibility criteria (including formal power calculations and assessment of sufficient balance after propensity score matching or weighting) suggest that the threat of bias from mis-measurement of key study parameters or residual confounding remains high, or that the study size is not sufficient, then runner-up candidate trials will be considered instead.
+A list of tentative, shortlisted primary candidates is presented in @tbl-rcts. The corresponding selection process is illustrated in the CONSORT diagrams (**Figures S1-S4**) and runner up candidate trials are listed in **Table S1**. The majority of shortlisted trials represent indications for advanced (locally advanced, inoperable, recurrent/progressive disease) or metastatic cancer patients because a large proportion of drug development efforts have recently focused on these settings. A key objective that we aim to explore with the selected trials is to evaluate how stage (early, late), line of therapy (\[neo\]adjuvant, first line, advanced lines of therapy), therapy protocols (monotherapy, combination therapy) and clinical characteristics (all-comer versus complex genetic or immunological signatures) can be emulated using RWD. If more thorough feasibility assessments after applying all relevant eligibility criteria (including formal power calculations and assessment of sufficient balance after propensity score matching or weighting) suggest that the threat of bias from mis-measurement of key study parameters or residual confounding remains high, or that the study size is not sufficient, then runner-up candidate trials will be considered instead.
 
 ## Databases
 
@@ -283,6 +283,22 @@ Principled, well-designed and reproducible studies using fit-for-purpose RWD to 
 ::: {#refs}
 :::
 
+# Figures {.unnumbered}
+
+**Figure 1:** Systematic process to understand effectiveness claims of oncology trials using real-world evidence.
+
+**Figure 2:** Example visualization of descriptive drug utilization analyses displaying a) initiation trends between compared regimens based on calendar time, b) cumulative rate of patients switching to another line of treatment.
+
+**Figure 3:** Assessment of a) covariate balance and b) distributional balance of a prognostic score for overall survival before and after propensity score matching or weighting across multiple imputed datasets.
+
+```{=html}
+<!--#
+
+MANUALLY DELETE ALL REMAINING PAGES IN WORD STARTING HERE FOR SUBMISSION
+
+-->
+```
+
 {{< pagebreak >}}
 
 # Tables {.unnumbered}
@@ -312,16 +328,15 @@ tbl_eligibility_criteria <- eligibility_criteria |>
 
 # save table as .docx document
 tbl_eligibility_criteria |> 
-   gtsave(
-    filename = here("manuscript", "Table_1_trial_eligibility.docx")
-    )
+  tab_caption("Criteria to select eligible trials for emulation in ENCORE.") |> 
+  gtsave(filename = here("manuscript", "Table_1_trial_eligibility.docx"))
 
 # save image to display within manuscript document
 suppressMessages(tbl_eligibility_criteria |> 
-  gtsave(
-    filename = here("tables", "Table_1_trial_eligibility.png"),
-    expand = 10, # amount of whitespace,
-    zoom = 5 # higher resolution
+    gtsave(
+        filename = here("tables", "Table_1_trial_eligibility.png"),
+        expand = 10, # amount of whitespace,
+        zoom = 5 # higher resolution
     ))
 
 include_graphics(path = here("tables", "Table_1_trial_eligibility.png"))
@@ -358,9 +373,8 @@ tbl_rct_selection <- rct_selection |>
 
 # save table as .docx document
 tbl_rct_selection |> 
-   gtsave(
-    filename = here("manuscript", "Table_2_trial_selection.docx")
-    )
+tab_header("Tentative list of randomized controlled trials (RCTs) considered for emulation.") |> 
+gtsave(filename = here("manuscript", "Table_2_trial_selection.docx"))
 
 # save image to display within manuscript document
 suppressMessages(tbl_rct_selection |> 
@@ -496,9 +510,8 @@ tbl_metrics <- data |>
 
 # save table as .docx document
 tbl_metrics |> 
-   gtsave(
-    filename = here("manuscript", "Table_3_agreement_metrics.docx")
-    )
+tab_header("Example visualization of agreement metrics.") |> 
+gtsave(filename = here("manuscript", "Table_3_agreement_metrics.docx"))
 
 # save image to display within manuscript document
 suppressMessages(tbl_metrics |> 
