@@ -34,7 +34,7 @@ Clinical Pharmacology & Therapeutics Editorial Board
 
 Dear Dr. Rowland Yeo,
 
-We would like to thank you for your response and the invitation to submit a revised version of our manuscript "Emulating Comparative Oncology Trials with Real-world Evidence Studies (ENCORE): Process Development and Methodological Considerations for Oncology Real-World Data" to Clinical Pharmacology % Therapeutics (Manuscript ID 2025-1520).
+We would like to thank you for your response and the invitation to submit a revised version of our manuscript "Emulating Comparative Oncology Trials with Real-world Evidence Studies (ENCORE): Process Development and Methodological Considerations for Oncology Real-World Data" to Clinical Pharmacology & Therapeutics (Manuscript ID 2025-1520).
 
 We are thankful for the constructive and thoughtful comments provided by the reviewers in evaluating this manuscript. We acknowledge the valuable insights and have refined the manuscript to align with the reviewers' recommendations. Please see our detailed responses one by one below.
 
@@ -58,17 +58,21 @@ Janick Weberpals, RPh, PhD
 
 1.  *The following sentence in the Background is unnecessarily long and confusing: "Frequently referenced limitations include lack of baseline randomization and the imbalance in prognostic factors resulting thereof, missing data, unmeasured confounding, small study sizes, data discontinuity,3,4 adoption of changes in treatment guidelines over time in routine clinical care and the inability to measure and emulate common eligibility criteria, including prognostic factors, and standardized endpoint assessments in real-world data (RWD).5"*
 
-\[RESPONSE\]
+\[RESPONSE\] We thank the reviewer for highlighting this. We have revised the sentence in the Background section to improve clarity and readability.
 
-> [SECTION]{.underline}: "..."
+> [Background]{.underline}: "\[...\] Frequently referenced limitations include the lack of baseline randomization and the resulting imbalance in prognostic factors, which are often compounded by missing data, small study sizes, and data discontinuity. Additional challenges stem from the adoption of changes in treatment guidelines over time in routine clinical care and the inability to measure and emulate common eligibility criteria and standardized endpoint assessments in real-world data (RWD). \[...\]"
 
 2.  *The authors rightly point out one aspect that may impact their ability to fully emulate a specific RCT results from the fact that typically the majority of patients in larger pivotal (oncology) trials are enrolled outside the US and the real world databases that will be used are comprised of US patients. Having a pre-specified plan to deal with this potential challenge may be helpful.*
 
-\[RESPONSE\]
+\[RESPONSE\] We thank the reviewer for pointing out this important aspect. We agree that the restriction to US data sources limits the emulation of to fully emulate global pivotal clinical trials. However, this is only a concern if geographic location is identified as an effect modifier of the treatment effect. Especially in oncology trials, the potential effect modification of geographic location is often driven by the underlying population prevalence of a specific biomarker and genetic alteration. If measurable, the distribution for such effect modifiers can be adjusted for by weighting these effect modifiers to match the distribution of the target population enrolled in the clinical trial, either via raking weights or matching-adjusted indirect comparison (MAIC). Alternatively, clinical trials often present subgroup analyses stratified by predictive factors, including the geographic area. In such a case, the subgroup-specific treatment effect of an enrolled US population may serve as our target treatment effect for emulation. We added this aspect to the discussion section fo the manuscript.
+
+> [Discussion]{.underline}: "\[...\] If measurable, the distribution of such effect modifying factors will be adjusted for by weighting the effect modifiers to match the distribution of the target population enrolled in the clinical trial, either via raking weights or matching-adjusted indirect comparison (MAIC). Alternatively, clinical trials often present subgroup analyses stratified by predictive factors, including the geographic area. In such a case, the subgroup-specific treatment effect of an enrolled US population may serve as our target treatment effect for emulation. \[...\]"
 
 3.  *Regarding 'fit-for-purpose' data, it may be helpful to provide some justification for the databases selected for those readers that are not necessarily expert in oncology real world databases, eg, extent of validation of mortality outcomes or important covariates or prognostic indicators.*
 
-\[RESPONSE\]
+\[RESPONSE\] We thank the reviewer for raising this critical aspect. The four selected databases were chosen because they represent the largest and most comprehensive commercially available US EHR-derived databases with strong precedence for usage in real-world evidence studies. We added more language in the methods section of the manuscript now citing relevant validation studies for mortality outcomes and a manuscript from a parallel effort (currently in the submission process) evaluating their capture of general important prognostic factors. In addition, we would like to point out that we will assess data fitness for each specific trial emulation separately to address all nuances and details of that specific trial's design and analysis.
+
+[Methods, Databases]{.underline}: "\[...\] The four selected databases were chosen because they represent the largest and most comprehensive commercially available U.S.-based oncology-specific EHR-derived RWD data with strong precedence for usage in real-world evidence studies. Validation studies for an all-cause mortality were published for some of these data sources^20–22^ and an evaluation study on the capture of general prognostic factors across all data sources is currently underway.^23^ \[...\]."
 
 ## Reviewer #2 (Remarks to the Author):
 
