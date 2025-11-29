@@ -11,14 +11,6 @@ format:
     fig-cap-location: top
     tbl-cap-location: top
     reference-doc: custom-reference-doc.docx
-  pdf:
-    include-in-header: 
-      text: |
-        usepackage{lscape}
-        newcommand{blandscape}{begin{landscape}}
-        newcommand{elandscape}{end{landscape}}
-    fig-cap-location: top
-    tbl-cap-location: top
     
 editor: visual
 bibliography: references.bib
@@ -60,25 +52,43 @@ Janick Weberpals, RPh, PhD
 
 \[RESPONSE\] We thank the reviewer for highlighting this. We have revised the sentence in the Background section to improve clarity and readability.
 
-> [Background]{.underline}: "\[...\] Frequently referenced limitations include the lack of baseline randomization and the resulting imbalance in prognostic factors, which are often compounded by missing data, small study sizes, and data discontinuity. Additional challenges stem from the adoption of changes in treatment guidelines over time in routine clinical care and the inability to measure and emulate common eligibility criteria and standardized endpoint assessments in real-world data (RWD). \[...\]"
+> [Background]{.underline}: "\[...\] Frequently referenced limitations include the lack of baseline randomization and the resulting imbalance in prognostic factors, which are often compounded by missing data, small study sizes, and data discontinuity.^3,4^ Additional challenges stem from the adoption of changes in treatment guidelines over time in routine clinical care and the inability to measure and emulate common eligibility criteria and standardized endpoint assessments in real-world data (RWD).^5^ \[...\]"
 
 2.  *The authors rightly point out one aspect that may impact their ability to fully emulate a specific RCT results from the fact that typically the majority of patients in larger pivotal (oncology) trials are enrolled outside the US and the real world databases that will be used are comprised of US patients. Having a pre-specified plan to deal with this potential challenge may be helpful.*
 
-\[RESPONSE\] We thank the reviewer for pointing out this important aspect. We agree that the restriction to US data sources limits the emulation of to fully emulate global pivotal clinical trials. However, this is only a concern if geographic location is identified as an effect modifier of the treatment effect. Especially in oncology trials, the potential effect modification of geographic location is often driven by the underlying population prevalence of a specific biomarker and genetic alteration. If measurable, the distribution for such effect modifiers can be adjusted for by weighting these effect modifiers to match the distribution of the target population enrolled in the clinical trial, either via raking weights or matching-adjusted indirect comparison (MAIC). Alternatively, clinical trials often present subgroup analyses stratified by predictive factors, including the geographic area. In such a case, the subgroup-specific treatment effect of an enrolled US population may serve as our target treatment effect for emulation. We added this aspect to the discussion section fo the manuscript.
+\[RESPONSE\] We thank the reviewer for pointing out this important aspect. We agree that the restriction to US data sources is a limiting factor to the full emulation of global pivotal clinical trials. However, this is only a concern if geographic location is identified as an effect modifier of the treatment effect. Especially in oncology trials, the potential effect modification of geographic location is often driven by the underlying population prevalence of a specific biomarker and genetic alteration. If measurable, the distribution for such effect modifiers can be adjusted for by weighting these effect modifiers to match the distribution of the target population enrolled in the clinical trial, either via raking weights or matching-adjusted indirect comparison (MAIC). Alternatively, clinical trials often present subgroup analyses stratified by predictive factors, including the geographic area. In such a case, the subgroup-specific treatment effect of an enrolled US population may serve as our target treatment effect for emulation. We added this aspect to the discussion section fo the manuscript.
 
-> [Discussion]{.underline}: "\[...\] If measurable, the distribution of such effect modifying factors will be adjusted for by weighting the effect modifiers to match the distribution of the target population enrolled in the clinical trial, either via raking weights or matching-adjusted indirect comparison (MAIC). Alternatively, clinical trials often present subgroup analyses stratified by predictive factors, including the geographic area. In such a case, the subgroup-specific treatment effect of an enrolled US population may serve as our target treatment effect for emulation. \[...\]"
+> [Discussion]{.underline}: "\[...\] If measurable, the distribution of such effect modifying factors will be adjusted for by weighting the effect modifiers to match the distribution of the target population enrolled in the clinical trial, either via raking weights^61^ or matching-adjusted indirect comparison (MAIC)^62^. Alternatively, clinical trials often present subgroup analyses stratified by predictive factors, including the geographic area. In such a case, the subgroup-specific treatment effect of an enrolled US population may serve as our target treatment effect for emulation. \[...\]"
+
+DeBell, M. & Krosnick, J. A. Computing weights for american national election study survey data. (2009).at \<<https://api.semanticscholar.org/CorpusID:14961217>\>
+
+Signorovitch, J. E. *et al.* Matching-adjusted indirect comparisons: A new tool for timely comparative effectiveness research. *Value in Health* **15**, 940–947 (2012).
 
 3.  *Regarding 'fit-for-purpose' data, it may be helpful to provide some justification for the databases selected for those readers that are not necessarily expert in oncology real world databases, eg, extent of validation of mortality outcomes or important covariates or prognostic indicators.*
 
 \[RESPONSE\] We thank the reviewer for raising this critical aspect. The four selected databases were chosen because they represent the largest and most comprehensive commercially available US EHR-derived databases with strong precedence for usage in real-world evidence studies. We added more language in the methods section of the manuscript now citing relevant validation studies for mortality outcomes and a manuscript from a parallel effort (currently in the submission process) evaluating their capture of general important prognostic factors. In addition, we would like to point out that we will assess data fitness for each specific trial emulation separately to address all nuances and details of that specific trial's design and analysis.
 
-[Methods, Databases]{.underline}: "\[...\] The four selected databases were chosen because they represent the largest and most comprehensive commercially available U.S.-based oncology-specific EHR-derived RWD data with strong precedence for usage in real-world evidence studies. Validation studies for an all-cause mortality were published for some of these data sources^20–22^ and an evaluation study on the capture of general prognostic factors across all data sources is currently underway.^23^ \[...\]."
+> [Methods, Databases]{.underline}: "\[...\] The four selected databases were chosen because they represent the largest and most comprehensive commercially available U.S.-based oncology-specific EHR-derived RWD data with strong precedence for usage in real-world evidence studies. Validation studies for an all-cause mortality were published for some of these data sources^20–22^ and an evaluation study on the capture of general prognostic factors across all data sources is currently underway.^23^ \[...\]."
+
+Curtis, M. D. *et al.* Development and validation of a high-quality composite real-world mortality endpoint. *Health services research* **53**, 4460–4476 (2018).
+
+Zhang, Q., Gossai, A., Monroe, S., Nussbaum, N. C. & Parrinello, C. M. Validation analysis of a composite real-world mortality endpoint for patients with cancer in the united states. *Health services research* **56**, 1281–1287 (2021).
+
+Shao, P., Tepsick, J. G., Walker, B. & Ray, H. E. Improving real-world mortality data quality in oncology research: Augmenting electronic medical records with obituary, social security death index, and commercial claims data. *JCO Clinical Cancer Informatics* **7**, e2300014 (2023).
+
+Shay, D. *et al.* Evaluation of the real-wOrld PROgnostic (ROPRO) score to predict overall survival in specialized oncology EHR databases. *in preparation* (2025).
 
 ## Reviewer #2 (Remarks to the Author):
 
 *The manuscript offers a commendable and thorough account of a well-established methodology by a respected team. While the approach is sound, the paper may benefit from availability of the results of the study. This would no doubt enhance the overall impact of your work. I look forward to seeing how your findings contribute to the ongoing discourse.*
 
-\[RESPONSE\]
+\[RESPONSE\] We sincerely thank the reviewer for the positive assessment of the manuscript and the kind recognition of the methodology. We fully agree that the presentation of the ENCORE results will enhance the overall impact of this work and will significantly contribute to the ongoing discourse. As highlighted in the manuscript, the current submission is intended as a methodological framework paper (or process document) that formally details the entire process, from the initial selection of eligible clinical trials to the final formalization of agreement metrics. This is intended to strengthen the transparency and reproducibility of all subsequent ENCORE trial emulations and is consistent with similar methodological papers published previously.^1,2^ The results of this project are currently being prepared and will be submitted for publication in a separate, subsequent manuscript as soon as they become available.
+
+> [Background, last paragraph]{.underline}: "\[...\] Here, we describe the design and process for the selection of the 12 oncology RCTs, assessment of the database quality and selection, protocol development and pre-registration, study design and statistical analysis plans, and pre-specified agreement metrics to evaluate the concordance between RCTs and emulations. \[...\]"
+
+^1^ Franklin, Jessica M., et al. "Nonrandomized real‐world evidence to support regulatory decision making: process for a randomized trial replication project." *Clinical Pharmacology & Therapeutics* 107.4 (2020): 817-826.
+
+^2^ Wang, Shirley V., et al. "A Benchmark, Expand, and Calibration (BenchExCal) Trial Emulation Approach for Using Real‐World Evidence to Support Indication Expansions: Design and Process for a Planned Empirical Evaluation." *Clinical Pharmacology & Therapeutics* 117.6 (2025): 1820-1828.
 
 ## Editorial Office Comments:
 
