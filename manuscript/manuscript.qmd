@@ -108,7 +108,7 @@ Email: [SWANG1\@BWH.HARVARD.EDU](SWANG1@BWH.HARVARD.EDU)
 
 [**Funding Statement:**]{.underline} This project was supported by the Oncology Center of Excellence, Food and Drug Administration (FDA) of the U.S. Department of Health and Human Services (HHS) as part of a contract \[75F40122C00181\]. The contents are those of the author(s) and do not necessarily represent the official views of, nor an endorsement by FDA/HHS, or the U.S. Government.
 
-[**Competing Interests Statement:**]{.underline} Dr. Weberpals is now an employee of AstraZeneca and owns stocks in AstraZeneca. Dr. Kehl has received research funding from Meta, Inc. to his institution. Drs. Espirito and Robert are employees of McKesson and own McKesson stock. Dr. Wang has consulted ad hoc for Exponent Inc. and MITRE a federally funded research center for the Centers for Medicare and Medicaid Services on unrelated work. Dr. Glynn has received support for investigator-initiated grants to the Brigham and Women's Hospital from Amarin, AstraZeneca, Kowa, Novartis, and Pfizer unrelated to the current work. Dr. Schneeweiss is participating in investigator-initiated grants to the Brigham and Women's Hospital from Bayer and UCB unrelated to the topic of this study. He consults for and owns equity in Aetion Inc., a software manufacturer. He is an advisor to Temedica GmbH, a patient-oriented data generation company. His interests were declared, reviewed, and approved by the Brigham and Women's Hospital in accordance with their institutional compliance policies.
+[**Competing Interests Statement:**]{.underline} Dr. Weberpals is now an employee of AstraZeneca and owns stocks in AstraZeneca. Dr. Kehl has received research funding from Meta, Inc. to his institution. Drs. Espirito and Robert are employees of McKesson and own McKesson stock. Dr. Wang has consulted ad hoc for Exponent Inc. and MITRE a federally funded research center for the Centers for Medicare and Medicaid Services on unrelated work. Dr. Glynn has received support for investigator-initiated grants to the Brigham and Women's Hospital from Amarin, AstraZeneca, Kowa, Novartis, and Pfizer unrelated to the current work. Dr. Schneeweiss is participating in investigator-initiated grants to the Brigham and Women's Hospital from Bayer and UCB unrelated to the topic of this study. He consults for and owns equity in Aetion Inc., a software manufacturer. He is an advisor to Temedica GmbH, a patient-oriented data generation company. His interests were declared, reviewed, and approved by the Brigham and Women's Hospital in accordance with their institutional compliance policies. All other authors declared no competing interests for this work.
 
 [**Data sharing statement:**]{.underline} No data was analyzed as part of this project.
 
@@ -286,6 +286,8 @@ Principled, well-designed and reproducible studies using fit-for-purpose RWD to 
 
 ::: {#refs}
 :::
+
+{{< pagebreak >}}
 
 # Figures {.unnumbered}
 
