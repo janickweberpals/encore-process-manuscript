@@ -90,7 +90,7 @@ Email: [SWANG1\@BWH.HARVARD.EDU](SWANG1@BWH.HARVARD.EDU)
 
 [**Article type:**]{.underline} Review
 
-[**Manuscript word count:**]{.underline} 4,685 words / 8,000 words
+[**Manuscript word count:**]{.underline} 4,787 words / 8,000 words
 
 [**Abstract word count:**]{.underline} 224 words / 250 words
 
@@ -180,7 +180,7 @@ A list of tentative, shortlisted primary candidates is presented in @tbl-rcts. T
 
 ## Databases
 
-The ENCORE project will use data from four U.S.-based oncology-specific EHR-derived RWD data sources (in alphabetical order): ConcertAI, COTA, Flatiron Health, and Ontada/McKesson. A detailed description and sampling methodology will be provided with each trial emulation protocol. The four selected databases were chosen because they represent the largest and most comprehensive commercially available U.S.-based oncology-specific EHR-derived RWD data with strong precedence for usage in real-world evidence studies. Validation studies for an all-cause mortality were published for some of these data sources[@curtis2018development; @zhang2021validation; @shao2023improving] and an evaluation study on the capture of general prognostic factors across all data sources is currently underway.[@shay2025ropro]
+The ENCORE project will use data from four U.S.-based oncology-specific EHR-derived RWD data sources (in alphabetical order): ConcertAI, COTA, Flatiron Health, and Ontada/McKesson. A detailed description and sampling methodology will be provided with each trial emulation protocol. The four selected databases were chosen because they represent the largest and most comprehensive commercially available U.S.-based oncology-specific EHR-derived RWD data with strong precedence for usage in real-world evidence studies. Validation studies for an all-cause mortality were published for some of these data sources[@curtis2018development; @zhang2021validation; @shao2023improving; @dong2025validation] and an evaluation study on the capture of general prognostic factors across all data sources is currently underway.[@shay2025ropro]
 
 For ENCORE, not all databases will be available for each cancer indication, given the specificity of data elements required. The names of the databases will be blinded and referred to as ENCORE DataBase (EDB) 1, 2, 3 and 4 for the final reporting of results (in randomly assigned order). If more than one database is considered fit-for-use for a respective trial emulation, the most suitable analytic model will be employed for each database separately and final treatment effect estimates will be pooled using a meta-analytic approach using random effects (primary; weights reflect the inverse of the variance of each database study plus an additional variance term that quantifies the assumed heterogeneity between databases) and fixed effects (secondary; weights reflect the inverse of the variance of each database study) models.[@nikolakopoulou2014interpret]
 
