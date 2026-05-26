@@ -12,4 +12,6 @@ This repository hosts the manuscript and all associated resources in which we de
 
 ## Publications
 
-The manuscript is still in draft and will be linked here upon publication.
+The published manuscript can be found [here](https://ascpt.onlinelibrary.wiley.com/doi/10.1002/cpt.70208?af=R).
+
+Weberpals, J., Schneeweiss, S., Kehl, K.L., Rivera, D.R., Mishra-Kalyani, P., Lerro, C.C., Larkins, E., Narayan, P., Curley, R., Hahn, G., Anand, P., Natanzon, Y., Belli, A.J., Wang, C.-K., Collins, J., Kish, J., Espirito, J., Robert, N.J., Glynn, R.J. and Wang, S.V. (2026), Emulating Comparative Oncology Trials With Real-World Evidence Studies (ENCORE): Process Development and Methodological Considerations for Oncology Real-World Data. Clin Pharmacol Ther, 119: 881-890. https://doi.org/10.1002/cpt.70208
